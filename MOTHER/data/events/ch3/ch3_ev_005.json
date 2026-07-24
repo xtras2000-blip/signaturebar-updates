@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_005",
+  "chapter": 3,
+  "title_kr": "편식 전쟁",
+  "event_class": "minor",
+  "emotion_tags": [
+    "worry"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "child_condition",
+        "op": "lt",
+        "value": 60
+      }
+    ]
+  },
+  "priority": 45,
+  "scenes": [
+    "ch3_sc_005",
+    "ch3_sc_025"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_005_c1",
+      "text_kr": "안 먹으면 치운다 — 다음 끼니까지",
+      "effects": {
+        "independence": 2,
+        "child_condition": -2,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch3_picky_eating_firm"
+    },
+    {
+      "choice_id": "ch3_ev_005_c2",
+      "text_kr": "좋아하는 반찬에 잘게 섞어 숨긴다",
+      "effects": {
+        "child_condition": 2,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch3_picky_eating"
+    },
+    {
+      "choice_id": "ch3_ev_005_c3",
+      "text_kr": "오늘은 먹고 싶은 것만 차려 준다",
+      "effects": {
+        "attachment": 1,
+        "child_condition": -1,
+        "stamina": 1
+      },
+      "memory_tag": "mem_ch3_picky_eating_yield"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 14
+}

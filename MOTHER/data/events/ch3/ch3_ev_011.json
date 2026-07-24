@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_011",
+  "chapter": 3,
+  "title_kr": "키즈카페 생일파티 초대",
+  "event_class": "minor",
+  "emotion_tags": [
+    "comparison",
+    "pride"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 40,
+  "scenes": [
+    "ch3_sc_011",
+    "ch3_sc_031"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_011_c1",
+      "text_kr": "정해 둔 예산 안에서 선물을 고른다",
+      "effects": {
+        "mind": 1,
+        "money": -30000
+      },
+      "memory_tag": "mem_ch3_birthday_party"
+    },
+    {
+      "choice_id": "ch3_ev_011_c2",
+      "text_kr": "다른 집 선물이 신경 쓰여 조금 더 쓴다",
+      "effects": {
+        "mind": -2,
+        "money": -60000
+      },
+      "memory_tag": "mem_ch3_birthday_party_compare"
+    },
+    {
+      "choice_id": "ch3_ev_011_c3",
+      "text_kr": "아이와 카드를 만든다 — 선물은 소박하게",
+      "effects": {
+        "attachment": 2,
+        "stamina": -2,
+        "money": -15000
+      },
+      "memory_tag": "mem_ch3_birthday_party_card"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

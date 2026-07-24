@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_003",
+  "chapter": 3,
+  "title_kr": "한글 조기교육 고민",
+  "event_class": "major",
+  "emotion_tags": [
+    "worry",
+    "comparison"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1300
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1500
+      }
+    ]
+  },
+  "priority": 80,
+  "scenes": [
+    "ch3_sc_003",
+    "ch3_sc_023",
+    "ch3_sc_043"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_003_c1",
+      "text_kr": "학습지를 시작한다 — 매일 한 장씩",
+      "effects": {
+        "mind": 2,
+        "child_condition": -2,
+        "money": -45000
+      },
+      "memory_tag": "mem_ch3_hangul_start"
+    },
+    {
+      "choice_id": "ch3_ev_003_c2",
+      "text_kr": "아직은 놀이가 먼저 — 시작하지 않는다",
+      "effects": {
+        "attachment": 2,
+        "independence": 1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch3_hangul_decision"
+    },
+    {
+      "choice_id": "ch3_ev_003_c3",
+      "text_kr": "아이에게 먼저 물어본다 — 해 보고 싶어?",
+      "effects": {
+        "expressiveness": 2,
+        "independence": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_hangul_ask"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

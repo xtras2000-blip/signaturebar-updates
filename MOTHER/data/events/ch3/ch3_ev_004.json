@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_004",
+  "chapter": 3,
+  "title_kr": "친구 다툼과 사과",
+  "event_class": "major",
+  "emotion_tags": [
+    "worry",
+    "pride"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1200
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1500
+      }
+    ]
+  },
+  "priority": 80,
+  "scenes": [
+    "ch3_sc_004",
+    "ch3_sc_024",
+    "ch3_sc_044"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_004_c1",
+      "text_kr": "탓하지 않고 아이 이야기부터 듣는다",
+      "effects": {
+        "empathy": 2,
+        "attachment": 2,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch3_first_quarrel"
+    },
+    {
+      "choice_id": "ch3_ev_004_c2",
+      "text_kr": "그 자리에서 바로 사과하게 한다",
+      "effects": {
+        "mind": 2,
+        "expressiveness": -2,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch3_first_quarrel_apology"
+    },
+    {
+      "choice_id": "ch3_ev_004_c3",
+      "text_kr": "도윤이 엄마에게 연락해 어른끼리 푼다",
+      "effects": {
+        "mind": 2,
+        "independence": -2,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_first_quarrel_parents"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_012",
+  "chapter": 3,
+  "title_kr": "학부모 상담 주간",
+  "event_class": "minor",
+  "emotion_tags": [
+    "pride",
+    "worry"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1250
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1280
+      }
+    ]
+  },
+  "priority": 50,
+  "scenes": [
+    "ch3_sc_012",
+    "ch3_sc_032"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_012_c1",
+      "text_kr": "질문을 적어 간다 — 목록 일곱 개",
+      "effects": {
+        "mind": 2,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_parent_meeting"
+    },
+    {
+      "choice_id": "ch3_ev_012_c2",
+      "text_kr": "칭찬만 듣고 짧게 끝낸다",
+      "effects": {
+        "stamina": 1,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch3_parent_meeting_brief"
+    },
+    {
+      "choice_id": "ch3_ev_012_c3",
+      "text_kr": "느린 부분부터 먼저 묻는다",
+      "effects": {
+        "empathy": 1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch3_parent_meeting_worry"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

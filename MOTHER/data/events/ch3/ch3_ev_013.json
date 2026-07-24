@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_013",
+  "chapter": 3,
+  "title_kr": "아빠 참여수업",
+  "event_class": "minor",
+  "emotion_tags": [
+    "pride"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1500
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1530
+      }
+    ]
+  },
+  "priority": 50,
+  "scenes": [
+    "ch3_sc_013",
+    "ch3_sc_033"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_013_c1",
+      "text_kr": "남편의 연차를 함께 조른다 — 꼭 가자",
+      "effects": {
+        "stamina": -1,
+        "rel": {
+          "npc_husband": 3
+        }
+      },
+      "memory_tag": "mem_ch3_dad_class_day"
+    },
+    {
+      "choice_id": "ch3_ev_013_c2",
+      "text_kr": "무리면 내가 간다 — 미리 말해 둔다",
+      "effects": {
+        "attachment": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch3_dad_class_day_substitute"
+    },
+    {
+      "choice_id": "ch3_ev_013_c3",
+      "text_kr": "영상 편지로 대신한다 — 아빠 목소리",
+      "effects": {
+        "expressiveness": 1,
+        "attachment": -1,
+        "rel": {
+          "npc_husband": 2
+        }
+      },
+      "memory_tag": "mem_ch3_dad_class_day_video"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

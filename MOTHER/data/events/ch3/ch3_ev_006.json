@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_006",
+  "chapter": 3,
+  "title_kr": "아이의 첫 거짓말",
+  "event_class": "major",
+  "emotion_tags": [
+    "worry",
+    "pride"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1400
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1700
+      }
+    ]
+  },
+  "priority": 80,
+  "scenes": [
+    "ch3_sc_006",
+    "ch3_sc_026",
+    "ch3_sc_046"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_006_c1",
+      "text_kr": "모른 척 기다린다 — 스스로 말할 때까지",
+      "effects": {
+        "empathy": 2,
+        "attachment": 1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch3_first_lie"
+    },
+    {
+      "choice_id": "ch3_ev_006_c2",
+      "text_kr": "그 자리에서 조용히 짚는다 — 거짓말은 안 돼",
+      "effects": {
+        "independence": 1,
+        "mind": 1,
+        "attachment": -2
+      },
+      "memory_tag": "mem_ch3_first_lie_confront"
+    },
+    {
+      "choice_id": "ch3_ev_006_c3",
+      "text_kr": "남편과 훈육 방향부터 맞춘다",
+      "effects": {
+        "mind": 1,
+        "stamina": -1,
+        "rel": {
+          "npc_husband": 3
+        }
+      },
+      "memory_tag": "mem_ch3_first_lie_couple"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

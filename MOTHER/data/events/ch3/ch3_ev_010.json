@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_010",
+  "chapter": 3,
+  "title_kr": "독감 접종의 계절",
+  "event_class": "minor",
+  "emotion_tags": [
+    "worry"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1350
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1380
+      }
+    ]
+  },
+  "priority": 45,
+  "scenes": [
+    "ch3_sc_010",
+    "ch3_sc_030"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_010_c1",
+      "text_kr": "접수 첫날 아침으로 예약한다",
+      "effects": {
+        "mind": 2,
+        "stamina": -2,
+        "money": -35000
+      },
+      "memory_tag": "mem_ch3_flu_shot"
+    },
+    {
+      "choice_id": "ch3_ev_010_c2",
+      "text_kr": "미리 말해 준다 — 조금 따끔할 거야",
+      "effects": {
+        "empathy": 1,
+        "mind": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_flu_shot_honest"
+    },
+    {
+      "choice_id": "ch3_ev_010_c3",
+      "text_kr": "다음 주로 미룬다 — 유행이 오기 전에는",
+      "effects": {
+        "stamina": 1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch3_flu_shot_delay"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

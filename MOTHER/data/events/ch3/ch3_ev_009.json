@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_009",
+  "chapter": 3,
+  "title_kr": "둘째 질문",
+  "event_class": "minor",
+  "emotion_tags": [
+    "worry",
+    "comparison"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 40,
+  "scenes": [
+    "ch3_sc_009",
+    "ch3_sc_029"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_009_c1",
+      "text_kr": "웃으며 넘긴다 — 지금도 충분해서요",
+      "effects": {
+        "mind": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_second_child_question"
+    },
+    {
+      "choice_id": "ch3_ev_009_c2",
+      "text_kr": "그날 밤 남편에게 진지하게 묻는다",
+      "effects": {
+        "mind": -2,
+        "rel": {
+          "npc_husband": 2
+        }
+      },
+      "memory_tag": "mem_ch3_second_child_question_talk"
+    },
+    {
+      "choice_id": "ch3_ev_009_c3",
+      "text_kr": "잠든 아이 옆에서 오래 생각한다",
+      "effects": {
+        "attachment": 2,
+        "mind": -1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_second_child_question_night"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 14
+}

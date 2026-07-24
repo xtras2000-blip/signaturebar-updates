@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_002",
+  "chapter": 3,
+  "title_kr": "또래 비교",
+  "event_class": "major",
+  "emotion_tags": [
+    "comparison",
+    "worry"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_momcafe_compare",
+        "exists": true
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1150
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1400
+      },
+      {
+        "ctx": "time_block",
+        "eq": "night"
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch3_sc_002",
+    "ch3_sc_022"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_002_c1",
+      "text_kr": "휴대폰을 덮고 잠든 아이의 얼굴을 보러 간다",
+      "effects": {
+        "mind": 2,
+        "attachment": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch3_compare_night_close"
+    },
+    {
+      "choice_id": "ch3_ev_002_c2",
+      "text_kr": "유진에게 메시지를 보낸다 — '그 학습지 어디 거야?'",
+      "effects": {
+        "mind": -3,
+        "money": -45000,
+        "rel": {
+          "npc_cohort_yujin": 4
+        }
+      },
+      "memory_tag": "mem_ch3_compare_night_ask"
+    },
+    {
+      "choice_id": "ch3_ev_002_c3",
+      "text_kr": "발달 검사 예약 페이지를 저장해 둔다",
+      "effects": {
+        "mind": -2,
+        "money": -50000,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_compare_night_screening"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_008",
+  "chapter": 3,
+  "title_kr": "시댁 훈육 갈등",
+  "event_class": "major",
+  "emotion_tags": [
+    "worry"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "ctx": "holiday",
+        "eq": "chuseok"
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch3_sc_008",
+    "ch3_sc_028",
+    "ch3_sc_048"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_008_c1",
+      "text_kr": "그 자리에서 말한다 — 훈육은 저희가 할게요",
+      "effects": {
+        "mind": 2,
+        "attachment": 2,
+        "rel": {
+          "npc_mother_in_law": -4
+        }
+      },
+      "memory_tag": "mem_ch3_inlaw_discipline"
+    },
+    {
+      "choice_id": "ch3_ev_008_c2",
+      "text_kr": "명절만 넘기자 — 웃으며 삼킨다",
+      "effects": {
+        "mind": -4,
+        "rel": {
+          "npc_mother_in_law": 3
+        }
+      },
+      "memory_tag": "mem_ch3_inlaw_discipline_silence"
+    },
+    {
+      "choice_id": "ch3_ev_008_c3",
+      "text_kr": "남편에게 눈짓한다 — 당신이 말해",
+      "effects": {
+        "mind": 1,
+        "rel": {
+          "npc_husband": 3,
+          "npc_mother_in_law": -2
+        }
+      },
+      "memory_tag": "mem_ch3_inlaw_discipline_husband"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

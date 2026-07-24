@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_001",
+  "chapter": 3,
+  "title_kr": "원 발표회",
+  "event_class": "major",
+  "emotion_tags": [
+    "pride",
+    "worry"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1400
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1420
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch3_sc_001",
+    "ch3_sc_021"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_001_c1",
+      "text_kr": "맨 앞줄에서 크게 손을 흔든다",
+      "effects": {
+        "expressiveness": 2,
+        "mind": 2,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch3_recital_stage_wave"
+    },
+    {
+      "choice_id": "ch3_ev_001_c2",
+      "text_kr": "소리 내지 않고 눈만 맞추며 고개를 끄덕인다",
+      "effects": {
+        "confidence": 2,
+        "attachment": 2,
+        "expressiveness": -1
+      },
+      "memory_tag": "mem_ch3_recital_stage"
+    },
+    {
+      "choice_id": "ch3_ev_001_c3",
+      "text_kr": "화면 너머로 본다 — 가족 단톡방 실시간 중계",
+      "effects": {
+        "attachment": -2,
+        "rel": {
+          "npc_husband": 3,
+          "npc_mother_in_law": 3
+        }
+      },
+      "memory_tag": "mem_ch3_recital_stage_camera"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

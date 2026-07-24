@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_007",
+  "chapter": 3,
+  "title_kr": "수족구 격리 일주일",
+  "event_class": "major",
+  "emotion_tags": [
+    "worry"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "child_condition",
+        "op": "lt",
+        "value": 50
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1150
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1600
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch3_sc_007",
+    "ch3_sc_027",
+    "ch3_sc_047"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_007_c1",
+      "text_kr": "일주일 연차 — 격리는 내가 맡는다",
+      "effects": {
+        "attachment": 3,
+        "stamina": -5,
+        "money": -150000
+      },
+      "memory_tag": "mem_ch3_hfmd_quarantine"
+    },
+    {
+      "choice_id": "ch3_ev_007_c2",
+      "text_kr": "시어머니에게 도움을 청한다",
+      "effects": {
+        "mind": -2,
+        "stamina": 2,
+        "rel": {
+          "npc_mother_in_law": 4
+        }
+      },
+      "memory_tag": "mem_ch3_hfmd_quarantine_help"
+    },
+    {
+      "choice_id": "ch3_ev_007_c3",
+      "text_kr": "남편과 반반 교대로 버틴다",
+      "effects": {
+        "mind": 1,
+        "stamina": -3,
+        "rel": {
+          "npc_husband": 3
+        }
+      },
+      "memory_tag": "mem_ch3_hfmd_quarantine_shift"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch3_ev_050",
+  "chapter": 3,
+  "title_kr": "재취업 준비",
+  "event_class": "major",
+  "emotion_tags": [
+    "worry",
+    "comparison"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1126
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1140
+      },
+      {
+        "ctx": "preset",
+        "eq": "preset_fulltime"
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch3_sc_050",
+    "ch3_sc_070",
+    "ch3_sc_090"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch3_ev_050_c1",
+      "text_kr": "이력서를 다시 쓴다 — 공백 삼 년을 적으며",
+      "effects": {
+        "mind": 2,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch3_reemployment_search"
+    },
+    {
+      "choice_id": "ch3_ev_050_c2",
+      "text_kr": "시간제 자리부터 알아본다",
+      "effects": {
+        "mind": 1,
+        "attachment": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch3_reemployment_parttime"
+    },
+    {
+      "choice_id": "ch3_ev_050_c3",
+      "text_kr": "입학 뒤로 미룬다 — 아직은 아이 곁에",
+      "effects": {
+        "attachment": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch3_reemployment_postpone"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}
