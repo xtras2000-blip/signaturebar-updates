@@ -118,6 +118,44 @@
   .childcard .last { font-size: 11px; color: rgba(43,43,51,.42); margin-top: 8px; }
   #resume .hint { margin-top: 18px; font-size: 12.5px; color: rgba(233,231,225,.55); letter-spacing: .06em; }
 
+  /* ===== 프롤로그: 결혼식 → 임신 테스트 → D-day (D-031) ===== */
+  #pro1 { background: linear-gradient(180deg, #E8DED2 0%, #F2EFE8 55%, #E4DACB 100%); color: var(--ink);
+    display: flex; align-items: center; justify-content: center; }
+  /* 결혼식 배경 에셋 슬롯: v_wedding(뒷모습·손) 도착 시 교체 */
+  #pro1 .stagebox, #pro2 .stagebox { position: relative; z-index: 2; text-align: center; padding: 0 34px; width: 100%; }
+  #pro1 .meet-line { color: rgba(43,43,51,.85); }
+  #pro1 .meet-line .dim { color: rgba(43,43,51,.45); }
+  #pro1 .ring { width: 54px; height: 54px; margin: 0 auto 22px; border-radius: 50%;
+    border: 3px solid #C8A96A; opacity: .7; position: relative; }
+  #pro1 .ring::after { content: ""; position: absolute; right: -14px; top: 8px; width: 40px; height: 40px;
+    border-radius: 50%; border: 3px solid #C8A96A; opacity: .75; }
+  #pro1 .hform { margin-top: 22px; opacity: 0; pointer-events: none; transition: opacity .8s; }
+  #pro1 .hform.on { opacity: 1; pointer-events: auto; }
+  #pro1 .hform .q { font-size: 13px; color: rgba(43,43,51,.5); }
+  #pro1 .namefield { max-width: 240px; margin: 10px auto 0; display: block; }
+  #pro1 .chips { margin-top: 14px; }
+  #pro1 .hgo { margin-top: 22px; }
+
+  #pro2 { background: #101116; display: flex; align-items: center; justify-content: center; }
+  /* 테스트기 실사 에셋 슬롯: v_pregnancy_test 도착 시 교체 */
+  .teststick { width: 200px; height: 56px; margin: 26px auto 0; background: #F5F3EC; border-radius: 28px;
+    position: relative; opacity: 0; transition: opacity 1.2s; box-shadow: 0 14px 40px rgba(0,0,0,.5); }
+  .teststick.on { opacity: 1; }
+  .teststick .win { position: absolute; left: 60px; top: 14px; width: 80px; height: 28px;
+    background: #FBFAF6; border-radius: 6px; border: 1px solid #D9D5C9; overflow: hidden; }
+  .teststick .line1, .teststick .line2 { position: absolute; top: 4px; bottom: 4px; width: 5px;
+    border-radius: 3px; background: #C46A78; }
+  .teststick .line1 { left: 24px; }
+  .teststick .line2 { left: 48px; opacity: 0; transition: opacity 2.4s ease 1s; }
+  .teststick.two .line2 { opacity: .9; }
+
+  #pro3 { background: #14161B; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .dday { animation: cardIn .8s ease; padding: 0 30px; }
+  .dday .dnum { font-family: "Iowan Old Style", Georgia, serif; font-size: 58px; color: #F2EFE8; letter-spacing: .04em; }
+  .dday .dlab { font-size: 13px; color: #8B8E99; letter-spacing: .22em; margin-top: 2px; }
+  .dday .dmsg { font-size: 14px; color: #C9C7C0; margin-top: 20px; line-height: 1.9; }
+  .dday .btn { margin-top: 30px; width: 100%; }
+
   /* ===== 2단계: 아이 만나기 ===== */
   #meet1 { background: #0D0E12; display: flex; align-items: center; justify-content: center; }
   /* 신생아실 배경 에셋 슬롯: bg_nursery 도착 시 교체 */
@@ -256,7 +294,47 @@
     <div class="hint">아이를 탭하면 이어서 키웁니다</div>
   </div>
 
-  <!-- 3. 아이 만나기 ① 배정 연출 -->
+  <!-- P1. 프롤로그: 결혼식 -->
+  <div id="pro1" class="screen" onclick="proNext()">
+    <div class="stagebox">
+      <div class="ring"></div>
+      <div class="meet-line" id="proLine"></div>
+      <div class="hform" id="hForm">
+        <div class="q">그 사람의 이름은</div>
+        <input class="namefield" id="husbandInput" maxlength="6" placeholder="성과 이름" autocomplete="off" onclick="event.stopPropagation()">
+        <div class="chips" onclick="event.stopPropagation()">
+          <button class="chip-name" onclick="pickHusband('김도현')">김도현</button>
+          <button class="chip-name" onclick="pickHusband('이준서')">이준서</button>
+          <button class="chip-name" onclick="pickHusband('박지훈')">박지훈</button>
+          <button class="chip-name" onclick="pickHusband('최민재')">최민재</button>
+        </div>
+        <div class="hgo"><button class="btn dark" style="width:100%" onclick="event.stopPropagation(); confirmHusband()">이 사람과 결혼했습니다</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P2. 프롤로그: 임신 테스트기 -->
+  <div id="pro2" class="screen" onclick="testNext()">
+    <div class="stagebox">
+      <div class="meet-line" id="testLine"></div>
+      <div class="teststick" id="stick">
+        <div class="win"><div class="line1"></div><div class="line2"></div></div>
+      </div>
+    </div>
+    <div class="tap-hint" id="testHint">화면을 탭하세요</div>
+  </div>
+
+  <!-- P3. D-day -->
+  <div id="pro3" class="screen">
+    <div class="dday">
+      <div class="dnum">D+1</div>
+      <div class="dlab">임신 1일차</div>
+      <div class="dmsg">아직 아무도 모릅니다.<br>당신과, 아주 작은 심장만 알고 있는 시작.</div>
+      <button class="btn primary" onclick="beginPregnancy()">열 달의 시작</button>
+    </div>
+  </div>
+
+  <!-- (출산 시 재사용) 아이 만나기 ① 배정 연출 -->
   <div id="meet1" class="screen" onclick="meetNext()">
     <div class="nursery"></div>
     <div class="stagebox">
@@ -315,8 +393,8 @@
   <!-- 4. 다음 단계 스텁 -->
   <div id="stub" class="screen">
     <div class="inner">
-      <b>여기까지가 2단계입니다</b>
-      다음 단계 — 조리원 퇴소의 첫 아침.<br>이제부터 하루하루가 시작됩니다.
+      <b>여기까지가 프롤로그입니다</b>
+      다음 단계 — 임신기의 하루.<br>성별을 알게 되는 날 아이의 이름을 짓고,<br>출산의 날 아이의 얼굴을 처음 만납니다.
       <br><button class="back" onclick="backToTitle()">타이틀로 돌아가기</button>
     </div>
   </div>
@@ -349,9 +427,80 @@
     closeModal('notice');
     enterGame();
   }
-  function enterGame(){ startMeet(); }
+  function enterGame(){ startPrologue(); }
 
-  // ---- 2단계: 아이 만나기 ----
+  // ---- 프롤로그: 결혼식 → 테스트기 → D-day (D-031/D-032) ----
+  const proScript = [
+    { text: '봄이었습니다.', dim: '' },
+    { text: '많은 얼굴들 앞에서,<br>우리는 서로의 손을 잡았습니다.', dim: '사진 속의 우리는 뒷모습입니다.' },
+    { text: '', form: true }
+  ];
+  let proStep = -1;
+  function startPrologue(){ proStep = -1;
+    document.getElementById('hForm').classList.remove('on');
+    show('pro1'); setTimeout(proNext, 500); }
+  function proNext(){
+    if (proStep >= proScript.length - 1) return;
+    proStep++;
+    const s = proScript[proStep];
+    const line = document.getElementById('proLine');
+    if (s.form) { document.getElementById('hForm').classList.add('on'); return; }
+    line.classList.remove('on');
+    setTimeout(() => {
+      line.innerHTML = s.text + (s.dim ? '<span class="dim">' + s.dim + '</span>' : '');
+      line.classList.add('on');
+    }, 350);
+  }
+  function pickHusband(n){ document.getElementById('husbandInput').value = n; }
+  function confirmHusband(){
+    const f = document.getElementById('husbandInput');
+    const n = f.value.trim();
+    if (!n) { f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake'); f.focus(); return; }
+    window._husbandName = n;
+    show('meet3');   // "그때의 당신은" (배경 프리셋)
+  }
+
+  // ---- 테스트기 장면 ----
+  const testScript = [
+    { text: '몇 해가 지난, 어느 아침.', dim: '' },
+    { text: '화장실에서 나오지 못하고<br>손 안의 것을 오래 들여다보았습니다.', stick: true },
+    { text: '두 줄이었습니다.', two: true }
+  ];
+  let testStep = -1;
+  function startTest(){ testStep = -1;
+    const st = document.getElementById('stick');
+    st.classList.remove('on','two');
+    document.getElementById('testHint').style.display = '';
+    show('pro2'); setTimeout(testNext, 500); }
+  function testNext(){
+    if (testStep >= testScript.length - 1) {
+      document.getElementById('testHint').style.display = 'none';
+      show('pro3'); return;
+    }
+    testStep++;
+    const s = testScript[testStep];
+    const line = document.getElementById('testLine');
+    line.classList.remove('on');
+    setTimeout(() => {
+      line.innerHTML = s.text + (s.dim ? '<span class="dim">' + s.dim + '</span>' : '');
+      line.classList.add('on');
+      if (s.stick) document.getElementById('stick').classList.add('on');
+      if (s.two) document.getElementById('stick').classList.add('two');
+    }, 350);
+  }
+  function beginPregnancy(){
+    localStorage.setItem('mother_save', JSON.stringify({
+      phase: 'pregnancy', d_day: 1, chapter: 0,
+      husband: { name: window._husbandName || '남편' },
+      preset: _preset,
+      child: { name: null, cid: null },
+      state_kr: '아직 아무도 모르는 작은 심장이 뛰고 있어요.',
+      saved: Date.now()
+    }));
+    show('stub');
+  }
+
+  // ---- (출산 시 재사용) 아이 만나기 ----
   const meetScript = [
     { text: '겨울, 새벽 4시 17분.', dim: '창밖은 아직 어둡습니다.' },
     { text: '울음소리가 먼저 도착했습니다.', dim: '' },
@@ -395,23 +544,19 @@
     el.classList.add('sel'); _preset = el.dataset.preset;
     document.getElementById('presetBtn').disabled = false;
   }
-  function confirmPreset(){
-    const name = window._childName || '우리 아기';
-    localStorage.setItem('mother_save', JSON.stringify({
-      day: 0, chapter: 1,
-      child: { name: name, cid: 'cid_001' },
-      preset: _preset,
-      state_kr: name + '(이)가 포대기 속에서 새근새근 잠들어 있어요.',
-      saved: Date.now()
-    }));
-    show('stub');
-  }
+  function confirmPreset(){ startTest(); }
   function continueGame(){
     const s = JSON.parse(localStorage.getItem('mother_save') || '{}');
-    document.getElementById('rsName').textContent = (s.child && s.child.name) || '우리 아기';
-    document.getElementById('rsAge').textContent = '생후 ' + (s.day || 0) + '일 · 1막 유년기';
+    const preg = s.phase === 'pregnancy';
+    document.getElementById('rsName').textContent = (s.child && s.child.name) || (preg ? '곧 만날 아기' : '우리 아기');
+    document.getElementById('rsAge').textContent = preg
+      ? ('임신 D+' + (s.d_day || 1) + ' · 1막 프롤로그')
+      : ('생후 ' + (s.day || 0) + '일 · 1막 유년기');
     document.getElementById('rsState').textContent = s.state_kr || '포대기 속에서 새근새근 잠들어 있어요.';
     document.getElementById('rsLast').textContent = '마지막으로 함께한 시간 — ' + ago(s.saved);
+    const ph = document.querySelector('.childcard .photo');
+    if (preg) { ph.style.backgroundImage = 'radial-gradient(70% 60% at 50% 45%, #2A2E38 0%, #14161B 100%)'; }
+    else { ph.style.backgroundImage = ''; }
     show('resume');
   }
   function ago(ts){
