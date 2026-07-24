@@ -36,7 +36,11 @@
 | `independence` | int | 0~100 | 50 | 자립심(성격 축) |
 | `expressiveness` | int | 0~100 | 50 | 표현력(성격 축). 축 4종 모두 1회 변동 상한 ±3 |
 | `temperament_seed` | string | enum: `sensitive`/`easygoing`/`active` | 시작 시 결정 | 기질 시드. 14_01 행동 가중치 보정에 사용 |
+| `identity_id` | string | `cid_{nnn}`, FK→child_identity_def | 시작 시 배정 | 아이 외모 정체성(얼굴 풀, D-024). 기질과 독립 |
+| `outfit_id` | string | FK→outfit_def, 연령 단계별 기본값 | `otf_{age}_default` | 현재 착용 의상(D-026). 노출 슬롯 컷에만 시각 반영 |
 | `milestones` | string(JSON) | `milestone_id` 배열 | `[]` | 달성한 발달 마일스톤. 명명: `ms_{챕터}_{주제}` |
+
+정적 정의 테이블 추가(D-024·D-026): `child_identity_def`(identity_id, 얼굴 고정문, 성장 시트 에셋 경로 5종, 활성 여부), `outfit_def`(outfit_id, age_stage, 이름, 획득 경로(구매/이벤트), 가격, 노출 슬롯 목록). 상세는 10_04.
 
 발달 마일스톤 기준 목록(콘텐츠 추가 시 이 표에 먼저 등록):
 
