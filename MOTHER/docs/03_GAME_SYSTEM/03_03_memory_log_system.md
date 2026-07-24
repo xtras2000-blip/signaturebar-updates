@@ -65,6 +65,7 @@ stateDiagram-v2
 | `lacks_memory` | `{"type":"lacks_memory","memory_tag":"mem_ch2_first_words_praise"}` | 해당 태그 엔트리가 0개 |
 
 - conditions 배열은 **AND** 결합. OR가 필요하면 이벤트를 분리한다(QA 단순화, D-010 취지).
+- **프리픽스 매칭 (D-022)**: 조건의 `memory_tag` 값은 프리픽스로 해석한다. `mem_ch1_husband_fight`는 `mem_ch1_husband_fight` 자체와 `mem_ch1_husband_fight_*` 변형(`_burst`, `_silent` 등) 전부에 매칭된다. 하나의 사건에서 갈라진 선택 변형들은 "그 일이 있었다"는 사실을 공유하기 때문이다. 특정 변형만 조건으로 쓰려면 변형 태그 전체를 명시한다.
 - 매칭 판정 시점: 각 `block_resolution` 시작 시의 트리거 평가 패스. `pending` 상태 엔트리는 매칭 대상에서 제외(당일 선택이 당일 회수되는 것 방지).
 - 대사 변형도 동일 연산자를 사용하되 08_DIALOGUE의 라인 조건 필드에서 참조한다.
 
