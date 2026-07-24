@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOTHER — 인게임 샘플 화면</title>
+<style>
+  /* 목업은 게임의 비주얼 세계(수채·과슈, CH1 새벽 팔레트)에 단일 테마로 커밋한다 */
+  * { box-sizing: border-box; margin: 0; }
+  :root {
+    --studio: #17191E;
+    --studio-ink: #E9E7E1;
+    --studio-sub: #8B8E99;
+    --ink: #2B2B33;            /* 10_01 최암부 */
+    --paper: #F2EFE8;
+    --dawn-1: #46586E;         /* CH1 새벽 팔레트 */
+    --dawn-2: #7C8FA5;
+    --dawn-3: #B9C6D2;
+    --warm: #E4C9A2;           /* 창으로 드는 낮빛 */
+    --mat: #C6D2C0;
+    --choice: #FBFAF6;
+  }
+  body {
+    background: var(--studio); color: var(--studio-ink);
+    font-family: "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+    line-height: 1.6; padding: 44px 16px 64px;
+  }
+  .head { max-width: 900px; margin: 0 auto 30px; text-align: center; }
+  .eyebrow { font-size: 11.5px; letter-spacing: .18em; color: var(--studio-sub); text-transform: uppercase; }
+  .head h1 { font-family: "Iowan Old Style", Georgia, serif; font-size: 34px; font-weight: 600; letter-spacing: .05em; margin: 6px 0 4px; }
+  .head p { color: var(--studio-sub); font-size: 13.5px; max-width: 46em; margin: 0 auto; text-wrap: balance; }
+
+  .stage { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; }
+  .unit { width: 324px; }
+  .caption { margin-top: 14px; font-size: 12.5px; color: var(--studio-sub); }
+  .caption b { color: var(--studio-ink); font-weight: 600; display: block; font-size: 13px; }
+
+  /* ---- 폰 프레임 (세로 390×844 비율, D-017) ---- */
+  .phone {
+    width: 324px; height: 674px; border-radius: 44px; padding: 10px;
+    background: #0C0D10; box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1px #2A2C33;
+    position: relative;
+  }
+  .phone::after { /* 노치 */
+    content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 86px; height: 22px; border-radius: 12px; background: #0C0D10; z-index: 40;
+  }
+  .screen {
+    width: 100%; height: 100%; border-radius: 35px; overflow: hidden; position: relative;
+    background: var(--paper); color: var(--ink);
+  }
+  /* 종이 질감 */
+  .grain { position: absolute; inset: 0; z-index: 30; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="matrix" values="0 0 0 0 0.55 0 0 0 0 0.53 0 0 0 0 0.50 0 0 0 0.06 0"/></filter><rect width="220" height="220" filter="url(%23n)"/></svg>');
+  }
+
+  /* ================= 화면 1 : 이벤트 장면 ================= */
+  .scene { position: absolute; inset: 0; }
+  /* 벽 — 새벽빛이 남은 오전의 워시 */
+  .wall { position: absolute; inset: 0 0 34% 0;
+    background:
+      radial-gradient(120% 90% at 78% 6%, rgba(228,201,162,.55), transparent 55%),
+      linear-gradient(168deg, var(--dawn-3) 0%, #CDD6DE 46%, #DDDDD3 100%);
+  }
+  /* 창 */
+  .window { position: absolute; top: 54px; right: 26px; width: 108px; height: 150px; border-radius: 6px;
+    background: linear-gradient(165deg, #F4E4C8 0%, #E9D5B4 55%, #D9C9AE 100%);
+    box-shadow: 0 0 0 6px rgba(43,43,51,.16), 0 0 44px 10px rgba(228,201,162,.5);
+  }
+  .window::before { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(rgba(43,43,51,.16), rgba(43,43,51,.16));
+    -webkit-mask: linear-gradient(#000,#000) 50% 0/6px 100% no-repeat, linear-gradient(#000,#000) 0 52%/100% 6px no-repeat;
+    mask: linear-gradient(#000,#000) 50% 0/6px 100% no-repeat, linear-gradient(#000,#000) 0 52%/100% 6px no-repeat; }
+  /* 빛기둥 */
+  .light { position: absolute; top: 60px; right: 10px; width: 220px; height: 330px; z-index: 1;
+    background: linear-gradient(200deg, rgba(244,228,200,.5), rgba(244,228,200,0) 70%);
+    transform: skewX(-14deg); filter: blur(4px);
+  }
+  /* 바닥 */
+  .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 36%;
+    background: linear-gradient(180deg, #D8CDB8 0%, #CBBEA6 100%); }
+  /* 놀이 매트 */
+  .mat { position: absolute; bottom: 9%; left: 8%; width: 62%; height: 17%; border-radius: 14px;
+    background: linear-gradient(180deg, var(--mat), #B4C2AE); box-shadow: 0 6px 14px rgba(43,43,51,.14); }
+  .mat::before { content: ""; position: absolute; inset: 8px; border-radius: 9px; border: 2px dashed rgba(43,43,51,.13); }
+  /* 아기 — 매트 위, 엄마를 올려다보며 웃음 */
+  .baby { position: absolute; bottom: 15.5%; left: 24%; width: 88px; height: 56px; z-index: 2; }
+  .baby .body { position: absolute; bottom: 0; left: 12px; width: 66px; height: 34px; border-radius: 18px;
+    background: linear-gradient(180deg, #F0E0CE, #E2CDB4); box-shadow: 0 4px 8px rgba(43,43,51,.15); }
+  .baby .head { position: absolute; bottom: 16px; left: 0; width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(180deg, #F4E6D6, #EAD8C2); box-shadow: 0 3px 7px rgba(43,43,51,.14); }
+  .baby .eye { position: absolute; width: 4px; height: 7px; border-radius: 3px; background: var(--ink); bottom: 32px; }
+  .baby .eye.l { left: 10px; } .baby .eye.r { left: 22px; }
+  .baby .smile { position: absolute; bottom: 25px; left: 12px; width: 12px; height: 6px;
+    border: 2px solid var(--ink); border-top: none; border-radius: 0 0 10px 10px; }
+  .baby .cheek { position: absolute; bottom: 28px; width: 6px; height: 4px; border-radius: 50%; background: rgba(214,140,120,.5); }
+  .baby .cheek.l { left: 6px; } .baby .cheek.r { left: 26px; }
+  /* 빨래 건조대 실루엣 + 떨어진 수건 */
+  .rack { position: absolute; bottom: 26%; right: 7%; width: 96px; height: 120px; z-index: 2; opacity: .9; }
+  .rack .bar { position: absolute; left: 0; right: 0; height: 3px; background: var(--ink); border-radius: 2px; opacity: .75; }
+  .rack .bar.b1 { top: 0; } .rack .bar.b2 { top: 26px; }
+  .rack .leg { position: absolute; top: 0; bottom: 0; width: 3px; background: var(--ink); opacity: .75; border-radius: 2px; }
+  .rack .leg.l { left: 12px; transform: rotate(9deg); } .rack .leg.r { right: 12px; transform: rotate(-9deg); }
+  .rack .cloth { position: absolute; top: 2px; width: 26px; height: 40px; border-radius: 3px 3px 6px 6px; }
+  .rack .c1 { left: 18px; background: #E8E2D2; } .rack .c2 { left: 50px; background: #CBD5DE; height: 34px; }
+  .dropped { position: absolute; bottom: 24%; right: 24%; width: 34px; height: 14px; border-radius: 7px;
+    background: #E8E2D2; transform: rotate(-8deg); box-shadow: 0 3px 6px rgba(43,43,51,.18); z-index: 2; }
+
+  /* 날짜 자막 — 감정 장면에서 HUD는 숨고 자막만 (D-004) */
+  .datechip { position: absolute; top: 54px; left: 0; right: 0; text-align: center; z-index: 3;
+    font-size: 12px; letter-spacing: .12em; color: rgba(43,43,51,.55); }
+
+  /* 대사 + 선택지 시트 */
+  .sheet { position: absolute; left: 10px; right: 10px; bottom: 12px; z-index: 20; display: grid; gap: 8px; }
+  .narr { background: rgba(251,250,246,.94); border: 1px solid rgba(43,43,51,.12); border-radius: 14px;
+    padding: 13px 16px; font-size: 13.5px; line-height: 1.7; box-shadow: 0 8px 22px rgba(43,43,51,.14); }
+  .narr .who { font-size: 10.5px; letter-spacing: .14em; color: rgba(43,43,51,.45); display: block; margin-bottom: 3px; }
+  .choices { display: grid; gap: 7px; }
+  .choice { background: var(--choice); border: 1.5px solid rgba(43,43,51,.22); border-radius: 12px;
+    min-height: 46px; display: flex; align-items: center; padding: 0 16px;
+    font-size: 13.5px; font-weight: 600; color: var(--ink); cursor: pointer;
+    box-shadow: 0 3px 10px rgba(43,43,51,.10); transition: transform .12s; }
+  .choice:hover { transform: translateY(-1px); }
+  .choice:focus-visible { outline: 3px solid var(--dawn-1); outline-offset: 2px; }
+
+  /* ================= 화면 2 : 블록 배분 ================= */
+  .alloc { position: absolute; inset: 0; background: linear-gradient(180deg, #EFEDE5 0%, #E7E3D7 100%); }
+  /* stamina 비네트 — 가장자리 톤 다운 (09_03 wgt_stamina_vignette) */
+  .vignette { position: absolute; inset: 0; z-index: 15; pointer-events: none;
+    box-shadow: inset 0 0 70px 18px rgba(43,43,51,.20); border-radius: 35px; }
+  .hud { position: absolute; top: 50px; left: 14px; right: 14px; z-index: 5;
+    display: flex; align-items: center; gap: 10px; }
+  .portrait { width: 44px; height: 44px; border-radius: 50%; position: relative; flex: none;
+    background: linear-gradient(180deg, #F4E6D6, #E5D2BC); box-shadow: 0 0 0 2.5px rgba(43,43,51,.6); }
+  .portrait .hair { position: absolute; inset: -2px 0 auto 0; height: 24px; border-radius: 22px 22px 6px 6px; background: #4A4149; }
+  .portrait .eye { position: absolute; top: 25px; width: 8px; height: 2.5px; border-radius: 2px; background: var(--ink); }
+  .portrait .eye.l { left: 10px; transform: rotate(6deg); } .portrait .eye.r { right: 10px; transform: rotate(-6deg); }
+  .portrait .mouth { position: absolute; top: 33px; left: 50%; transform: translateX(-50%);
+    width: 8px; height: 2.5px; border-radius: 2px; background: var(--ink); opacity: .8; }
+  .hud .day { flex: 1; }
+  .hud .day b { display: block; font-size: 14.5px; }
+  .hud .day span { font-size: 11.5px; color: rgba(43,43,51,.55); }
+  .ledger { width: 40px; height: 40px; border-radius: 12px; background: rgba(251,250,246,.9);
+    border: 1.5px solid rgba(43,43,51,.25); display: grid; place-items: center; font-size: 17px; }
+
+  /* 시간 블록 바 — 5칸 (D-007) */
+  .blocks { position: absolute; top: 110px; left: 14px; right: 14px; z-index: 5;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+  .blk { border-radius: 10px; padding: 7px 0 6px; text-align: center; font-size: 11px; letter-spacing: .06em;
+    background: rgba(251,250,246,.72); border: 1.5px solid rgba(43,43,51,.16); color: rgba(43,43,51,.6); }
+  .blk .ic { display: block; font-size: 13px; margin-bottom: 1px; }
+  .blk.done { background: var(--dawn-2); border-color: var(--dawn-2); color: #fff; }
+  .blk.now { background: var(--ink); border-color: var(--ink); color: #F2EFE8; font-weight: 700; box-shadow: 0 4px 12px rgba(43,43,51,.3); }
+
+  .alloc .prompt { position: absolute; top: 186px; left: 18px; right: 18px; z-index: 5;
+    font-size: 13px; color: rgba(43,43,51,.65); }
+  .alloc .prompt b { color: var(--ink); }
+
+  /* 행동 카드 — 효과는 숫자가 아니라 문장 (D-004) */
+  .cards { position: absolute; top: 218px; left: 14px; right: 14px; z-index: 5;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .card { background: rgba(251,250,246,.95); border: 1.5px solid rgba(43,43,51,.18); border-radius: 14px;
+    padding: 12px 13px 11px; min-height: 96px; box-shadow: 0 4px 12px rgba(43,43,51,.08); cursor: pointer; }
+  .card.sel { border-color: var(--ink); border-width: 2px; box-shadow: 0 6px 16px rgba(43,43,51,.18); }
+  .card .cat { font-size: 10px; letter-spacing: .12em; color: rgba(43,43,51,.45); }
+  .card .nm { font-size: 14.5px; font-weight: 700; margin: 2px 0 4px; }
+  .card .fx { font-size: 11.5px; color: rgba(43,43,51,.6); line-height: 1.5; }
+  .card .ic { float: right; font-size: 16px; }
+
+  /* 확정 버튼 — 하단 엄지 영역 (09_01 §4.1) */
+  .confirm { position: absolute; left: 14px; right: 14px; bottom: 18px; z-index: 5;
+    height: 50px; border-radius: 14px; background: var(--ink); color: #F2EFE8;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700;
+    letter-spacing: .04em; box-shadow: 0 8px 20px rgba(43,43,51,.35); cursor: pointer; }
+  .undo-hint { position: absolute; left: 0; right: 0; bottom: 76px; z-index: 5; text-align: center;
+    font-size: 11px; color: rgba(43,43,51,.45); }
+
+  footer { max-width: 900px; margin: 44px auto 0; text-align: center; font-size: 12px; color: var(--studio-sub); }
+  footer code { color: #B9C6D2; }
+</style>
+</head>
+<body>
+<div class="head">
+  <div class="eyebrow">In-game Sample · Art Direction Mock</div>
+  <h1>MOTHER</h1>
+  <p>바이블 문서를 그대로 화면에 옮긴 목업입니다 — 수채·과슈 톤과 CH1 새벽 팔레트(10_01),
+  수치를 숨기고 행동으로 보여주는 UI(09_01·D-004), 세로 한 손 탭 조작(D-017).
+  장면과 대사는 실제 데이터 <b>ch1_ev_004 「첫 미소」</b>의 것입니다.</p>
+</div>
+
+<div class="stage">
+
+  <!-- ================ 화면 1 : 이벤트 장면 ================ -->
+  <div class="unit">
+    <div class="phone"><div class="screen">
+      <div class="scene">
+        <div class="wall"></div>
+        <div class="light"></div>
+        <div class="window"></div>
+        <div class="floor"></div>
+        <div class="mat"></div>
+        <div class="baby">
+          <div class="body"></div>
+          <div class="head"></div>
+          <div class="eye l"></div><div class="eye r"></div>
+          <div class="cheek l"></div><div class="cheek r"></div>
+          <div class="smile"></div>
+        </div>
+        <div class="rack">
+          <div class="bar b1"></div><div class="bar b2"></div>
+          <div class="leg l"></div><div class="leg r"></div>
+          <div class="cloth c1"></div><div class="cloth c2"></div>
+        </div>
+        <div class="dropped"></div>
+      </div>
+      <div class="datechip">생후 47일 · 낮</div>
+      <div class="sheet">
+        <div class="narr">
+          <span class="who">—</span>
+          빨래를 걷다가 돌아본다.<br>
+          매트 위의 아이가 눈을 맞춘다. 입꼬리가 올라간다.<br>
+          빨래가 바닥에 떨어진다.
+        </div>
+        <div class="choices">
+          <button class="choice">마주 웃는다</button>
+          <button class="choice">동영상부터 찍는다</button>
+          <button class="choice">남편에게 전화한다</button>
+        </div>
+      </div>
+      <div class="grain"></div>
+    </div></div>
+    <p class="caption"><b>이벤트 장면 — 「첫 미소」 (ch1_ev_004)</b>
+    감정 장면에서는 HUD가 완전히 사라지고 날짜 자막만 남습니다(D-004).
+    선택지 세 개에 정답은 없으며, 무엇을 고르든 다른 기억(memory_tag)이 되어 입학식 엔딩에서 돌아옵니다.</p>
+  </div>
+
+  <!-- ================ 화면 2 : 블록 배분 ================ -->
+  <div class="unit">
+    <div class="phone"><div class="screen">
+      <div class="alloc">
+        <div class="hud">
+          <div class="portrait">
+            <div class="hair"></div>
+            <div class="eye l"></div><div class="eye r"></div>
+            <div class="mouth"></div>
+          </div>
+          <div class="day"><b>생후 47일</b><span>수요일 · 한솔마을</span></div>
+          <div class="ledger">📒</div>
+        </div>
+        <div class="blocks">
+          <div class="blk done"><span class="ic">🍼</span>아침</div>
+          <div class="blk now"><span class="ic">·</span>낮</div>
+          <div class="blk"><span class="ic">·</span>오후</div>
+          <div class="blk"><span class="ic">·</span>저녁</div>
+          <div class="blk"><span class="ic">·</span>밤</div>
+        </div>
+        <p class="prompt"><b>낮</b>에는 무엇을 할까.</p>
+        <div class="cards">
+          <div class="card sel">
+            <span class="ic">🍼</span>
+            <div class="cat">돌봄</div>
+            <div class="nm">수유하기</div>
+            <div class="fx">아이가 편안해진다.<br>몸은 조금 무거워진다.</div>
+          </div>
+          <div class="card">
+            <span class="ic">🧺</span>
+            <div class="cat">가사</div>
+            <div class="nm">빨래 널기</div>
+            <div class="fx">쌓인 집안일이 줄어든다.</div>
+          </div>
+          <div class="card">
+            <span class="ic">🛏️</span>
+            <div class="cat">자기 돌봄</div>
+            <div class="nm">쪽잠 자기</div>
+            <div class="fx">몸이 조금 가벼워진다.<br>아이가 깨면 끝난다.</div>
+          </div>
+          <div class="card">
+            <span class="ic">🌤️</span>
+            <div class="cat">외출</div>
+            <div class="nm">유아차 산책</div>
+            <div class="fx">바깥 공기.<br>아이도 나도 숨을 쉰다.</div>
+          </div>
+        </div>
+        <div class="undo-hint">확정 전에는 몇 번이든 다시 고를 수 있어요</div>
+        <div class="confirm">이대로 보내기</div>
+        <div class="vignette"></div>
+      </div>
+      <div class="grain"></div>
+    </div></div>
+    <p class="caption"><b>블록 배분 화면 (scr_block_allocation)</b>
+    하루는 5개의 시간 블록으로 흐릅니다(D-007). 체력·마음 수치는 어디에도 숫자로 없습니다 —
+    초상화의 지친 표정, 화면 가장자리의 어두워진 비네트, 카드의 문장이 대신 말합니다.
+    가계부는 아이콘뿐, 금액은 눌러야 보입니다(09_03).</p>
+  </div>
+
+</div>
+
+<footer>
+  근거 문서: <code>10_01</code> 아트 디렉션 · <code>09_01~03</code> UI 원칙·화면 흐름·위젯 · <code>02_02</code> 시간 블록 ·
+  <code>data/events/ch1/ch1_ev_004.json</code> · <code>08_04</code> 대사 시트<br>
+  프로토타입 이전의 아트 디렉션 목업이며, 실제 게임 화면은 프로덕션 단계에서 제작됩니다.
+</footer>
+</body>
+</html>
