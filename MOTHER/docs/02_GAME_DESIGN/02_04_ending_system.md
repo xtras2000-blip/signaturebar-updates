@@ -77,7 +77,7 @@ stateDiagram-v2
 
 ## JSON
 
-엔딩 편지 생성 규칙: `drawing_id`는 선정 기억 8건의 emotion_tags 최빈 태그(동률 시 후순위 챕터 태그 우선)를 테마로 매핑 — `wonder/joy → draw_family_sunny`(가족 그림·해), `burnout/overwhelmed/isolation → draw_holding_hands`(손잡은 두 사람), `pride/reward/fulfillment → draw_school_gate`(학교와 꽃), `guilt/reconciliation/worry/comparison → draw_umbrella`(한 우산 속 두 사람), `letting_go/loss → draw_waving_child`(손 흔드는 아이). 한 줄은 `letter_{dominant_axis}_{attachment_band}` 템플릿(총 12종, 08_DIALOGUE 소유).
+엔딩 편지 생성 규칙: `drawing_id`는 선정 기억 8건의 emotion_tags 최빈 태그(동률 시 후순위 챕터 태그 우선)를 테마로 매핑 — `wonder/joy → draw_family_sunny`(가족 그림·해), `burnout/overwhelmed/isolation → draw_holding_hands`(손잡은 두 사람), `pride/reward/fulfillment → draw_school_gate`(학교와 꽃), `guilt/reconciliation/worry/comparison → draw_umbrella`(한 우산 속 두 사람), `letting_go/loss → draw_waving_child`(손 흔드는 아이). 한 줄은 `letter_{axis}_{band}` 템플릿(axis = 대표 축, band = 해당 축의 구간. 총 12종, 정본은 08_05). attachment 밴드는 편지 장면의 연출 온도(카메라 거리·음악 강도)에만 사용하고 템플릿 선정에는 쓰지 않는다.
 
 ```json
 {
@@ -95,7 +95,7 @@ stateDiagram-v2
   "attachment_final": 76,
   "drawing_id": "draw_school_gate",
   "letter_line_id": "letter_confidence_high",
-  "letter_text_kr": "엄마, 나 이제 진짜 학교 다녀. 엄마 딸이라서 하나도 안 무서워."
+  "letter_text_kr": "내일은 내가 먼저 갈께"
 }
 ```
 
