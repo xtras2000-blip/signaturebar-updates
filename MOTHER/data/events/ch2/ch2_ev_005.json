@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_005",
+  "chapter": 2,
+  "title_kr": "입소 대기 순번 통보",
+  "event_class": "minor",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_daycare_waitlist",
+        "exists": true
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 450
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 460
+      }
+    ]
+  },
+  "priority": 65,
+  "scenes": [
+    "ch2_sc_050",
+    "ch2_sc_051"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_005_c1",
+      "text_kr": "'앞에 서른두 명이요?' — 다른 곳도 알아본다",
+      "effects": {
+        "stamina": -3,
+        "mind": -1,
+        "independence": 1
+      },
+      "memory_tag": "mem_ch2_waitlist_number"
+    },
+    {
+      "choice_id": "ch2_ev_005_c2",
+      "text_kr": "기다린다 — 국공립을 포기할 수는 없다",
+      "effects": {
+        "mind": -3,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch2_waitlist_wait"
+    },
+    {
+      "choice_id": "ch2_ev_005_c3",
+      "text_kr": "맞벌이 가점 서류를 처음부터 다시 챙긴다",
+      "effects": {
+        "mind": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_waitlist_papers"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

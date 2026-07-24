@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_011",
+  "chapter": 2,
+  "title_kr": "놀이터 데뷔",
+  "event_class": "minor",
+  "emotion_tags": [
+    "joy"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 450
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 600
+      }
+    ],
+    "weight": 20
+  },
+  "priority": 50,
+  "scenes": [
+    "ch2_sc_110",
+    "ch2_sc_111"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_011_c1",
+      "text_kr": "모래투성이가 되게 놔둔다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_playground_debut"
+    },
+    {
+      "choice_id": "ch2_ev_011_c2",
+      "text_kr": "물티슈를 들고 한 걸음 뒤를 따라다닌다",
+      "effects": {
+        "stamina": -4,
+        "attachment": 1,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch2_playground_debut_wipes"
+    },
+    {
+      "choice_id": "ch2_ev_011_c3",
+      "text_kr": "벤치의 엄마들에게 먼저 인사를 건넨다",
+      "effects": {
+        "expressiveness": 1,
+        "mind": 2,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch2_playground_debut_moms"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

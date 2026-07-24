@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_004",
+  "chapter": 2,
+  "title_kr": "복직 결정",
+  "event_class": "major",
+  "emotion_tags": [
+    "burnout",
+    "reward"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 430
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 440
+      },
+      {
+        "ctx": "preset",
+        "eq": "preset_worker"
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch2_sc_040",
+    "ch2_sc_041"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_004_c1",
+      "text_kr": "복직 확인서에 서명한다 — 3월부터 출근",
+      "effects": {
+        "mind": -4,
+        "stamina": -3,
+        "rel": {
+          "npc_boss": 5
+        },
+        "attachment": -2
+      },
+      "memory_tag": "mem_ch2_return_to_work"
+    },
+    {
+      "choice_id": "ch2_ev_004_c2",
+      "text_kr": "육아휴직 연장을 신청한다 — 급여는 절반 이하",
+      "effects": {
+        "mind": 3,
+        "money": -700000,
+        "rel": {
+          "npc_boss": -5
+        }
+      },
+      "memory_tag": "mem_ch2_extend_leave"
+    },
+    {
+      "choice_id": "ch2_ev_004_c3",
+      "text_kr": "육아기 근로시간 단축을 신청한다 — 눈치와 시간의 교환",
+      "effects": {
+        "mind": 1,
+        "money": -400000,
+        "rel": {
+          "npc_boss": -3
+        },
+        "attachment": 2
+      },
+      "memory_tag": "mem_ch2_reduced_hours"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

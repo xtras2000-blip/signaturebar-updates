@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_012",
+  "chapter": 2,
+  "title_kr": "남편 독박 실험",
+  "event_class": "major",
+  "emotion_tags": [
+    "reward"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "mind",
+        "op": "lt",
+        "value": 40
+      },
+      {
+        "rel": "npc_husband",
+        "op": "gte",
+        "value": 50
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch2_sc_120",
+    "ch2_sc_121",
+    "ch2_sc_122"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_012_c1",
+      "text_kr": "휴대폰을 끄고 하루를 통째로 비운다",
+      "effects": {
+        "mind": 8,
+        "stamina": 5,
+        "attachment": -2
+      },
+      "memory_tag": "mem_ch2_husband_solo_day"
+    },
+    {
+      "choice_id": "ch2_ev_012_c2",
+      "text_kr": "나갔다가 두 시간 만에 되돌아온다",
+      "effects": {
+        "mind": 2,
+        "rel": {
+          "npc_husband": -3
+        }
+      },
+      "memory_tag": "mem_ch2_husband_solo_day_return"
+    },
+    {
+      "choice_id": "ch2_ev_012_c3",
+      "text_kr": "냉장고에 시간표를 붙여 두고 나간다",
+      "effects": {
+        "mind": 4,
+        "stamina": 3,
+        "rel": {
+          "npc_husband": -1
+        }
+      },
+      "memory_tag": "mem_ch2_husband_solo_day_manual"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

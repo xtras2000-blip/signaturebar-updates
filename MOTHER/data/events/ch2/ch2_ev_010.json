@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_010",
+  "chapter": 2,
+  "title_kr": "배변 훈련",
+  "event_class": "minor",
+  "emotion_tags": [
+    "reward"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 700
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 760
+      }
+    ]
+  },
+  "priority": 65,
+  "scenes": [
+    "ch2_sc_100",
+    "ch2_sc_101"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_010_c1",
+      "text_kr": "실수해도 웃어넘긴다 — 빨래가 늘 뿐",
+      "effects": {
+        "attachment": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch2_potty_training"
+    },
+    {
+      "choice_id": "ch2_ev_010_c2",
+      "text_kr": "스티커 판을 붙이고 성공마다 크게 칭찬한다",
+      "effects": {
+        "expressiveness": 1,
+        "mind": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_potty_training_sticker"
+    },
+    {
+      "choice_id": "ch2_ev_010_c3",
+      "text_kr": "기저귀를 한 번에 끊는다",
+      "effects": {
+        "independence": 2,
+        "mind": -2,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch2_potty_training_at_once"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

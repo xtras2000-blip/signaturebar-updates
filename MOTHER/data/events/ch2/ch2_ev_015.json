@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_015",
+  "chapter": 2,
+  "title_kr": "이앓이 밤",
+  "event_class": "minor",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "child_condition",
+        "op": "lt",
+        "value": 55
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 380
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 500
+      },
+      {
+        "ctx": "time_block",
+        "eq": "night"
+      }
+    ]
+  },
+  "priority": 70,
+  "scenes": [
+    "ch2_sc_150",
+    "ch2_sc_151"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_015_c1",
+      "text_kr": "얼려 둔 치발기를 물리고 안은 채 버틴다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -4
+      },
+      "memory_tag": "mem_ch2_teething_night"
+    },
+    {
+      "choice_id": "ch2_ev_015_c2",
+      "text_kr": "남편을 깨워 교대를 부탁한다",
+      "effects": {
+        "stamina": -1,
+        "mind": 1,
+        "rel": {
+          "npc_husband": -2
+        }
+      },
+      "memory_tag": "mem_ch2_teething_night_shift"
+    },
+    {
+      "choice_id": "ch2_ev_015_c3",
+      "text_kr": "해열진통제 용량을 재고 또 잰다",
+      "effects": {
+        "child_condition": 2,
+        "mind": -2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch2_teething_night_meds"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 10
+}

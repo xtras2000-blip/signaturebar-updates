@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_009",
+  "chapter": 2,
+  "title_kr": "떼쓰기 — 자아의 등장",
+  "event_class": "major",
+  "emotion_tags": [
+    "joy",
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 540
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 620
+      },
+      {
+        "ctx": "time_block",
+        "eq": "evening"
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch2_sc_090",
+    "ch2_sc_091",
+    "ch2_sc_092"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_009_c1",
+      "text_kr": "'내가!' — 흘리더라도 스스로 하게 둔다",
+      "effects": {
+        "independence": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch2_tantrum_self"
+    },
+    {
+      "choice_id": "ch2_ev_009_c2",
+      "text_kr": "울음이 잦아들 때까지 말없이 안고 있는다",
+      "effects": {
+        "attachment": 2,
+        "empathy": 1,
+        "mind": -3
+      },
+      "memory_tag": "mem_ch2_tantrum_hold"
+    },
+    {
+      "choice_id": "ch2_ev_009_c3",
+      "text_kr": "안 되는 건 안 된다 — 짧고 단호하게",
+      "effects": {
+        "confidence": 1,
+        "attachment": -2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch2_tantrum_firm"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

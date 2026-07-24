@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_016",
+  "chapter": 2,
+  "title_kr": "열경련 응급실 밤",
+  "event_class": "major",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "child_condition",
+        "op": "lt",
+        "value": 40
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 550
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 700
+      },
+      {
+        "ctx": "time_block",
+        "eq": "night"
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch2_sc_160",
+    "ch2_sc_161",
+    "ch2_sc_162"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_016_c1",
+      "text_kr": "119를 부른다 — 손이 떨려도 시간을 기록한다",
+      "effects": {
+        "mind": -5,
+        "confidence": 1,
+        "child_condition": 3
+      },
+      "memory_tag": "mem_ch2_febrile_seizure"
+    },
+    {
+      "choice_id": "ch2_ev_016_c2",
+      "text_kr": "이불째 안고 야간 응급실로 달린다",
+      "effects": {
+        "money": -150000,
+        "stamina": -6,
+        "mind": -4,
+        "child_condition": 2
+      },
+      "memory_tag": "mem_ch2_febrile_seizure_er"
+    },
+    {
+      "choice_id": "ch2_ev_016_c3",
+      "text_kr": "당직 의료상담 전화부터 걸어 확인한다",
+      "effects": {
+        "mind": -3,
+        "stamina": -2,
+        "child_condition": 1
+      },
+      "memory_tag": "mem_ch2_febrile_seizure_call"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

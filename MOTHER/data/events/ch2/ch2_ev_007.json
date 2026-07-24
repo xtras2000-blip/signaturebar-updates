@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_007",
+  "chapter": 2,
+  "title_kr": "어린이집 입소 첫날",
+  "event_class": "major",
+  "emotion_tags": [
+    "joy",
+    "burnout"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 500
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 510
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch2_sc_070",
+    "ch2_sc_071"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_007_c1",
+      "text_kr": "짧게 안아 주고 돌아선다 — 뒤돌아보지 않기로 한다",
+      "effects": {
+        "independence": 2,
+        "attachment": -1,
+        "mind": -4
+      },
+      "memory_tag": "mem_ch2_daycare_first_goodbye"
+    },
+    {
+      "choice_id": "ch2_ev_007_c2",
+      "text_kr": "창문 뒤에서 울음이 멎을 때까지 지켜본다",
+      "effects": {
+        "mind": 1,
+        "stamina": -5,
+        "independence": -1
+      },
+      "memory_tag": "mem_ch2_daycare_first_goodbye_window"
+    },
+    {
+      "choice_id": "ch2_ev_007_c3",
+      "text_kr": "수첩 두 장짜리 당부 목록을 선생님께 건넨다",
+      "effects": {
+        "mind": 2,
+        "rel": {
+          "npc_daycare_teacher": -2
+        },
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_daycare_checklist"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

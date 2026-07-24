@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_017",
+  "chapter": 2,
+  "title_kr": "복직 첫날 조퇴",
+  "event_class": "major",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch2_return_to_work",
+        "exists": true
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 515
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 530
+      },
+      {
+        "ctx": "preset",
+        "eq": "preset_worker"
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch2_sc_170",
+    "ch2_sc_171",
+    "ch2_sc_172"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_017_c1",
+      "text_kr": "'죄송합니다' — 반차를 쓰고 달려간다",
+      "effects": {
+        "rel": {
+          "npc_boss": -4
+        },
+        "mind": -3,
+        "attachment": 2
+      },
+      "memory_tag": "mem_ch2_first_day_early_leave"
+    },
+    {
+      "choice_id": "ch2_ev_017_c2",
+      "text_kr": "남편에게 먼저 가 달라고 부탁한다",
+      "effects": {
+        "rel": {
+          "npc_boss": 2,
+          "npc_husband": -2
+        },
+        "mind": -2
+      },
+      "memory_tag": "mem_ch2_first_day_early_leave_husband"
+    },
+    {
+      "choice_id": "ch2_ev_017_c3",
+      "text_kr": "회의만 끝내고 간다 — 사십 분 뒤에",
+      "effects": {
+        "rel": {
+          "npc_boss": 1
+        },
+        "mind": -4,
+        "attachment": -2
+      },
+      "memory_tag": "mem_ch2_first_day_early_leave_late"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

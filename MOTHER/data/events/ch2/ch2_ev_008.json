@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_008",
+  "chapter": 2,
+  "title_kr": "등원 거부",
+  "event_class": "minor",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch2_daycare_first_goodbye",
+        "exists": true
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 520
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 600
+      }
+    ]
+  },
+  "priority": 60,
+  "scenes": [
+    "ch2_sc_080",
+    "ch2_sc_081"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_008_c1",
+      "text_kr": "울어도 맡기고 돌아선다",
+      "effects": {
+        "mind": -3,
+        "independence": 1,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch2_daycare_refusal"
+    },
+    {
+      "choice_id": "ch2_ev_008_c2",
+      "text_kr": "오늘 하루는 쉬게 한다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -4,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch2_daycare_refusal_skip"
+    },
+    {
+      "choice_id": "ch2_ev_008_c3",
+      "text_kr": "현관에서 십 분, 인사 의식을 만든다",
+      "effects": {
+        "stamina": -2,
+        "mind": 1,
+        "attachment": 1
+      },
+      "memory_tag": "mem_ch2_daycare_refusal_ritual"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 10
+}

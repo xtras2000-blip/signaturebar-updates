@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_002",
+  "chapter": 2,
+  "title_kr": "통잠 첫날",
+  "event_class": "minor",
+  "emotion_tags": [
+    "reward"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_night_feeding",
+        "exists": true
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 380
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 500
+      }
+    ]
+  },
+  "priority": 60,
+  "scenes": [
+    "ch2_sc_020",
+    "ch2_sc_021"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_002_c1",
+      "text_kr": "몇 번이고 숨소리를 확인하러 들어간다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -3,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch2_first_full_sleep_check"
+    },
+    {
+      "choice_id": "ch2_ev_002_c2",
+      "text_kr": "밀린 잠을 몰아서 잔다 — 여섯 시간 만의 아침",
+      "effects": {
+        "stamina": 6,
+        "mind": 2,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch2_first_full_sleep"
+    },
+    {
+      "choice_id": "ch2_ev_002_c3",
+      "text_kr": "깨어 있는 새벽을 혼자만의 시간으로 쓴다",
+      "effects": {
+        "mind": 4,
+        "stamina": -4
+      },
+      "memory_tag": "mem_ch2_first_full_sleep_metime"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

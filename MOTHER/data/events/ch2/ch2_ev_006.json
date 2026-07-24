@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_006",
+  "chapter": 2,
+  "title_kr": "입소 탈락",
+  "event_class": "minor",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 470
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 480
+      }
+    ]
+  },
+  "priority": 70,
+  "scenes": [
+    "ch2_sc_060",
+    "ch2_sc_061"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_006_c1",
+      "text_kr": "민간 어린이집에 바로 전화를 돌린다",
+      "effects": {
+        "money": -300000,
+        "stamina": -3,
+        "mind": 1
+      },
+      "memory_tag": "mem_ch2_daycare_rejected_private"
+    },
+    {
+      "choice_id": "ch2_ev_006_c2",
+      "text_kr": "가정보육을 반년 더 하기로 한다",
+      "effects": {
+        "attachment": 2,
+        "mind": -4,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch2_daycare_rejected"
+    },
+    {
+      "choice_id": "ch2_ev_006_c3",
+      "text_kr": "남편에게 등하원 반반을 제안한다",
+      "effects": {
+        "rel": {
+          "npc_husband": -2
+        },
+        "mind": 2
+      },
+      "memory_tag": "mem_ch2_daycare_rejected_split"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_014",
+  "chapter": 2,
+  "title_kr": "문화센터 첫 수업",
+  "event_class": "minor",
+  "emotion_tags": [
+    "joy"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 480
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 520
+      }
+    ]
+  },
+  "priority": 60,
+  "scenes": [
+    "ch2_sc_140",
+    "ch2_sc_141"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_014_c1",
+      "text_kr": "노래 시간, 제일 크게 손뼉을 친다",
+      "effects": {
+        "expressiveness": 1,
+        "attachment": 2,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_munsen_class"
+    },
+    {
+      "choice_id": "ch2_ev_014_c2",
+      "text_kr": "구석에서 자꾸 다른 아이들과 견주게 된다",
+      "effects": {
+        "mind": -3,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch2_munsen_class_compare"
+    },
+    {
+      "choice_id": "ch2_ev_014_c3",
+      "text_kr": "옆자리 엄마와 연락처를 교환한다",
+      "effects": {
+        "empathy": 1,
+        "mind": 2,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch2_munsen_class_friend"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

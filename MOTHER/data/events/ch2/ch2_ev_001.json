@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_001",
+  "chapter": 2,
+  "title_kr": "첫 걸음",
+  "event_class": "major",
+  "emotion_tags": [
+    "joy",
+    "reward"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 390
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 420
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch2_sc_010",
+    "ch2_sc_011"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_001_c1",
+      "text_kr": "두 팔을 벌리고 한 걸음 거리에서 기다린다",
+      "effects": {
+        "attachment": 4,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_first_steps"
+    },
+    {
+      "choice_id": "ch2_ev_001_c2",
+      "text_kr": "숨죽여 카메라부터 켠다 — 첫 걸음은 기록으로",
+      "effects": {
+        "attachment": 1,
+        "mind": 2,
+        "rel": {
+          "npc_husband": 3
+        }
+      },
+      "memory_tag": "mem_ch2_first_steps_video"
+    },
+    {
+      "choice_id": "ch2_ev_001_c3",
+      "text_kr": "첫 뒤집기 영상 옆에 나란히 저장한다",
+      "effects": {
+        "mind": 3,
+        "attachment": 2,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch2_first_steps_album"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

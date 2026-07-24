@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_013",
+  "chapter": 2,
+  "title_kr": "번아웃 위기",
+  "event_class": "major",
+  "emotion_tags": [
+    "burnout"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "mind",
+        "op": "lt",
+        "value": 30
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch2_sc_130",
+    "ch2_sc_131",
+    "ch2_sc_132"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_013_c1",
+      "text_kr": "아무에게도 말하지 못하고 그냥 버틴다",
+      "effects": {
+        "mind": -5,
+        "stamina": -4
+      },
+      "memory_tag": "mem_ch2_burnout_edge"
+    },
+    {
+      "choice_id": "ch2_ev_013_c2",
+      "text_kr": "친정에 SOS를 보낸다 — 딱 일주일만",
+      "effects": {
+        "mind": 6,
+        "stamina": 4,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch2_burnout_edge_sos"
+    },
+    {
+      "choice_id": "ch2_ev_013_c3",
+      "text_kr": "보건소 육아 상담을 예약한다",
+      "effects": {
+        "mind": 4,
+        "expressiveness": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch2_burnout_edge_counsel"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

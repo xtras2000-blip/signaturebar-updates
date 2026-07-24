@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch2_ev_003",
+  "chapter": 2,
+  "title_kr": "첫 말 — \"엄마\"",
+  "event_class": "major",
+  "emotion_tags": [
+    "joy"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 430
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 460
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch2_sc_030",
+    "ch2_sc_031"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch2_ev_003_c1",
+      "text_kr": "'엄마' — 백 번이고 다시 시켜 본다",
+      "effects": {
+        "attachment": 3,
+        "expressiveness": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch2_first_word"
+    },
+    {
+      "choice_id": "ch2_ev_003_c2",
+      "text_kr": "시댁 단톡방에 영상을 올린다",
+      "effects": {
+        "rel": {
+          "npc_mother_in_law": 4
+        },
+        "mind": -2
+      },
+      "memory_tag": "mem_ch2_first_word_share"
+    },
+    {
+      "choice_id": "ch2_ev_003_c3",
+      "text_kr": "퇴근한 남편에게만 조용히 들려준다",
+      "effects": {
+        "rel": {
+          "npc_husband": 3
+        },
+        "attachment": 1
+      },
+      "memory_tag": "mem_ch2_first_word_private"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}
