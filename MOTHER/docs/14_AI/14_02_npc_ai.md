@@ -13,7 +13,7 @@ NPC의 등장 시점과 반응 톤을 결정하는 경량 규칙 명세. NPC는 
 | `npc_husband` | 남편 | 60 | 전 챕터 등장 |
 | `npc_grandma` | 친정엄마 | 70 | 전 챕터 등장 |
 | `npc_daycare_teacher` | 어린이집 교사 | 50 | CH2 입소 이벤트 이후 등장 |
-| `npc_mom_friend` | 조리원 동기 | 50 | CH1 후반부터 등장 |
+| `npc_cohort_sunny` | 조리원 동기 | 50 | CH1 후반부터 등장 |
 
 - 요일: `weekday = (day_counter − 1) % 7`, day 1 = 월요일. `day_type`(weekday/weekend)은 02_01 정의를 따른다.
 - `rel` 변화: 이벤트 선택지 `effects.rel`(13_02, 1회 −10~+10)로만 증감. 방치 감쇠: `day_counter − last_interaction_day ≥ 7`이면 day_end_summary에서 −1.
@@ -25,7 +25,7 @@ NPC의 등장 시점과 반응 톤을 결정하는 경량 규칙 명세. NPC는 
 | `npc_husband` | morning, evening, night | 전 블록 |
 | `npc_grandma` | 수: midday, afternoon | 토: midday, afternoon |
 | `npc_daycare_teacher` | morning(등원), afternoon(하원) | 없음 |
-| `npc_mom_friend` | 화·금: midday | 없음 |
+| `npc_cohort_sunny` | 화·금: midday | 없음 |
 
 ### 대사 톤 3단계
 
@@ -44,7 +44,7 @@ NPC의 등장 시점과 반응 톤을 결정하는 경량 규칙 명세. NPC는 
 | `iv_husband_night_share` | `rel npc_husband < 40` | 야간 수유 분담 random 이벤트 `weight` ×0.5 / `rel ≥ 70`이면 ×1.5 |
 | `iv_grandma_emergency` | `rel npc_grandma ≥ 60` | 긴급 돌봄(엄마 병가) conditional 이벤트에서 "친정에 맡긴다" 선택지 해금 |
 | `iv_teacher_report` | `rel npc_daycare_teacher ≥ 50` | 하원 시 아이 관찰 코멘트 라인 추가(성격 축의 간접 노출) |
-| `iv_momfriend_compare` | `rel npc_mom_friend ≥ 40` | CH3 비교 불안(`comparison`) random 이벤트 후보 활성 |
+| `iv_cohort_compare` | `rel npc_cohort_sunny ≥ 40` | CH3 비교 불안(`comparison`) random 이벤트 후보 활성 |
 
 배율은 13_02의 `trigger.weight`에 곱한 뒤 정수 내림하며, 결과 0이면 후보 제외.
 

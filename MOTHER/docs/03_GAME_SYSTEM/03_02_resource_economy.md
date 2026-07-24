@@ -10,9 +10,11 @@
 
 | preset_id | 배경 | 월 수입(원) | 비고 |
 |---|---|---|---|
-| `preset_dual_income` | 맞벌이 (엄마 육아휴직) | 2,800,000 | 배우자 실수령 2,300,000 + 육아휴직급여 500,000 (CH1 한정, CH2부터 복직 선택 이벤트) |
-| `preset_single_income` | 외벌이 | 2,600,000 | 배우자 실수령만. 엄마 `work` 블록 불가 대신 stamina 여유 |
-| `preset_single_parent` | 한부모 | 1,900,000 | 본인 재택 부업 1,600,000 + 한부모가족 아동양육비 300,000 |
+| `preset_worker` | 육아휴직 중 회사원 | 1,500,000 (육아휴직급여) | CH1 한정. 복직 후 2,800,000. 복직 압박 이벤트 계열은 04_01 소유 |
+| `preset_freelancer` | 프리랜서 | 800,000~2,000,000 (변동, 기대값 1,400,000) | `act_work_remote_task` 완료 건별 입금. 수주 이벤트로 변동 |
+| `preset_fulltime` | 전업 | 2,600,000 (남편 급여) | 엄마 `work` 블록 불가(재취업 이벤트 후 해금) 대신 stamina 여유 |
+
+프리셋 정의·초기 자원 차등의 정본은 04_01_player_profile.md이며, 본 문서는 정산 절차에서의 참조만 소유한다.
 
 - 공통 수입: 부모급여(정부 지원) — 0~11개월 월 1,000,000, 12~23개월 월 500,000, 24개월~86개월(가정양육 시) 월 100,000. 매월 25일 자동 입금.
 - 비정기 수입: 돌잔치 축의금 이벤트 `ch2_ev_doljanchi` 성사 시 +1,500,000 (지출 2,000,000과 상계, 순 −500,000).
@@ -38,11 +40,11 @@
 | 구분 | 항목 | 값 | 비고 |
 |---|---|---|---|
 | 소스 | night 수면 회복 | +8 ~ +25 | 03_01 sleep_score 표 |
-| 소스 | 자기 돌봄(`self_care`) 블록 | +10 | mind +2와 별도 |
+| 소스 | 자기 돌봄(`selfcare`) 블록 | +10 | mind +2와 별도 |
 | 소스 | 배우자·조부모 도움 이벤트 | +5 ~ +15 | preset별 발생 빈도 상이 |
 | 싱크 | 돌봄(`care`) 블록 | −8 | CH1은 −10 (신생아 가중) |
-| 싱크 | 가사(`chores`) 블록 | −6 | |
-| 싱크 | 일(`work`) 블록 | −10 | preset_dual_income 복직 후 |
+| 싱크 | 가사(`housework`) 블록 | −6 | |
+| 싱크 | 일(`work`) 블록 | −10 | preset_worker 복직 후·preset_freelancer 수주 작업 |
 | 싱크 | 이벤트 선택지 effects | 가변 | 예: 밤샘 간호 −15 |
 
 ### 자원 부족 상태 페널티 (게임오버 없음)
@@ -93,9 +95,9 @@ stateDiagram-v2
 {
   "settlement": {
     "month_index": 13,
-    "preset_id": "preset_dual_income",
+    "preset_id": "preset_worker",
     "income": [
-      {"source_id": "preset_dual_income", "amount": 2800000},
+      {"source_id": "preset_worker", "amount": 2800000},
       {"source_id": "benefit_parent_12_23m", "amount": 500000}
     ],
     "fixed_costs": [
@@ -117,11 +119,11 @@ stateDiagram-v2
 
 | TC | 사전 조건 | 절차 | 기대 결과 |
 |---|---|---|---|
-| RE-01 | preset_dual_income, 13개월차 | 월 정산 실행 | 수입 3,300,000 (월급 2,800,000+부모급여 500,000) 입금 |
+| RE-01 | preset_worker(복직 완료), 13개월차 | 월 정산 실행 | 수입 3,300,000 (월급 2,800,000+부모급여 500,000) 입금 |
 | RE-02 | money 100,000, 고정비 2,140,000 | 월 정산 실행 | money 0 고정, `ch*_ev_borrow_money` 트리거, 게임오버 없음 |
 | RE-03 | RE-02 다음 달 | 월 정산 실행 | 고정비에 상환 200,000 추가 차감 확인 |
 | RE-04 | money 250,000 | 정산 완료 | `money_tight` 진입, comparison 이벤트 가중치 +30% |
 | RE-05 | stamina 5, care 블록 선택 (−10) | 블록 해결 | stamina 0 클램프, 다음 블록 강제 휴식 + mind −5 |
 | RE-06 | CH2 진입, cost_formula 활성 상태 | 챕터 전환 | `cost_formula` 정산 제외, `cost_baby_food` 편입 |
 | RE-07 | 돌잔치 이벤트 성사 | 정산 로그 확인 | 지출 2,000,000·축의금 1,500,000 각각 기록, 순 −500,000 |
-| RE-08 | preset_single_income | work 블록 선택 시도 | 선택지 미노출 (`work_block_allowed=false`) |
+| RE-08 | preset_fulltime(재취업 전) | work 블록 선택 시도 | 선택지 미노출 (`work_block_allowed=false`) |

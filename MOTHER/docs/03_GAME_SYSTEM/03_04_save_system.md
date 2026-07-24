@@ -95,7 +95,7 @@ stateDiagram-v2
 
 ```json
 {
-  "save_meta": {"save_version": "1.0", "slot_id": "slot_auto", "preset_id": "preset_dual_income", "created_at": "2026-07-24T13:02:11+09:00", "play_time_sec": 43210},
+  "save_meta": {"save_version": "1.0", "slot_id": "slot_auto", "preset_id": "preset_worker", "created_at": "2026-07-24T13:02:11+09:00", "play_time_sec": 43210},
   "day_counter": 12,
   "player_state": {"attachment": 48, "stamina": 62, "mind": 55, "money": 2374000},
   "child_state": {"child_condition": 71, "confidence": 50, "empathy": 52, "independence": 49, "expressiveness": 51},

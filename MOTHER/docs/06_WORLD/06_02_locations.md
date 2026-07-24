@@ -7,33 +7,33 @@
 
 - `location_id` 명명: `loc_{구역}_{이름}` (집 내부) / `loc_{이름}` (외부). 영어 snake_case.
 - 이벤트 JSON의 장면(`scenes[].location_id`)과 트리거 조건(`{"type":"location", ...}`)에서 참조한다.
-- 행동 카테고리는 00_01 핵심 루프의 4분류를 따른다: `care`(돌봄), `chore`(가사), `work`(일), `self`(자기 돌봄).
+- 행동 카테고리는 02_02 시간 블록 시스템의 5분류를 따른다: `care`(돌봄), `housework`(가사), `work`(일), `selfcare`(자기 돌봄), `outing`(외출). 외부 장소로의 이동 자체가 `outing` 행동이므로 장소 표의 카테고리에는 별도 표기하지 않는다.
 - "해금 챕터"는 장소가 처음 등장 가능한 챕터. 해금 이후에도 등장은 이벤트·행동 배분에 따른다.
 
 ## 2. 집 내부 (한솔아파트 3단지, 24평 전세)
 
 | location_id | 이름 | 해금 챕터 | 가능 행동 카테고리 | 연결 이벤트 풀 |
 |---|---|---|---|---|
-| `loc_home_living` | 거실 | CH1 | care, chore, self | 놀이·훈육 일상, 층간소음 항의, 남편 대화, 돌잔치 준비 |
-| `loc_home_bedroom` | 안방 | CH1 | care, self | 밤중 수유, 재우기 전쟁, 부부 갈등·화해, 혼자 자기(CH4) |
-| `loc_home_kitchen` | 주방 | CH1 | chore, care | 이유식 시작, 편식 갈등, 살림 지출, 명절 음식 준비 |
-| `loc_home_bathroom` | 욕실 | CH1 | care, chore, self | 목욕 전쟁, 배변 훈련(CH2), 혼자 우는 엄마 연출(수치 UI 숨김, D-004) |
-| `loc_home_child_room` | 작은방(아이 방) | CH1 | care, chore | 창고→아이 방 전환(06_01 4절), 유아 책상 조립, 입학 준비 |
+| `loc_home_living` | 거실 | CH1 | care, housework, selfcare | 놀이·훈육 일상, 층간소음 항의, 남편 대화, 돌잔치 준비 |
+| `loc_home_bedroom` | 안방 | CH1 | care, selfcare | 밤중 수유, 재우기 전쟁, 부부 갈등·화해, 혼자 자기(CH4) |
+| `loc_home_kitchen` | 주방 | CH1 | housework, care | 이유식 시작, 편식 갈등, 살림 지출, 명절 음식 준비 |
+| `loc_home_bathroom` | 욕실 | CH1 | care, housework, selfcare | 목욕 전쟁, 배변 훈련(CH2), 혼자 우는 엄마 연출(수치 UI 숨김, D-004) |
+| `loc_home_child_room` | 작은방(아이 방) | CH1 | care, housework | 창고→아이 방 전환(06_01 4절), 유아 책상 조립, 입학 준비 |
 
 ## 3. 동네·외부
 
 | location_id | 이름 | 해금 챕터 | 가능 행동 카테고리 | 연결 이벤트 풀 |
 |---|---|---|---|---|
-| `loc_postpartum_center` | 산후조리원 | CH1 | care, self | 퇴소(CH1 오프닝), 조리원 동기 인연 형성, 이후 회상 전용 |
+| `loc_postpartum_center` | 산후조리원 | CH1 | care, selfcare | 퇴소(CH1 오프닝), 조리원 동기 인연 형성, 이후 회상 전용 |
 | `loc_pediatric_clinic` | 단지 상가 소아과 | CH1 | care | 예방접종, 열 감기, 영유아 건강검진, 독감철 대기실 |
 | `loc_daycare` | 국공립 어린이집 | CH2 | care | 입소 대기 신청(CH1), 첫 등원 분리불안, 교사 상담, 재롱잔치 |
-| `loc_playground` | 단지 놀이터 | CH1 | care, self | 또래 접촉, 놀이터 서열·비교, 다툼과 사과, 이웃 대화 |
-| `loc_mart` | 상가 마트 / 대형마트 | CH1 | chore | 장보기 지출, 장난감 조르기(CH2~), 카트 실랑이 |
-| `loc_grandma_home` | 친정 (KTX 2시간) | CH1 | care, self | 친정엄마 방문·역방문, 김치 택배, "몸조리 해라" 통화 |
-| `loc_inlaw_home` | 시댁 (버스 30분) | CH1 | care, chore | 명절 방문(`holiday:seollal`/`chuseok`), 훈육 방식 갈등 |
+| `loc_playground` | 단지 놀이터 | CH1 | care, selfcare | 또래 접촉, 놀이터 서열·비교, 다툼과 사과, 이웃 대화 |
+| `loc_mart` | 상가 마트 / 대형마트 | CH1 | housework | 장보기 지출, 장난감 조르기(CH2~), 카트 실랑이 |
+| `loc_grandma_home` | 친정 (KTX 2시간) | CH1 | care, selfcare | 친정엄마 방문·역방문, 김치 택배, "몸조리 해라" 통화 |
+| `loc_inlaw_home` | 시댁 (버스 30분) | CH1 | care, housework | 명절 방문(`holiday:seollal`/`chuseok`), 훈육 방식 갈등 |
 | `loc_office` | 회사 (광역버스 50분) | CH1 | work | 복직 압박 통화, 육아휴직 눈치, 복직 후 조퇴 갈등(CH2~) |
-| `loc_momcafe` | 맘카페 "한솔맘 이야기" (온라인) | CH1 | self | 정보 검색, 발달 비교 불안, 중고 거래, 익명 위로 |
-| `loc_community_center` | 행정복지센터·문화센터 | CH2 | care, self | 문센 수업, 양육수당·보육료 신청(Korea-first 행정 디테일) |
+| `loc_momcafe` | 맘카페 "한솔맘 이야기" (온라인) | CH1 | selfcare | 정보 검색, 발달 비교 불안, 중고 거래, 익명 위로 |
+| `loc_community_center` | 행정복지센터·문화센터 | CH2 | care, selfcare | 문센 수업, 양육수당·보육료 신청(Korea-first 행정 디테일) |
 | `loc_elementary_school` | 초등학교 | CH5 | care | 예비소집일, 입학식(CH5 피날레), 등굣길 연습 |
 
 ## 4. 장소별 연출 메모
@@ -74,9 +74,9 @@
 | 카테고리 | 정의 | 대표 행동 예 |
 |---|---|---|
 | `care` | 아이 돌봄 | 수유, 재우기, 병원 방문, 등하원, 놀이 |
-| `chore` | 가사 | 장보기, 청소, 빨래, 명절 음식 |
+| `housework` | 가사 | 장보기, 청소, 빨래, 명절 음식 |
 | `work` | 일 | 출근, 재택 업무, 복직 관련 통화 |
-| `self` | 자기 돌봄 | 쪽잠, 샤워, 통화, 맘카페, 문화센터 |
+| `selfcare` | 자기 돌봄 | 쪽잠, 샤워, 통화, 맘카페, 문화센터 |
 
 ## 7. QA 체크 (15_QA 연동)
 
