@@ -25,4 +25,4 @@
 2. 08_DIALOGUE — CH1 대표 이벤트 3종 전체 대사 시트
 3. 13_JSON — CH1 이벤트 16종 실제 데이터 파일 생성 (data/events/ch1/)
 4. 02_04 엔딩 — letter_line 템플릿 12종 본문 작성 (08 소유)
-5. 15_QA — 문서 QA 1회전: 7섹션·emotion_tags·callback_plan 전수 검사
+5. ~~15_QA — 문서 QA 1회전~~ — ✅ 완료 (15_03_doc_qa_round_01.md, 결함 8건 수정)

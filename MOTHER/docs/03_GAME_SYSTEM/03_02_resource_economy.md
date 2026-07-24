@@ -16,8 +16,8 @@
 
 프리셋 정의·초기 자원 차등의 정본은 04_01_player_profile.md이며, 본 문서는 정산 절차에서의 참조만 소유한다.
 
-- 공통 수입: 부모급여(정부 지원) — 0~11개월 월 1,000,000, 12~23개월 월 500,000, 24개월~86개월(가정양육 시) 월 100,000. 매월 25일 자동 입금.
-- 비정기 수입: 돌잔치 축의금 이벤트 `ch2_ev_doljanchi` 성사 시 +1,500,000 (지출 2,000,000과 상계, 순 −500,000).
+- 공통 수입: 부모급여 — 만 0세 월 1,000,000(`parent_benefit_age0`), 만 1세 월 500,000(`parent_benefit_age1`) + 아동수당 월 100,000(`child_allowance`, 만 8세 미만이므로 전 챕터 지급). 매월 25일 자동 입금. 상수 정본은 12_02 `constants_kr`.
+- 비정기 수입: 돌잔치 축의금 이벤트 `ch1_ev_010` 성사 시 +1,500,000 (지출 2,000,000과 상계, 순 −500,000).
 
 ### money 지출 표 (2026년 수도권 외곽 물가 기준, 12_DATABASE 상수)
 
@@ -31,7 +31,7 @@
 | `cost_daycare` | 어린이집 자부담(특별활동비 등) | 120,000 | 월 고정 | 입소 이벤트 성공 후 |
 | `cost_hospital_minor` | 소아과 외래+약 | 25,000 | 이벤트 건별 | 전 챕터 |
 | `cost_hospital_er` | 야간 응급실 | 120,000 | 이벤트 건별 | 전 챕터 |
-| `cost_doljanchi` | 돌잔치 | 2,000,000 | 1회 | CH2 |
+| `cost_doljanchi` | 돌잔치 | 2,000,000 | 1회 | CH1 (ch1_ev_010, day 360~370) |
 | `cost_hakwon` | 유아 학원(선택) | 250,000 | 월 고정(선택 후) | CH4~CH5 |
 | `cost_school_prep` | 초등 입학 준비물 | 400,000 | 1회 | CH5 |
 
@@ -98,7 +98,8 @@ stateDiagram-v2
     "preset_id": "preset_worker",
     "income": [
       {"source_id": "preset_worker", "amount": 2800000},
-      {"source_id": "benefit_parent_12_23m", "amount": 500000}
+      {"source_id": "parent_benefit_age1", "amount": 500000},
+      {"source_id": "child_allowance", "amount": 100000}
     ],
     "fixed_costs": [
       {"cost_id": "cost_housing", "amount": 1200000},
@@ -107,7 +108,7 @@ stateDiagram-v2
       {"cost_id": "cost_baby_food", "amount": 150000}
     ],
     "event_costs_total": 145000,
-    "balance_after": 4015000,
+    "balance_after": 4115000,
     "shortfall_flag": false
   }
 }
@@ -119,7 +120,7 @@ stateDiagram-v2
 
 | TC | 사전 조건 | 절차 | 기대 결과 |
 |---|---|---|---|
-| RE-01 | preset_worker(복직 완료), 13개월차 | 월 정산 실행 | 수입 3,300,000 (월급 2,800,000+부모급여 500,000) 입금 |
+| RE-01 | preset_worker(복직 완료), 13개월차 | 월 정산 실행 | 수입 3,400,000 (월급 2,800,000+부모급여 500,000+아동수당 100,000) 입금 |
 | RE-02 | money 100,000, 고정비 2,140,000 | 월 정산 실행 | money 0 고정, `ch*_ev_borrow_money` 트리거, 게임오버 없음 |
 | RE-03 | RE-02 다음 달 | 월 정산 실행 | 고정비에 상환 200,000 추가 차감 확인 |
 | RE-04 | money 250,000 | 정산 완료 | `money_tight` 진입, comparison 이벤트 가중치 +30% |

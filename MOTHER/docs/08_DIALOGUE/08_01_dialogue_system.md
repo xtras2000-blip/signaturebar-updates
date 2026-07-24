@@ -87,7 +87,7 @@ stateDiagram-v2
 {
   "scene_id": "ch1_ev_001_s1",
   "seq": 1,
-  "location_id": "loc_home_livingroom",
+  "location_id": "loc_home_living",
   "lines": [
     {"line_id": "ch1_ev_001_s1_l1", "speaker": "child", "vocal_tag": "cry_unknown", "condition": null, "emotion": "overwhelmed"},
     {"line_id": "ch1_ev_001_s1_l2", "speaker": "player", "line_slot": 1, "text_kr": "왜 그래… 배고파? 아까 먹었잖아.", "condition": null, "emotion": "overwhelmed"},

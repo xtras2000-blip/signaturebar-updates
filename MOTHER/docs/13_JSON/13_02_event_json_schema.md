@@ -2,6 +2,12 @@
 
 이벤트 파일(`data/events/ch{n}/{event_id}.json`, 13_01)의 JSON Schema(draft-07). 이벤트 골격은 07_EVENT의 캐논 구조를 따르고, `trigger.conditions`와 라인 조건의 문법은 13_03이 소유한 조건식 정의와 동일하다.
 
+event_id는 2가지 형식을 허용한다(D-015).
+- **카탈로그 이벤트**: `ch{n}_ev_{nnn}` (07_03 등 챕터별 리스트에 등재, 예: `ch1_ev_010`)
+- **시스템 예약 이벤트**: `ch{n}_ev_{slug}` (수치 조건으로 강제 트리거되는 시스템 소유 이벤트, 예: `ch1_ev_night_feeding`, `ch1_ev_borrow_money`)
+
+문서 산문에서 쓰는 `ch*_ev_{slug}`는 "챕터 공통 이벤트 패밀리"를 뜻하는 문서 전용 표기다. 데이터 파일에서는 반드시 챕터별 실제 id로 구체화한다.
+
 ## 1. 스키마 정의
 
 ```json
@@ -14,7 +20,7 @@
   "additionalProperties": false,
   "properties": {
     "schema_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
-    "event_id": { "type": "string", "pattern": "^ch[1-5]_ev_[0-9]{3}$" },
+    "event_id": { "type": "string", "pattern": "^ch[1-5]_ev_([0-9]{3}|[a-z][a-z0-9_]*)$" },
     "chapter": { "type": "integer", "minimum": 1, "maximum": 5 },
     "title_kr": { "type": "string", "minLength": 1, "maxLength": 40 },
     "emotion_tags": {
@@ -96,7 +102,7 @@
       "required": ["choice_id", "text_kr", "effects"],
       "additionalProperties": false,
       "properties": {
-        "choice_id": { "type": "string", "pattern": "^ch[1-5]_ev_[0-9]{3}_c[0-9]+$" },
+        "choice_id": { "type": "string", "pattern": "^ch[1-5]_ev_([0-9]{3}|[a-z][a-z0-9_]*)_c[0-9]+$" },
         "text_kr": { "type": "string", "minLength": 1, "maxLength": 60 },
         "requires": {
           "type": "object",

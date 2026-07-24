@@ -54,7 +54,8 @@
 
 | 대상 | 규칙 | 예 |
 |---|---|---|
-| 이벤트 | `ch{n}_ev_{nnn}` | `ch1_ev_004` |
+| 이벤트(카탈로그) | `ch{n}_ev_{nnn}` | `ch1_ev_004` |
+| 이벤트(시스템 예약) | `ch{n}_ev_{slug}` — 문서 산문 한정 `ch*_ev_{slug}` 허용 (D-015) | `ch1_ev_night_feeding` |
 | 씬 / 라인 / 선택지 | `{event_id}_s{n}` / `…_l{nn}` / `…_c{n}` | `ch1_ev_004_s1_l01` |
 | 기억 태그 | `mem_{ch1~ch5\|any}_{subject}` | `mem_ch1_first_smile` |
 | 행동 | `act_{category}_{name}` | `act_care_feeding` |
