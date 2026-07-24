@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_005",
+  "chapter": 4,
+  "title_kr": "동생 있는 친구 부러워하기",
+  "event_class": "minor",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 45,
+  "scenes": [
+    "ch4_sc_005"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_005_c1",
+      "text_kr": "왜 동생이 갖고 싶은지 끝까지 들어 준다",
+      "effects": {
+        "attachment": 3,
+        "empathy": 1,
+        "stamina": -2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch4_sibling_envy"
+    },
+    {
+      "choice_id": "ch4_ev_005_c2",
+      "text_kr": "\"너 하나면 충분해\" — 웃으며 화제를 돌린다",
+      "effects": {
+        "mind": 2,
+        "attachment": -1,
+        "expressiveness": -1
+      },
+      "memory_tag": "mem_ch4_sibling_envy"
+    },
+    {
+      "choice_id": "ch4_ev_005_c3",
+      "text_kr": "아이를 재우고 남편에게 둘째 얘기를 꺼낸다",
+      "effects": {
+        "rel": {
+          "npc_husband": 2
+        },
+        "mind": -3,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch4_sibling_envy"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

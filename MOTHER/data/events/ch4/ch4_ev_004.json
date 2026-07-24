@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_004",
+  "chapter": 4,
+  "title_kr": "학원 보낼까 고민",
+  "event_class": "minor",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch3_compare_night",
+        "exists": true
+      },
+      {
+        "ctx": "time_block",
+        "eq": "night"
+      }
+    ]
+  },
+  "priority": 55,
+  "scenes": [
+    "ch4_sc_004"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_004_c1",
+      "text_kr": "옆집 아이가 다니는 학원에 등록한다",
+      "effects": {
+        "money": -350000,
+        "mind": 2,
+        "child_condition": -2
+      },
+      "memory_tag": "mem_ch4_academy_debate"
+    },
+    {
+      "choice_id": "ch4_ev_004_c2",
+      "text_kr": "아직 이르다 — 등록 창을 닫는다",
+      "effects": {
+        "mind": -3,
+        "attachment": 1,
+        "independence": 1
+      },
+      "memory_tag": "mem_ch4_academy_debate"
+    },
+    {
+      "choice_id": "ch4_ev_004_c3",
+      "text_kr": "체험 수업 한 달만 끊고 아이에게 묻기로 한다",
+      "effects": {
+        "money": -150000,
+        "mind": -1,
+        "rel": {
+          "npc_husband": 2
+        }
+      },
+      "memory_tag": "mem_ch4_academy_debate"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_011",
+  "chapter": 4,
+  "title_kr": "빈 식탁의 재등장",
+  "event_class": "minor",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_alone_evening",
+        "exists": true
+      },
+      {
+        "ctx": "time_block",
+        "eq": "evening"
+      }
+    ]
+  },
+  "priority": 50,
+  "scenes": [
+    "ch4_sc_011"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_011_c1",
+      "text_kr": "아빠 몫까지 세 그릇을 차린다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch4_empty_table"
+    },
+    {
+      "choice_id": "ch4_ev_011_c2",
+      "text_kr": "둘이 좋아하는 반찬만 꺼내 소풍처럼 먹는다",
+      "effects": {
+        "mind": 2,
+        "attachment": 1,
+        "child_condition": -1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch4_empty_table"
+    },
+    {
+      "choice_id": "ch4_ev_011_c3",
+      "text_kr": "빈자리가 보이게 식탁 사진을 남편에게 보낸다",
+      "effects": {
+        "rel": {
+          "npc_husband": 2
+        },
+        "expressiveness": 1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch4_empty_table"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

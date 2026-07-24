@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_012",
+  "chapter": 4,
+  "title_kr": "유진의 고백",
+  "event_class": "minor",
+  "emotion_tags": [
+    "reconciliation"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 45,
+  "scenes": [
+    "ch4_sc_012"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_012_c1",
+      "text_kr": "나도 그랬다고, 처음으로 먼저 말한다",
+      "effects": {
+        "rel": {
+          "npc_cohort_yujin": 4
+        },
+        "mind": 2,
+        "expressiveness": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch4_yujin_confession"
+    },
+    {
+      "choice_id": "ch4_ev_012_c2",
+      "text_kr": "오늘은 듣기만 한다 — 유진의 밤이니까",
+      "effects": {
+        "rel": {
+          "npc_cohort_yujin": 2
+        },
+        "empathy": 1,
+        "stamina": -2,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch4_yujin_confession"
+    },
+    {
+      "choice_id": "ch4_ev_012_c3",
+      "text_kr": "다음엔 아이들 없이 만나자고 약속한다",
+      "effects": {
+        "rel": {
+          "npc_cohort_yujin": 2
+        },
+        "mind": 1,
+        "money": -30000,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch4_yujin_confession"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

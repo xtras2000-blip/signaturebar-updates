@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_013",
+  "chapter": 4,
+  "title_kr": "시어머니의 인정",
+  "event_class": "minor",
+  "emotion_tags": [
+    "reconciliation"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch3_inlaw_discipline",
+        "exists": true
+      },
+      {
+        "ctx": "holiday",
+        "eq": "chuseok"
+      }
+    ]
+  },
+  "priority": 55,
+  "scenes": [
+    "ch4_sc_013"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_013_c1",
+      "text_kr": "\"어머니 덕이에요\" — 반은 진심으로 답한다",
+      "effects": {
+        "rel": {
+          "npc_mother_in_law": 3
+        },
+        "mind": 1,
+        "confidence": -1
+      },
+      "memory_tag": "mem_ch4_inlaw_acknowledge"
+    },
+    {
+      "choice_id": "ch4_ev_013_c2",
+      "text_kr": "\"감사해요\"만 하고 설거지로 돌아선다",
+      "effects": {
+        "mind": 2,
+        "stamina": -2,
+        "rel": {
+          "npc_mother_in_law": -1
+        }
+      },
+      "memory_tag": "mem_ch4_inlaw_acknowledge"
+    },
+    {
+      "choice_id": "ch4_ev_013_c3",
+      "text_kr": "그동안 서운했던 것 하나를 처음 꺼낸다",
+      "effects": {
+        "expressiveness": 1,
+        "confidence": 1,
+        "mind": 2,
+        "rel": {
+          "npc_mother_in_law": -2
+        }
+      },
+      "memory_tag": "mem_ch4_inlaw_acknowledge"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

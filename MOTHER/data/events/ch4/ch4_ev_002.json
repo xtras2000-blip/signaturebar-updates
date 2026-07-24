@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_002",
+  "chapter": 4,
+  "title_kr": "화해",
+  "event_class": "major",
+  "emotion_tags": [
+    "reconciliation"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch4_big_scolding",
+        "exists": true
+      },
+      {
+        "ctx": "time_block",
+        "eq": "midday"
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch4_sc_002",
+    "ch4_sc_022"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_002_c1",
+      "text_kr": "그날 왜 화가 났는지, 아이의 말로 끝까지 설명한다",
+      "effects": {
+        "attachment": 5,
+        "expressiveness": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch4_reconcile_words"
+    },
+    {
+      "choice_id": "ch4_ev_002_c2",
+      "text_kr": "말 대신 그림 옆에 엄마의 그림을 그려 넣는다",
+      "effects": {
+        "attachment": 4,
+        "empathy": 2,
+        "stamina": -2,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch4_reconcile_drawing"
+    },
+    {
+      "choice_id": "ch4_ev_002_c3",
+      "text_kr": "사과 대신 아이가 제일 좋아하는 저녁상을 차린다",
+      "effects": {
+        "attachment": 2,
+        "child_condition": 2,
+        "stamina": -4,
+        "money": -25000
+      },
+      "memory_tag": "mem_ch4_reconcile_meal"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_010",
+  "chapter": 4,
+  "title_kr": "남편의 뒤늦은 사과",
+  "event_class": "minor",
+  "emotion_tags": [
+    "reconciliation"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_dark_morning_alone",
+        "exists": true
+      },
+      {
+        "rel": "npc_husband",
+        "op": "gte",
+        "value": 55
+      }
+    ]
+  },
+  "priority": 55,
+  "scenes": [
+    "ch4_sc_010"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_010_c1",
+      "text_kr": "그 새벽이 얼마나 길었는지 이제야 말한다",
+      "effects": {
+        "mind": 3,
+        "expressiveness": 1,
+        "rel": {
+          "npc_husband": 2
+        },
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch4_late_apology"
+    },
+    {
+      "choice_id": "ch4_ev_010_c2",
+      "text_kr": "\"지난 일이야\" — 사과만 받고 덮는다",
+      "effects": {
+        "rel": {
+          "npc_husband": 1
+        },
+        "mind": -2,
+        "stamina": 1
+      },
+      "memory_tag": "mem_ch4_late_apology"
+    },
+    {
+      "choice_id": "ch4_ev_010_c3",
+      "text_kr": "다음엔 늦지 말라고, 웃으며 새끼손가락을 건다",
+      "effects": {
+        "rel": {
+          "npc_husband": 3
+        },
+        "mind": 1,
+        "expressiveness": -1
+      },
+      "memory_tag": "mem_ch4_late_apology"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

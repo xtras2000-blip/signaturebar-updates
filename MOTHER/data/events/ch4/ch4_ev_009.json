@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_009",
+  "chapter": 4,
+  "title_kr": "조부모 건강 이상 신호",
+  "event_class": "major",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2100
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2130
+      }
+    ]
+  },
+  "priority": 92,
+  "scenes": [
+    "ch4_sc_009",
+    "ch4_sc_029"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_009_c1",
+      "text_kr": "이번 주말, 아이를 데리고 내려간다",
+      "effects": {
+        "rel": {
+          "npc_grandma": 4
+        },
+        "attachment": 2,
+        "stamina": -4,
+        "money": -80000
+      },
+      "memory_tag": "mem_ch4_grandma_sign"
+    },
+    {
+      "choice_id": "ch4_ev_009_c2",
+      "text_kr": "큰 병원 검진부터 대신 예약해 드린다",
+      "effects": {
+        "rel": {
+          "npc_grandma": 2
+        },
+        "money": -150000,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch4_grandma_sign"
+    },
+    {
+      "choice_id": "ch4_ev_009_c3",
+      "text_kr": "\"괜찮다\"는 말을 믿기로 한다 — 당장은",
+      "effects": {
+        "stamina": 2,
+        "mind": -4,
+        "rel": {
+          "npc_grandma": -2
+        }
+      },
+      "memory_tag": "mem_ch4_grandma_sign"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

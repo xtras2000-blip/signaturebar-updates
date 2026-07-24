@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_007",
+  "chapter": 4,
+  "title_kr": "부부 갈등 목격",
+  "event_class": "major",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "rel": "npc_husband",
+        "op": "lt",
+        "value": 40
+      },
+      {
+        "memory": "mem_ch1_husband_fight",
+        "exists": true
+      }
+    ]
+  },
+  "priority": 88,
+  "scenes": [
+    "ch4_sc_007",
+    "ch4_sc_027"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_007_c1",
+      "text_kr": "말을 멈추고 아이부터 방으로 데려간다",
+      "effects": {
+        "attachment": 3,
+        "rel": {
+          "npc_husband": -2
+        },
+        "mind": -3
+      },
+      "memory_tag": "mem_ch4_fight_witnessed"
+    },
+    {
+      "choice_id": "ch4_ev_007_c2",
+      "text_kr": "이번에는 끝까지 할 말을 한다",
+      "effects": {
+        "expressiveness": 1,
+        "mind": 2,
+        "rel": {
+          "npc_husband": -4
+        },
+        "attachment": -3
+      },
+      "memory_tag": "mem_ch4_fight_witnessed"
+    },
+    {
+      "choice_id": "ch4_ev_007_c3",
+      "text_kr": "일단 삼킨다 — 아이 재운 뒤 다시 얘기하자",
+      "effects": {
+        "rel": {
+          "npc_husband": 2
+        },
+        "mind": -4,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch4_fight_witnessed"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

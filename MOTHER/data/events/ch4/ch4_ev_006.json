@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_006",
+  "chapter": 4,
+  "title_kr": "엄마의 옛 꿈 발견",
+  "event_class": "minor",
+  "emotion_tags": [
+    "reconciliation"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 10
+  },
+  "priority": 40,
+  "scenes": [
+    "ch4_sc_006"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_006_c1",
+      "text_kr": "아이 옆에 앉아 오랜만에 연필을 잡는다",
+      "effects": {
+        "mind": 3,
+        "expressiveness": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch4_old_dream"
+    },
+    {
+      "choice_id": "ch4_ev_006_c2",
+      "text_kr": "\"엄마 어릴 때 거야\" — 상자를 다시 닫는다",
+      "effects": {
+        "stamina": 1,
+        "mind": -2,
+        "confidence": -1
+      },
+      "memory_tag": "mem_ch4_old_dream"
+    },
+    {
+      "choice_id": "ch4_ev_006_c3",
+      "text_kr": "옛 그림 한 장을 아이 방 벽에 붙여 준다",
+      "effects": {
+        "attachment": 2,
+        "confidence": 1,
+        "stamina": -1,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch4_old_dream"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

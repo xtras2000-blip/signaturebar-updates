@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_008",
+  "chapter": 4,
+  "title_kr": "아이가 엄마를 위로한 날",
+  "event_class": "major",
+  "emotion_tags": [
+    "reconciliation",
+    "guilt"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "mind",
+        "op": "lt",
+        "value": 40
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch4_sc_008",
+    "ch4_sc_028"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_008_c1",
+      "text_kr": "아이 앞에서 처음으로 그냥 운다",
+      "effects": {
+        "mind": 4,
+        "attachment": 3,
+        "confidence": -1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch4_child_comfort"
+    },
+    {
+      "choice_id": "ch4_ev_008_c2",
+      "text_kr": "\"엄마 괜찮아\" — 얼른 눈물을 닦는다",
+      "effects": {
+        "confidence": 1,
+        "mind": -2,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch4_child_comfort"
+    },
+    {
+      "choice_id": "ch4_ev_008_c3",
+      "text_kr": "\"고마워\" 한마디만 하고 오래 안는다",
+      "effects": {
+        "attachment": 4,
+        "mind": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch4_child_comfort"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

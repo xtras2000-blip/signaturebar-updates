@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_003",
+  "chapter": 4,
+  "title_kr": "아이의 비밀",
+  "event_class": "major",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch3_first_quarrel",
+        "exists": true
+      },
+      {
+        "ctx": "time_block",
+        "eq": "afternoon"
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch4_sc_003",
+    "ch4_sc_023"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_003_c1",
+      "text_kr": "캐묻지 않는다 — 옆에서 같은 그림을 그린다",
+      "effects": {
+        "attachment": 4,
+        "stamina": -3,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch4_child_secret"
+    },
+    {
+      "choice_id": "ch4_ev_003_c2",
+      "text_kr": "저녁 산책길에 지나가듯 물어본다",
+      "effects": {
+        "attachment": 2,
+        "expressiveness": 1,
+        "stamina": -2,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch4_child_secret"
+    },
+    {
+      "choice_id": "ch4_ev_003_c3",
+      "text_kr": "선생님께 전화해 오늘 있었던 일을 확인한다",
+      "effects": {
+        "rel": {
+          "npc_daycare_teacher": 3
+        },
+        "mind": 2,
+        "attachment": -3
+      },
+      "memory_tag": "mem_ch4_child_secret"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

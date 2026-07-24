@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch4_ev_001",
+  "chapter": 4,
+  "title_kr": "크게 혼낸 날",
+  "event_class": "major",
+  "emotion_tags": [
+    "guilt"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 1860
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 1875
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch4_sc_001",
+    "ch4_sc_021"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch4_ev_001_c1",
+      "text_kr": "지금 방에 들어가 이불째 끌어안는다",
+      "effects": {
+        "attachment": 4,
+        "stamina": -2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch4_big_scolding"
+    },
+    {
+      "choice_id": "ch4_ev_001_c2",
+      "text_kr": "문 앞에서 돌아선다 — 내일 아침에 말하자",
+      "effects": {
+        "mind": -4,
+        "stamina": 2
+      },
+      "memory_tag": "mem_ch4_big_scolding"
+    },
+    {
+      "choice_id": "ch4_ev_001_c3",
+      "text_kr": "남편을 먼저 들여보내고 물감 값을 검색한다",
+      "effects": {
+        "rel": {
+          "npc_husband": 3
+        },
+        "attachment": -2,
+        "money": -30000
+      },
+      "memory_tag": "mem_ch4_big_scolding"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}
