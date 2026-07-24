@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_borrow_money",
+  "chapter": 1,
+  "title_kr": "빈 잔액",
+  "event_class": "system",
+  "emotion_tags": [
+    "overwhelmed",
+    "isolation"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "money",
+        "op": "lte",
+        "value": 0
+      }
+    ]
+  },
+  "priority": 100,
+  "scenes": [
+    "ch1_sc_018"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_borrow_money_c1",
+      "text_kr": "친정엄마에게 오십만 원을 빌린다",
+      "effects": {
+        "money": 500000,
+        "mind": -3,
+        "rel": {
+          "npc_grandma": -2
+        }
+      },
+      "memory_tag": "mem_ch1_borrow_family"
+    },
+    {
+      "choice_id": "ch1_ev_borrow_money_c2",
+      "text_kr": "결혼 전부터 붓던 적금을 깬다",
+      "effects": {
+        "money": 500000,
+        "mind": -4
+      },
+      "memory_tag": "mem_ch1_cancel_savings"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 28
+}

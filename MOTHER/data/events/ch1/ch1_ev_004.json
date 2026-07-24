@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_004",
+  "chapter": 1,
+  "title_kr": "첫 미소",
+  "event_class": "major",
+  "emotion_tags": [
+    "wonder"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 45
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 60
+      }
+    ]
+  },
+  "priority": 80,
+  "scenes": [
+    "ch1_sc_004",
+    "ch1_sc_024"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_004_c1",
+      "text_kr": "사진이고 뭐고, 그냥 마주 웃는다",
+      "effects": {
+        "attachment": 5,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch1_first_smile"
+    },
+    {
+      "choice_id": "ch1_ev_004_c2",
+      "text_kr": "떨리는 손으로 동영상부터 찍는다",
+      "effects": {
+        "attachment": 2,
+        "rel": {
+          "npc_husband": 3
+        }
+      },
+      "memory_tag": "mem_ch1_first_smile_video"
+    },
+    {
+      "choice_id": "ch1_ev_004_c3",
+      "text_kr": "남편에게 바로 전화를 건다 — 회의 중이라도",
+      "effects": {
+        "rel": {
+          "npc_husband": 5
+        },
+        "attachment": 1,
+        "mind": 2
+      },
+      "memory_tag": "mem_ch1_first_smile_call"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

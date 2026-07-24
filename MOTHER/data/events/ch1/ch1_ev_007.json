@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_007",
+  "chapter": 1,
+  "title_kr": "친정엄마 방문",
+  "event_class": "minor",
+  "emotion_tags": [
+    "isolation"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 20
+  },
+  "priority": 45,
+  "scenes": [
+    "ch1_sc_007"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_007_c1",
+      "text_kr": "괜찮은 척 웃어 보인다",
+      "effects": {
+        "mind": -2,
+        "stamina": 2,
+        "rel": {
+          "npc_grandma": -1
+        }
+      },
+      "memory_tag": "mem_ch1_grandma_visit_fine"
+    },
+    {
+      "choice_id": "ch1_ev_007_c2",
+      "text_kr": "엄마 앞에서 처음으로 운다",
+      "effects": {
+        "mind": 5,
+        "rel": {
+          "npc_grandma": 3
+        },
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch1_grandma_visit_cry"
+    },
+    {
+      "choice_id": "ch1_ev_007_c3",
+      "text_kr": "아이를 맡기고 두 시간 잔다",
+      "effects": {
+        "stamina": 6,
+        "attachment": -1,
+        "rel": {
+          "npc_grandma": 2
+        }
+      },
+      "memory_tag": "mem_ch1_grandma_visit_rest"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

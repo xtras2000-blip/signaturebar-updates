@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_001",
+  "chapter": 1,
+  "title_kr": "조리원 퇴소",
+  "event_class": "major",
+  "emotion_tags": [
+    "overwhelmed"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "eq",
+        "value": 1
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch1_sc_001"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_001_c1",
+      "text_kr": "짐가방을 다시 열어 하나씩 센다",
+      "effects": {
+        "mind": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch1_leaving_center"
+    },
+    {
+      "choice_id": "ch1_ev_001_c2",
+      "text_kr": "아이를 안고 먼저 현관을 나선다",
+      "effects": {
+        "attachment": 3,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch1_leaving_center"
+    },
+    {
+      "choice_id": "ch1_ev_001_c3",
+      "text_kr": "카시트 설치를 남편에게 다시 맡긴다",
+      "effects": {
+        "rel": {
+          "npc_husband": 3
+        },
+        "stamina": 2,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch1_leaving_center_husband"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

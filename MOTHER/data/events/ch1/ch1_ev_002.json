@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_002",
+  "chapter": 1,
+  "title_kr": "첫 예방접종",
+  "event_class": "minor",
+  "emotion_tags": [
+    "overwhelmed",
+    "wonder"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 28
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 35
+      }
+    ]
+  },
+  "priority": 55,
+  "scenes": [
+    "ch1_sc_002"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_002_c1",
+      "text_kr": "우는 아이를 바로 받아 안는다",
+      "effects": {
+        "attachment": 3,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch1_first_vaccine"
+    },
+    {
+      "choice_id": "ch1_ev_002_c2",
+      "text_kr": "수첩에 다음 접종 날짜부터 적는다",
+      "effects": {
+        "mind": 2,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch1_first_vaccine_note"
+    },
+    {
+      "choice_id": "ch1_ev_002_c3",
+      "text_kr": "간호사를 붙잡고 하나씩 다 묻는다",
+      "effects": {
+        "child_condition": 2,
+        "stamina": -3,
+        "money": -25000
+      },
+      "memory_tag": "mem_ch1_first_vaccine_questions"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

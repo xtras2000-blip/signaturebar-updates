@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_013",
+  "chapter": 1,
+  "title_kr": "첫 열 감기",
+  "event_class": "major",
+  "emotion_tags": [
+    "overwhelmed"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "child_condition",
+        "op": "lt",
+        "value": 50
+      }
+    ]
+  },
+  "priority": 88,
+  "scenes": [
+    "ch1_sc_013"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_013_c1",
+      "text_kr": "야간 응급실로 바로 간다",
+      "effects": {
+        "money": -120000,
+        "stamina": -6,
+        "child_condition": 4,
+        "mind": 1
+      },
+      "memory_tag": "mem_ch1_first_fever_er"
+    },
+    {
+      "choice_id": "ch1_ev_013_c2",
+      "text_kr": "해열제를 먹이고 밤새 곁을 지킨다",
+      "effects": {
+        "stamina": -8,
+        "attachment": 2,
+        "child_condition": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch1_first_fever_night"
+    },
+    {
+      "choice_id": "ch1_ev_013_c3",
+      "text_kr": "친정엄마에게 전화로 하나씩 묻는다",
+      "effects": {
+        "rel": {
+          "npc_grandma": 2
+        },
+        "mind": 2,
+        "stamina": -4,
+        "child_condition": 1
+      },
+      "memory_tag": "mem_ch1_first_fever_call"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_003",
+  "chapter": 1,
+  "title_kr": "밤중 수유 연속 3일",
+  "event_class": "major",
+  "emotion_tags": [
+    "overwhelmed"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "stamina",
+        "op": "lt",
+        "value": 40
+      },
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 4
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch1_sc_003"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_003_c1",
+      "text_kr": "오늘 밤도 혼자 일어난다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -6,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch1_night_feeding"
+    },
+    {
+      "choice_id": "ch1_ev_003_c2",
+      "text_kr": "밤 당번을 나누자고 먼저 말한다",
+      "effects": {
+        "stamina": 4,
+        "mind": 2,
+        "rel": {
+          "npc_husband": -2
+        }
+      },
+      "memory_tag": "mem_ch1_night_feeding_share"
+    },
+    {
+      "choice_id": "ch1_ev_003_c3",
+      "text_kr": "새벽 세 시, 분유 후기만 검색한다",
+      "effects": {
+        "mind": -3,
+        "stamina": -2,
+        "money": -120000
+      },
+      "memory_tag": "mem_ch1_night_feeding_formula"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

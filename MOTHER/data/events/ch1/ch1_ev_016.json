@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_016",
+  "chapter": 1,
+  "title_kr": "남편 야근 연속",
+  "event_class": "minor",
+  "emotion_tags": [
+    "isolation"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 40,
+  "scenes": [
+    "ch1_sc_016"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_016_c1",
+      "text_kr": "혼자 먹는 밥상을 사진으로 보낸다",
+      "effects": {
+        "rel": {
+          "npc_husband": -2
+        },
+        "mind": 1
+      },
+      "memory_tag": "mem_ch1_alone_evening_photo"
+    },
+    {
+      "choice_id": "ch1_ev_016_c2",
+      "text_kr": "아이를 재우고 현관 불을 켜 둔다",
+      "effects": {
+        "stamina": -2,
+        "rel": {
+          "npc_husband": 1
+        },
+        "mind": -1
+      },
+      "memory_tag": "mem_ch1_alone_evening_light"
+    },
+    {
+      "choice_id": "ch1_ev_016_c3",
+      "text_kr": "문자도 없이 먼저 잔다",
+      "effects": {
+        "stamina": 3,
+        "rel": {
+          "npc_husband": -1
+        },
+        "mind": -2
+      },
+      "memory_tag": "mem_ch1_alone_evening_sleep"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 14
+}

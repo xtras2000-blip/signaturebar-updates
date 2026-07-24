@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_005",
+  "chapter": 1,
+  "title_kr": "산후우울 신호",
+  "event_class": "major",
+  "emotion_tags": [
+    "isolation"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "mind",
+        "op": "lt",
+        "value": 35
+      },
+      {
+        "ctx": "time_block",
+        "eq": "morning"
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch1_sc_005",
+    "ch1_sc_025"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_005_c1",
+      "text_kr": "친정엄마에게 전화를 걸어 아무 말이나 한다",
+      "effects": {
+        "mind": 6,
+        "rel": {
+          "npc_grandma": 4
+        },
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch1_dark_morning_call"
+    },
+    {
+      "choice_id": "ch1_ev_005_c2",
+      "text_kr": "보건소 산후우울 검사를 검색해 예약 버튼까지 간다",
+      "effects": {
+        "mind": 4,
+        "money": -20000,
+        "stamina": -5
+      },
+      "memory_tag": "mem_ch1_dark_morning_screening"
+    },
+    {
+      "choice_id": "ch1_ev_005_c3",
+      "text_kr": "괜찮다고 쓰고, 맘카페 글을 지운다",
+      "effects": {
+        "mind": -4,
+        "stamina": 2
+      },
+      "memory_tag": "mem_ch1_dark_morning_alone"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

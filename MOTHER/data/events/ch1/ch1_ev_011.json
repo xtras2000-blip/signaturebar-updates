@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_011",
+  "chapter": 1,
+  "title_kr": "첫 뒤집기",
+  "event_class": "minor",
+  "emotion_tags": [
+    "wonder"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 90
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 150
+      }
+    ],
+    "weight": 25
+  },
+  "priority": 50,
+  "scenes": [
+    "ch1_sc_011"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_011_c1",
+      "text_kr": "숨죽여 끝까지 지켜본다",
+      "effects": {
+        "attachment": 3,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch1_first_rollover"
+    },
+    {
+      "choice_id": "ch1_ev_011_c2",
+      "text_kr": "영상부터 찍어 가족방에 올린다",
+      "effects": {
+        "rel": {
+          "npc_husband": 2,
+          "npc_grandma": 1
+        },
+        "attachment": 1,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch1_first_rollover_video"
+    },
+    {
+      "choice_id": "ch1_ev_011_c3",
+      "text_kr": "베개를 치우고 매트를 다시 깐다",
+      "effects": {
+        "child_condition": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch1_first_rollover_safety"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

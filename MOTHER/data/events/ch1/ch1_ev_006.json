@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_006",
+  "chapter": 1,
+  "title_kr": "남편 육아 갈등",
+  "event_class": "major",
+  "emotion_tags": [
+    "overwhelmed",
+    "isolation"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "rel": "npc_husband",
+        "op": "lt",
+        "value": 45
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch1_sc_006"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_006_c1",
+      "text_kr": "쌓아 둔 말을 전부 쏟아낸다",
+      "effects": {
+        "rel": {
+          "npc_husband": -4
+        },
+        "mind": 3,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch1_husband_fight_burst"
+    },
+    {
+      "choice_id": "ch1_ev_006_c2",
+      "text_kr": "오늘은 삼키고 등을 돌린다",
+      "effects": {
+        "mind": -4,
+        "rel": {
+          "npc_husband": -1
+        },
+        "stamina": 1
+      },
+      "memory_tag": "mem_ch1_husband_fight_swallow"
+    },
+    {
+      "choice_id": "ch1_ev_006_c3",
+      "text_kr": "분담표를 써서 냉장고에 붙인다",
+      "effects": {
+        "rel": {
+          "npc_husband": 2
+        },
+        "mind": 1,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch1_husband_fight_list"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_014",
+  "chapter": 1,
+  "title_kr": "조리원 동기 모임",
+  "event_class": "minor",
+  "emotion_tags": [
+    "isolation"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 42,
+  "scenes": [
+    "ch1_sc_014"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_014_c1",
+      "text_kr": "아이를 안고 모임에 나간다",
+      "effects": {
+        "mind": 3,
+        "stamina": -4,
+        "money": -30000,
+        "rel": {
+          "npc_cohort_sunny": 3
+        }
+      },
+      "memory_tag": "mem_ch1_cohort_meetup_go"
+    },
+    {
+      "choice_id": "ch1_ev_014_c2",
+      "text_kr": "다음에요, 라고만 답장한다",
+      "effects": {
+        "stamina": 2,
+        "mind": -2,
+        "rel": {
+          "npc_cohort_sunny": -2
+        }
+      },
+      "memory_tag": "mem_ch1_cohort_meetup_skip"
+    },
+    {
+      "choice_id": "ch1_ev_014_c3",
+      "text_kr": "못 가는 대신 통화로 안부를 묻는다",
+      "effects": {
+        "mind": 1,
+        "stamina": -1,
+        "rel": {
+          "npc_cohort_sunny": 1
+        }
+      },
+      "memory_tag": "mem_ch1_cohort_meetup_call"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

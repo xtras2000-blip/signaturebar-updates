@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_008",
+  "chapter": 1,
+  "title_kr": "맘카페 비교",
+  "event_class": "minor",
+  "emotion_tags": [
+    "isolation"
+  ],
+  "trigger": {
+    "type": "random",
+    "conditions": [],
+    "weight": 15
+  },
+  "priority": 40,
+  "scenes": [
+    "ch1_sc_008"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_008_c1",
+      "text_kr": "발달 후기 글을 새벽까지 내린다",
+      "effects": {
+        "mind": -3,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch1_momcafe_compare"
+    },
+    {
+      "choice_id": "ch1_ev_008_c2",
+      "text_kr": "앱을 지웠다가, 다시 설치한다",
+      "effects": {
+        "mind": -1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch1_momcafe_reinstall"
+    },
+    {
+      "choice_id": "ch1_ev_008_c3",
+      "text_kr": "대신 우리 애 사진첩을 연다",
+      "effects": {
+        "mind": 2,
+        "attachment": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch1_momcafe_close"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 14
+}

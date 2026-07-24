@@ -17,7 +17,7 @@ CH5는 최종 회수 챕터다: CH1~CH2 `memory_tag`를 트리거 조건으로 �
 | `ch5_ev_006` | 혼자 자기 선언 | major | conditional · independence>=55 AND time_block=night | letting_go, loss | `mem_ch5_sleep_alone` | CH5 (`ch5_ev_last` — "오늘만 같이 자도 돼?" 라인 분기) |
 | `ch5_ev_007` | 어린이집 졸업식 | major | scheduled · day 2460~2468 | fulfillment, loss | `mem_ch5_graduation` | 엔딩 몽타주 후보 (02_04) |
 | `ch5_ev_008` | 마지막 등원 | major | scheduled · day 2469~2475 | loss | `mem_ch5_last_dropoff` | 엔딩 몽타주 후보 (02_04) |
-| `ch5_ev_009` | 엄마 손 놓고 걷기 | minor | conditional · has `mem_ch2_first_steps`† AND independence>=50 | letting_go | `mem_ch5_letting_hand` | 엔딩 (첫 걸음 컷과 병치, 02_04) |
+| `ch5_ev_009` | 엄마 손 놓고 걷기 | minor | conditional · has `mem_ch2_first_steps` AND independence>=50 | letting_go | `mem_ch5_letting_hand` | 엔딩 (첫 걸음 컷과 병치, 02_04) |
 | `ch5_ev_010` | 같은 학교, 같은 이름 | minor | conditional · has `mem_ch1_cohort_meetup` | fulfillment | `mem_ch5_cohort_reunion` | CH5 (`ch5_ev_013` 교문 앞 — 하늘·하율 모자와 재회, 06_03 아크) |
 | `ch5_ev_011` | 역전된 돌봄 | major | conditional · has `mem_ch1_grandma_visit` | loss | `mem_ch5_caring_reversed` | 엔딩 몽타주 후보 (06_03 `npc_grandma` 아크 완결) |
 | `ch5_ev_012` | 같은 가방 | minor | conditional · has `mem_ch1_leaving_center` | letting_go | `mem_ch5_same_bag` | CH5 (`ch5_ev_013` s1 현관 구도로 직결) |
@@ -27,18 +27,18 @@ CH5는 최종 회수 챕터다: CH1~CH2 `memory_tag`를 트리거 조건으로 �
 - `ch5_ev_last`는 시스템 예약 형식(`ch{n}_ev_{slug}`, D-015)이다. 챕터 마지막 밤에 강제 트리거되는 시스템 소유 이벤트라 숫자 카탈로그와 분리했다.
 - `ch5_ev_013`의 evening 블록 종료 시 `ending_trigger`로 진입한다 — night 블록·day_end_summary 생략 (02_04 State Machine).
 - `once`는 전 이벤트 true. 회수 조건 이벤트(009~012)는 해당 태그 미보유 세이브에서 영구 미발생일 수 있으며 의도된 설계다 (D-002).
-- † `mem_ch2_first_steps`는 07_04(CH2) 카탈로그 미작성 상태의 합리적 가정치다. 07_04 작성 시(07_05의 `mem_ch3_*` 포함) 실제 태그와 반드시 동기화한다.
+- 교차 챕터 태그(`mem_ch2_first_steps`, `mem_ch3_recital_stage`)는 07_04/07_05 확정 태그와 일치함을 확인했다(2026-07-24, Doc QA).
 
 ## 2. 이전 챕터 memory_tag 회수 매트릭스
 
 | 회수 이벤트 | 조건으로 요구하는 태그 | 원천 | 회수 방식 |
 |---|---|---|---|
-| `ch5_ev_009` 엄마 손 놓고 걷기 | `mem_ch2_first_steps`† | CH2 첫 걸음 | 처음 손을 놓고 걸어오던 방향의 반대로, 이번엔 아이가 걸어간다 |
+| `ch5_ev_009` 엄마 손 놓고 걷기 | `mem_ch2_first_steps` | CH2 첫 걸음 | 처음 손을 놓고 걸어오던 방향의 반대로, 이번엔 아이가 걸어간다 |
 | `ch5_ev_010` 같은 학교, 같은 이름 | `mem_ch1_cohort_meetup` | 07_03 `ch1_ev_014` | 조리원 동기 하늘 모자와 같은 학교 배정 — 비교가 동행으로 바뀐다 (06_03) |
 | `ch5_ev_011` 역전된 돌봄 | `mem_ch1_grandma_visit` | 07_03 `ch1_ev_007` | 산후조리를 와 주던 친정엄마의 병원에 이번엔 딸이 간다 |
 | `ch5_ev_012` 같은 가방 | `mem_ch1_leaving_center` | 07_03 `ch1_ev_001` | 조리원 퇴소 가방을 현관에서 다시 꺼낸다 — 입학식 아침 구도의 사전 설치 |
 | `ch5_ev_013` 입학식 (라인 조건) | `mem_ch1_doljanchi_wait` 계열 | 07_03 `ch1_ev_010` | 돌잡이에서 잡은(쥐여 준) 물건을 책가방에 넣어 주는 라인 분기 — 트리거 조건 아님 |
-| `ch5_ev_007` 졸업식 (라인 조건) | `mem_ch3_recital_stage`† | CH3 유치원 발표회 | 같은 강당 단상 구도의 재사용 — 트리거 조건 아님 |
+| `ch5_ev_007` 졸업식 (라인 조건) | `mem_ch3_recital_stage` | CH3 유치원 발표회 | 같은 강당 단상 구도의 재사용 — 트리거 조건 아님 |
 
 ## 3. 대표 이벤트 전체 JSON
 

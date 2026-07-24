@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_015",
+  "chapter": 1,
+  "title_kr": "어린이집 입소 대기 신청",
+  "event_class": "minor",
+  "emotion_tags": [
+    "overwhelmed"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 200
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 240
+      }
+    ]
+  },
+  "priority": 50,
+  "scenes": [
+    "ch1_sc_015"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_015_c1",
+      "text_kr": "집 근처 세 곳에 모두 대기를 건다",
+      "effects": {
+        "mind": 2,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch1_daycare_waitlist"
+    },
+    {
+      "choice_id": "ch1_ev_015_c2",
+      "text_kr": "입소 설명회까지 직접 다녀온다",
+      "effects": {
+        "mind": 3,
+        "stamina": -5,
+        "money": -10000
+      },
+      "memory_tag": "mem_ch1_daycare_waitlist_visit"
+    },
+    {
+      "choice_id": "ch1_ev_015_c3",
+      "text_kr": "아직 이르다며 신청 창을 닫는다",
+      "effects": {
+        "stamina": 1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch1_daycare_waitlist_later"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

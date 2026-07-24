@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_009",
+  "chapter": 1,
+  "title_kr": "복직 압박 전화",
+  "event_class": "major",
+  "emotion_tags": [
+    "overwhelmed"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 270
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 300
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch1_sc_009"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_009_c1",
+      "text_kr": "복직 날짜를 그 자리에서 답한다",
+      "effects": {
+        "rel": {
+          "npc_boss": 3
+        },
+        "mind": -3
+      },
+      "memory_tag": "mem_ch1_return_pressure_accept"
+    },
+    {
+      "choice_id": "ch1_ev_009_c2",
+      "text_kr": "연장을 말하고, 수화기 침묵을 견딘다",
+      "effects": {
+        "rel": {
+          "npc_boss": -4
+        },
+        "mind": 2
+      },
+      "memory_tag": "mem_ch1_return_pressure_extend"
+    },
+    {
+      "choice_id": "ch1_ev_009_c3",
+      "text_kr": "생각할 시간을 달라고만 한다",
+      "effects": {
+        "rel": {
+          "npc_boss": -1
+        },
+        "mind": -1
+      },
+      "memory_tag": "mem_ch1_return_pressure_delay"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

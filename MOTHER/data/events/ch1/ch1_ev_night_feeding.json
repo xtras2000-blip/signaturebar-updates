@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_night_feeding",
+  "chapter": 1,
+  "title_kr": "밤중 수유",
+  "event_class": "system",
+  "emotion_tags": [
+    "overwhelmed",
+    "wonder"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": []
+  },
+  "priority": 100,
+  "scenes": [
+    "ch1_sc_017"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_night_feeding_c1",
+      "text_kr": "안고 먹이며 새벽빛을 본다",
+      "effects": {
+        "attachment": 3,
+        "stamina": -10
+      },
+      "memory_tag": "mem_ch1_night_feeding_hold"
+    },
+    {
+      "choice_id": "ch1_ev_night_feeding_c2",
+      "text_kr": "남편을 깨워 교대한다",
+      "effects": {
+        "stamina": -3,
+        "mind": 2,
+        "rel": {
+          "npc_husband": -2
+        }
+      },
+      "memory_tag": "mem_ch1_night_feeding_wake"
+    },
+    {
+      "choice_id": "ch1_ev_night_feeding_c3",
+      "text_kr": "반쯤 감은 눈으로 젖병만 물린다",
+      "effects": {
+        "stamina": -6,
+        "attachment": -1,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch1_night_feeding_haze"
+    }
+  ],
+  "once": false,
+  "cooldown_days": 0
+}

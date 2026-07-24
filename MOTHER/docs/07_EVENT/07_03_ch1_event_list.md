@@ -30,6 +30,8 @@ CH1 감정 목표: 압도됨(`overwhelmed`), 경이(`wonder`), 고립감(`isolat
 
 ## 2. 대표 이벤트 전체 JSON
 
+본 절의 완전 JSON은 문서용 원본이다. 엔진 투입 정본은 `data/events/ch1/*.json`(13_02 스키마 v1.1 정규화: `event_class` 필수, 조건식은 13_03 문법)이며, 씬별 대사 정본은 08_04이다.
+
 ### 2.1 ch1_ev_004 첫 미소
 
 ```json
@@ -41,7 +43,9 @@ CH1 감정 목표: 압도됨(`overwhelmed`), 경이(`wonder`), 고립감(`isolat
     { "scene_id": "ch1_ev_004_s1", "location_id": "loc_home_living", "time_block": "midday",
       "script_kr": ["건조대의 빨래를 걷다가 돌아본다.", "매트 위의 아이가 눈을 맞춘다. 입꼬리가 올라간다.", "빨래가 바닥에 떨어진다."] },
     { "scene_id": "ch1_ev_004_s2", "location_id": "loc_home_living", "time_block": "midday",
-      "script_kr": ["손이 저절로 휴대폰을 찾는다. 그 사이에도 웃음이 사라질까 봐 눈을 못 뗀다."] }
+      "script_kr": ["손이 저절로 휴대폰을 찾는다. 그 사이에도 웃음이 사라질까 봐 눈을 못 뗀다."] },
+    { "scene_id": "ch1_ev_004_s3", "location_id": "loc_home_living", "time_block": "midday",
+      "script_kr": ["선택 후 분기 씬. 대사 정본은 08_04 §1.3."] }
   ],
   "choices": [
     { "choice_id": "ch1_ev_004_c1", "text_kr": "사진이고 뭐고, 그냥 마주 웃는다",
@@ -71,7 +75,9 @@ CH1 감정 목표: 압도됨(`overwhelmed`), 경이(`wonder`), 고립감(`isolat
     { "scene_id": "ch1_ev_010_s1", "location_id": "loc_home_living", "time_block": "morning",
       "script_kr": ["돌상 대여 박스, 답례품 스티커, 한복 소매의 뻣뻣한 풀기.", "시어머니는 벌써 두 번 전화했다. 상에 대추가 몇 개 올라가는지에 대해서."] },
     { "scene_id": "ch1_ev_010_s2", "location_id": "loc_home_living", "time_block": "afternoon",
-      "script_kr": ["돌잡이 상 앞. 조리원 동기들, 양가 어른들, 카메라 여섯 대.", "아이의 손이 실과 연필과 지폐 사이에서 허공을 젓는다."] }
+      "script_kr": ["돌잡이 상 앞. 조리원 동기들, 양가 어른들, 카메라 여섯 대.", "아이의 손이 실과 연필과 지폐 사이에서 허공을 젓는다."] },
+    { "scene_id": "ch1_ev_010_s3", "location_id": "loc_home_living", "time_block": "afternoon",
+      "script_kr": ["선택 후 분기 씬(돌잡이 결과). 대사 정본은 08_04 §2.3."] }
   ],
   "choices": [
     { "choice_id": "ch1_ev_010_c1", "text_kr": "아이가 잡을 때까지 기다린다 — 어른들의 훈수는 웃어넘긴다",
@@ -104,7 +110,9 @@ CH1 감정 목표: 압도됨(`overwhelmed`), 경이(`wonder`), 고립감(`isolat
     { "scene_id": "ch1_ev_005_s1", "location_id": "loc_home_bedroom", "time_block": "morning",
       "script_kr": ["커튼 틈으로 해가 들어왔는데, 몸이 이불 밖으로 나가지지 않는다.", "옆방에서 아이가 칭얼거린다. 숫자를 센다. 열까지. 다시 열까지."] },
     { "scene_id": "ch1_ev_005_s2", "location_id": "loc_home_bedroom", "time_block": "morning",
-      "script_kr": ["휴대폰 화면. 부재중 없음. 마지막 어른과의 대화는 사흘 전 택배 기사님이었다."] }
+      "script_kr": ["휴대폰 화면. 부재중 없음. 마지막 어른과의 대화는 사흘 전 택배 기사님이었다."] },
+    { "scene_id": "ch1_ev_005_s3", "location_id": "loc_home_bedroom", "time_block": "morning",
+      "script_kr": ["선택 후 마무리 씬(비낙인 마무리). 대사 정본은 08_04 §3.3."] }
   ],
   "choices": [
     { "choice_id": "ch1_ev_005_c1", "text_kr": "친정엄마에게 전화를 걸어 아무 말이나 한다",

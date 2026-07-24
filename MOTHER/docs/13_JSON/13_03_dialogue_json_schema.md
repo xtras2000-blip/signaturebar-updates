@@ -11,6 +11,7 @@
 | 수치 비교 | `{"stat": s, "op": o, "value": n}` | `{"stat": "attachment", "op": "gte", "value": 67}` | 핵심 수치·성격 축·`day_counter`·`chapter` 비교 |
 | 기억 존재 | `{"memory": m, "exists": b}` | `{"memory": "mem_ch1_first_smile", "exists": true}` | memory_log에 해당 `memory_tag` 존재 여부 |
 | NPC 관계 | `{"rel": npc, "op": o, "value": n}` | `{"rel": "npc_husband", "op": "lt", "value": 30}` | npc_relations의 `rel` 비교(14_02 톤 분기) |
+| 컨텍스트 일치 | `{"ctx": c, "eq": v}` | `{"ctx": "time_block", "eq": "morning"}` | 실행 컨텍스트 비교. `ctx` 허용값: `time_block`(블록), `holiday`(명절·기념일), `preset`(배경 프리셋), `seed`(기질 시드) — v1.1 확장(D-018) |
 
 - `op` 허용값: `lt`, `lte`, `gt`, `gte`, `eq`, `neq`.
 - 평가 시점: 씬 재생 직전에 1회 평가하고 씬 재생 중에는 재평가하지 않는다(연출 중 수치 변화로 라인이 뒤바뀌는 것을 방지).
@@ -67,7 +68,7 @@
           "required": ["stat", "op", "value"],
           "additionalProperties": false,
           "properties": {
-            "stat": { "enum": ["attachment", "child_condition", "stamina", "mind", "money", "confidence", "empathy", "independence", "expressiveness", "day_counter", "chapter"] },
+            "stat": { "enum": ["attachment", "child_condition", "stamina", "mind", "money", "husband_support", "confidence", "empathy", "independence", "expressiveness", "day_counter", "chapter"] },
             "op": { "enum": ["lt", "lte", "gt", "gte", "eq", "neq"] },
             "value": { "type": "integer" }
           }

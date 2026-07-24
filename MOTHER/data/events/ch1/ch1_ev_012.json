@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_012",
+  "chapter": 1,
+  "title_kr": "이유식 시작",
+  "event_class": "minor",
+  "emotion_tags": [
+    "overwhelmed",
+    "wonder"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 180
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 200
+      }
+    ]
+  },
+  "priority": 55,
+  "scenes": [
+    "ch1_sc_012"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_012_c1",
+      "text_kr": "쌀미음을 직접 끓인다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -4,
+        "money": -30000
+      },
+      "memory_tag": "mem_ch1_first_babyfood_homemade"
+    },
+    {
+      "choice_id": "ch1_ev_012_c2",
+      "text_kr": "시판 이유식을 정기 주문한다",
+      "effects": {
+        "money": -90000,
+        "stamina": 2,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch1_first_babyfood_market"
+    },
+    {
+      "choice_id": "ch1_ev_012_c3",
+      "text_kr": "첫 숟갈, 뱉는 얼굴부터 찍어 둔다",
+      "effects": {
+        "attachment": 2,
+        "mind": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch1_first_babyfood_photo"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

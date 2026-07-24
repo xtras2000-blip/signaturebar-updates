@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "event_id": "ch1_ev_010",
+  "chapter": 1,
+  "title_kr": "돌잔치",
+  "event_class": "major",
+  "emotion_tags": [
+    "wonder",
+    "overwhelmed"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 360
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 370
+      }
+    ]
+  },
+  "priority": 95,
+  "scenes": [
+    "ch1_sc_010",
+    "ch1_sc_030"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch1_ev_010_c1",
+      "text_kr": "아이가 잡을 때까지 기다린다 — 어른들의 훈수는 웃어넘긴다",
+      "effects": {
+        "attachment": 4,
+        "independence": 2,
+        "rel": {
+          "npc_mother_in_law": -3
+        },
+        "stamina": -5
+      },
+      "memory_tag": "mem_ch1_doljanchi_wait"
+    },
+    {
+      "choice_id": "ch1_ev_010_c2",
+      "text_kr": "시어머니가 미는 연필을 슬쩍 아이 앞으로 옮겨 준다",
+      "effects": {
+        "rel": {
+          "npc_mother_in_law": 5
+        },
+        "independence": -2,
+        "mind": -3
+      },
+      "memory_tag": "mem_ch1_doljanchi_pencil"
+    },
+    {
+      "choice_id": "ch1_ev_010_c3",
+      "text_kr": "돌잡이보다 답례품 정산이 급하다 — 진행을 서두른다",
+      "effects": {
+        "money": -600000,
+        "stamina": 3,
+        "attachment": -2
+      },
+      "memory_tag": "mem_ch1_doljanchi_rush"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}
