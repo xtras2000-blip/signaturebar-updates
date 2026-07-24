@@ -66,4 +66,18 @@ data/
 
 ## 6. 검증 파이프라인
 
-- 빌드 시 `data/` 전체를 13_02·13_03의 JSON Schema(draft-07)로 검증하고, 스키마로 표현 불가한 규칙(챕터-디렉터리 일치, id 참조 무결성, 감정 태그의 챕터 정합성)은 린트 스크립트가 검사한다. 실패 시 QA 리젝(D-005, 15_QA 연동).
+빌드 시 `data/` 전체를 13_02·13_03의 JSON Schema(draft-07)로 검증하고, 스키마로 표현 불가한 규칙은 아래 린트 규칙으로 검사한다. 실패 시 QA 리젝(D-005, 15_QA 연동).
+
+| 린트 규칙 id | 검사 내용 | 근거 |
+|---|---|---|
+| `lint_snake_case` | 모든 키·식별자·파일명 snake_case | §2 |
+| `lint_filename_id` | 파일명 = 최상위 id + `.json` | §1 |
+| `lint_chapter_dir` | 디렉터리 `ch{n}`과 파일 내 `chapter`·id 접두 일치 | §1 |
+| `lint_ref_integrity` | `scenes`·`memory_tag`·`npc_id`·`target_event_id` 참조 대상 존재 | 12_01 §3.1 |
+| `lint_emotion_chapter` | `emotion_tags`가 소속 챕터의 01_04 목표 감정에 부합 | D-005 |
+| `lint_trait_cap` | 성격 축 effects 절대값 ≤ 3 | D-008 |
+| `lint_schema_version` | 루트 `schema_version` 존재·MAJOR 일치 | §3 |
+| `lint_no_orphan_locale` | `text_en` 존재 시 동일 위치 `text_kr` 필수 | §4 |
+
+- 린트는 CI와 로컬 커밋 훅에서 동일 스크립트로 실행한다. 규칙 추가 시 이 표에 먼저 등록한다.
+- 경고(warning) 등급은 없다 — 모든 위반은 오류이며 빌드를 실패시킨다(Production-ready documentation 원칙).

@@ -20,13 +20,15 @@
 Pillar 4: "회수 계획 없는 선택지는 만들지 않는다." 모든 이벤트 JSON에 `callback_plan` 필드를 의무 포함한다.
 
 ```json
-"callback_plan": [
-  {
-    "chapter": 4,
-    "memory_tag": "mem_ch1_first_smile",
-    "usage_kr": "CH4 화해 장면에서 앨범 속 첫 미소 사진으로 회수"
-  }
-]
+{
+  "callback_plan": [
+    {
+      "chapter": 4,
+      "memory_tag": "mem_ch1_first_smile",
+      "usage_kr": "CH4 화해 장면에서 앨범 속 첫 미소 사진으로 회수"
+    }
+  ]
+}
 ```
 
 | 필드 | 규칙 |
@@ -72,3 +74,16 @@ Pillar 4: "회수 계획 없는 선택지는 만들지 않는다." 모든 이벤
 | `confidence`, `empathy`, `independence`, `expressiveness` | -5 ~ +5 | 누적 설계 전제 (D-008). 큰 값 금지 |
 | `money` | 현실 물가 기준 정수(원) | 예: 돌잔치 대관 -800000. 12_DATABASE 물가 상수 참조 |
 | `rel_npc_*` | -10 ~ +10 | 관계 수치 보유 NPC(06_03)만 사용 가능 |
+
+## 6. memory_tag 명명 가이드
+
+명명 규칙: `mem_{챕터}_{주제}` (00_04 등록 규칙 상속). 주제부는 2~4단어 snake_case.
+
+| 구분 | 예 | 판정 |
+|---|---|---|
+| 좋은 예 | `mem_ch1_first_smile`, `mem_ch1_doljanchi_wait` | 장면이 떠오르는 구체 명사 + 선택의 방향 |
+| 나쁜 예 | `mem_ch1_event04_choice1` | 인덱스 나열 — 회수 장면 작성 시 의미 소실 |
+| 나쁜 예 | `mem_ch1_sad_morning_very_important` | 감정 형용사·중요도 표기 금지. 감정은 `emotion_tags`가 담당 |
+
+- 같은 이벤트의 choice들이 같은 `memory_tag`를 공유해도 된다 (선택 구분이 회수에 불필요한 경우).
+- 회수 장면에서 분기가 필요한 선택만 접미어로 구분한다 (예: `_wait` / `_pencil` / `_rush`).
