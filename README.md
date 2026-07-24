@@ -7,7 +7,7 @@ SignatureBar 데스크톱 앱 자동업데이트(electron-updater) 배포용 저
 
 # MOTHER — Game Documentation Project
 
-이 저장소는 게임 프로젝트 **MOTHER**의 문서화 작업 공간을 겸합니다.
+이 저장소는 게임 프로젝트 **MOTHER**(아이의 일생을 다루는 내러티브 시뮬레이션)의 문서화 작업 공간을 겸합니다.
 모든 프로젝트 파일은 `MOTHER/` 폴더 아래에 있으며,
 전체 규칙은 `MOTHER/CLAUDE.md`, `MOTHER/PROJECT_RULES.md`, `MOTHER/STYLE_GUIDE.md`를 참고하세요.
 

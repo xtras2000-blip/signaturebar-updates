@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | `scr_boot` | 부트 스플래시 | 개발사 "moment music" 로고 표시 (D-028) | 자동 진행 2.7초, 탭으로 스킵 | `scr_title` |
 | `scr_title` | 타이틀 | 시작·이어하기 진입. 최초 시작 시 콘텐츠 고지(01_03 민감성 가이드) 1회 표시 | 시작/이어하기/설정 탭 | `scr_save_select`, `ovl_settings`, 종료 |
-| `scr_save_select` | 세이브 선택 | 슬롯 선택·삭제 | 슬롯 탭 | `scr_day_start`, 뒤로가기 → `scr_title` |
+| `scr_save_select` | 이어하기 — 아이 상태 카드 (D-030) | 현재 아이의 사진·이름·나이·상태 문장·마지막 저장 시각 표시. 슬롯 목록 없음 | 카드 탭 → 재개 | `scr_day_start`, 뒤로 → `scr_title` |
 | `scr_day_start` | 하루 시작 | 날짜·계절·아이 상태 연출, 자원 갱신 확인 | 탭 1회로 진행 | `scr_block_allocation` |
 | `scr_block_allocation` | 블록 배분 | 5개 `time_block`에 행동 배분 | 블록 칸·행동 카드 탭, 확정 버튼 | `scr_block_play`, `ovl_pause` |
 | `scr_block_play` | 블록 진행 | `block_resolution` 재생. 이벤트·대화(08_01) 포함 | 대사 진행 탭, 선택지 탭 | 다음 블록(자기 자신), `scr_day_end_summary`, `ovl_pause`, 백로그 |
