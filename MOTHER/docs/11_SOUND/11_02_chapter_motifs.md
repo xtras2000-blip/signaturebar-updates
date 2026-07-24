@@ -54,6 +54,21 @@ BGM은 이벤트별 수동 지정이 아니라 event JSON의 `emotion_tags`(D-00
 }
 ```
 
+`bgm_tag_map` 초기값 (13개 태그 전체):
+
+| emotion_tag | 기본 track_id |
+|---|---|
+| `overwhelmed` | `bgm_ch1_smallhours_a` |
+| `wonder` | `bgm_ch1_lullaby_hum` |
+| `isolation` | (무음 — §3 규칙 3, 의도적 미매핑) |
+| `joy` / `reward` | `bgm_ch2_firststeps_a` |
+| `burnout` | `bgm_ch2_smallhours_var1_a` |
+| `pride` | `bgm_ch3_playground_a` |
+| `worry` / `comparison` | `bgm_ch3_othersgarden_a` |
+| `guilt` / `reconciliation` | `bgm_ch4_halflight_a` |
+| `letting_go` / `fulfillment` | `bgm_ch5_springgate_a` |
+| `loss` | `bgm_ch5_emptyroom_a` |
+
 - 스키마 소유: 매핑 테이블(`bgm_tag_map`: emotion_tag, chapter, track_id)은 12_DATABASE, 필드 규격은 13_JSON.
 - QA: `emotion_tags`가 있으나 매핑이 비어 있는 조합은 빌드 린트에서 경고(리젝 아님 — 무음이 유효한 선택이므로). 검증 항목은 15_02 QA-11 계열.
 
