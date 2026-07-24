@@ -10,13 +10,13 @@
 
 | `screen_id` | 한국어 | 목적 | 주요 입력 | 이탈 경로 |
 |---|---|---|---|---|
-| `scr_title` | 타이틀 | 시작·이어하기 진입 | 시작/이어하기/설정 클릭 | `scr_save_select`, `ovl_settings`, 종료 |
-| `scr_save_select` | 세이브 선택 | 슬롯 선택·삭제 | 슬롯 클릭 | `scr_day_start`, 뒤로가기 → `scr_title` |
-| `scr_day_start` | 하루 시작 | 날짜·계절·아이 상태 연출, 자원 갱신 확인 | 클릭 1회로 진행 | `scr_block_allocation` |
-| `scr_block_allocation` | 블록 배분 | 5개 `time_block`에 행동 배분 | 블록 칸·행동 카드 클릭, 확정 버튼 | `scr_block_play`, `ovl_pause` |
-| `scr_block_play` | 블록 진행 | `block_resolution` 재생. 이벤트·대화(08_01) 포함 | 대사 진행 클릭, 선택지 클릭 | 다음 블록(자기 자신), `scr_day_end_summary`, `ovl_pause`, 백로그 |
-| `scr_day_end_summary` | 하루 마감 | 변화 요약(문장형, 09_03) 표시 | 클릭 1회로 진행 | autosave → `scr_day_start` 또는 `scr_chapter_montage` |
-| `scr_chapter_montage` | 챕터 전환 몽타주 | 챕터 감정 목표(01_04) 회수 연출. `memory_log` 회상 | 스킵 불가, 클릭으로 컷 진행 | 다음 챕터 `scr_day_start` |
+| `scr_title` | 타이틀 | 시작·이어하기 진입 | 시작/이어하기/설정 탭 | `scr_save_select`, `ovl_settings`, 종료 |
+| `scr_save_select` | 세이브 선택 | 슬롯 선택·삭제 | 슬롯 탭 | `scr_day_start`, 뒤로가기 → `scr_title` |
+| `scr_day_start` | 하루 시작 | 날짜·계절·아이 상태 연출, 자원 갱신 확인 | 탭 1회로 진행 | `scr_block_allocation` |
+| `scr_block_allocation` | 블록 배분 | 5개 `time_block`에 행동 배분 | 블록 칸·행동 카드 탭, 확정 버튼 | `scr_block_play`, `ovl_pause` |
+| `scr_block_play` | 블록 진행 | `block_resolution` 재생. 이벤트·대화(08_01) 포함 | 대사 진행 탭, 선택지 탭 | 다음 블록(자기 자신), `scr_day_end_summary`, `ovl_pause`, 백로그 |
+| `scr_day_end_summary` | 하루 마감 | 변화 요약(문장형, 09_03) 표시 | 탭 1회로 진행 | autosave → `scr_day_start` 또는 `scr_chapter_montage` |
+| `scr_chapter_montage` | 챕터 전환 몽타주 | 챕터 감정 목표(01_04) 회수 연출. `memory_log` 회상 | 스킵 불가, 탭으로 컷 진행 | 다음 챕터 `scr_day_start` |
 
 ### 오버레이(overlay) 목록 — 화면 위에 겹침, 흐름을 끊지 않음
 
@@ -54,7 +54,7 @@ flowchart TD
 - 화면 전환은 전부 0.5초 크로스페이드. 로딩 스피너·검은 컷 전환 금지(일상의 연속감 유지).
 - `hud_mode`(09_01 §3): `scr_day_start`·`scr_block_allocation` = `full`, `scr_block_play` 평시 = `minimal`, scenes 재생·`scr_chapter_montage` = `hidden`.
 - 뒤로가기: `scr_save_select` 외의 본편 화면에는 뒤로가기 버튼을 두지 않는다. 하루는 앞으로만 흐른다(복구는 09_01 §4.2 규칙으로만).
-- 모든 화면은 마우스 클릭만으로 완주 가능(09_01 §4.1).
+- 모든 화면은 세로 화면 한 손 탭만으로 완주 가능(09_01 §4.1, D-017).
 
 ## Database
 
@@ -90,6 +90,6 @@ flowchart TD
 | SF-03 | 챕터 마지막 날 아닌 날 | 동일 | montage 미진입, 바로 다음 `scr_day_start` |
 | SF-04 | `scr_block_play` 진행 중 | 강제 종료 후 이어하기 | 최근 autosave(전일 마감) 지점에서 재개, 데이터 손실 없음 |
 | SF-05 | `ovl_ledger` 열림 | 화면 캡처 검사 | money 원화 숫자 노출은 이 오버레이가 유일(다른 전 화면 0건) |
-| SF-06 | 본편 화면 전체 | UI 요소 검사 | 뒤로가기 버튼 0개, 마우스 클릭만으로 하루 완주 가능 |
+| SF-06 | 본편 화면 전체 | UI 요소 검사 | 뒤로가기 버튼 0개, 터치 탭만으로 하루 완주 가능(D-017) |
 | SF-07 | scenes 재생 중 | `ovl_pause` 호출 | 일시정지 정상 동작, 닫으면 동일 line에서 재개 |
 | SF-08 | 1회차 세이브 | montage에서 스킵 시도 | 스킵 UI 미노출. 2회차 세이브에서는 노출 |

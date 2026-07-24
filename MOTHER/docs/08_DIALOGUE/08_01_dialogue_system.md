@@ -54,7 +54,7 @@ stateDiagram-v2
     line_select --> line_show: 조건 평가·slot 1개 확정
     line_select --> scene_end: 표시할 line 없음
     line_show --> wait_input: 말풍선 일괄 표시(타이핑 없음)
-    wait_input --> line_select: 클릭/스페이스 1회
+    wait_input --> line_select: 탭 1회
     wait_input --> backlog_open: 백로그 버튼/휠 업
     backlog_open --> wait_input: 닫기
     wait_input --> scene_end: skip (scene_seen=true인 경우만)
@@ -67,7 +67,7 @@ stateDiagram-v2
 ## UI
 
 - **말풍선**: 짧은 말풍선 1개씩 표시. 타이핑(글자 순차 출력) 연출을 사용하지 않고 문장을 일괄 표시한다. 40자 상한(08_02)이 말풍선 1줄~2줄 크기를 보장한다.
-- **진행**: 화면 아무 곳 클릭 또는 스페이스 1회로 다음 line. 원클릭 원칙(09_01). 자동 진행 옵션은 두지 않는다(읽는 속도 존중).
+- **진행**: 화면 아무 곳 탭 1회로 다음 line. 원탭 원칙(09_01). 자동 진행 옵션은 두지 않는다(읽는 속도 존중).
 - **스킵**: 해당 `scene_id`가 `dialogue_seen`에 기록된 경우에만 스킵 버튼 노출. 스킵해도 선택지 진입·`effects`·`memory_tag` 기록은 동일하게 적용된다. 첫 감상은 스킵 불가.
 - **백로그**: 최근 100개 line을 세션 내에서 열람. `speaker`는 한국어 호칭(08_02 호칭 표)으로 표기. 수치·effects·`subtext_kr`는 백로그에 절대 표시하지 않는다(D-004).
 - **감정 장면**: scene 재생 중 HUD는 `hidden` 모드(09_01). `emotion` 필드는 초상화 표정·아이 행동 애니메이션 큐로만 소비하고 텍스트로 노출하지 않는다.

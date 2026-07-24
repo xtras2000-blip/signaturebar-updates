@@ -43,7 +43,7 @@ stateDiagram-v2
     epilogue_save --> [*]
 ```
 
-전이는 모두 자동이며 입력 대기는 `ending_letter`(편지를 넘기는 1회 클릭)에만 존재한다. `ending_trigger` 진입 시 night 블록과 day_end_summary는 생략된다.
+전이는 모두 자동이며 입력 대기는 `ending_letter`(편지를 넘기는 1회 탭)에만 존재한다. `ending_trigger` 진입 시 night 블록과 day_end_summary는 생략된다.
 
 ## UI
 
