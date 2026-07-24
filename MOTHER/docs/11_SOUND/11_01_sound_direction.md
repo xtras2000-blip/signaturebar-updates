@@ -51,7 +51,23 @@
 - 달래기 성공 시 크로스페이드 2초로 훌쩍임(`sfx_child_sob_calm`)을 경유해 정지. 즉시 컷 금지.
 - CH3 이후 울음 빈도는 급감하고 `sfx_child_` 채널은 발화·웃음 중심으로 전환된다(대사 소유는 08_DIALOGUE).
 
-## 5. 시스템 연동 요약
+## 5. 대표 생활음 리스트 (제작 우선순위 P0)
+
+Pillar 3(Korea-First)의 청각 구현. 아래는 챕터 공통 P0 목록이며 전체 목록은 12_DATABASE 에셋 테이블에서 관리한다.
+
+| 파일명 | 내용 | 사용처 |
+|---|---|---|
+| `sfx_ricecooker_steam` | 밥솥 증기·취사 완료 멜로디 | morning 실내 공통 |
+| `sfx_intercom_apt` | 아파트 관리사무소 안내 방송(먹먹한 스피커 톤) | midday, `isolation` 장면의 유일한 외부인 목소리 |
+| `sfx_washer_end` | 세탁기 종료 알림음 | housework 블록 |
+| `sfx_stroller_wheel` | 유모차 바퀴·보도블럭 덜컹임 | outing 블록 |
+| `amb_apt_night` | 냉장고 험 + 보일러 배관음 + 간헐적 윗집 발소리 | night 실내 기본 앰비언스 |
+| `amb_playground_midday` | 놀이터 아이들 소리(원경), 매미(여름 배리언트) | CH3 야외 |
+| `sfx_clock_wall_tick` | 벽시계 초침 | 무음 설계 장면 전용(§1-4) |
+
+- 라우드니스 규격: 앰비언스 −28 LUFS, 생활음 단발 −20 LUFS, 아기 울음 −16 LUFS(최우선 가청), BGM −18 LUFS. 포맷: 48kHz/24bit WAV 원본, 빌드 시 OGG 변환.
+
+## 6. 시스템 연동 요약
 
 | 연동 | 규칙 |
 |---|---|

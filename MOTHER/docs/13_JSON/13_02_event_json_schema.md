@@ -36,16 +36,8 @@
       }
     },
     "priority": { "type": "integer", "minimum": 0, "maximum": 100 },
-    "scenes": {
-      "type": "array",
-      "items": { "type": "string", "pattern": "^ch[1-5]_sc_[0-9]{3}$" }
-    },
-    "choices": {
-      "type": "array",
-      "minItems": 1,
-      "maxItems": 4,
-      "items": { "$ref": "#/definitions/choice" }
-    },
+    "scenes": { "type": "array", "items": { "type": "string", "pattern": "^ch[1-5]_sc_[0-9]{3}$" } },
+    "choices": { "type": "array", "minItems": 1, "maxItems": 4, "items": { "$ref": "#/definitions/choice" } },
     "once": { "type": "boolean" },
     "cooldown_days": { "type": "integer", "minimum": 0 }
   },
@@ -96,11 +88,7 @@
         "empathy": { "type": "integer", "minimum": -3, "maximum": 3 },
         "independence": { "type": "integer", "minimum": -3, "maximum": 3 },
         "expressiveness": { "type": "integer", "minimum": -3, "maximum": 3 },
-        "rel": {
-          "type": "object",
-          "additionalProperties": false,
-          "patternProperties": { "^npc_[a-z_]+$": { "type": "integer", "minimum": -10, "maximum": 10 } }
-        }
+        "rel": { "type": "object", "additionalProperties": false, "patternProperties": { "^npc_[a-z_]+$": { "type": "integer", "minimum": -10, "maximum": 10 } } }
       }
     },
     "choice": {
