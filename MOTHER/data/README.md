@@ -25,6 +25,7 @@ data/
 
 ```bash
 python3 MOTHER/data/validate_events.py
+python3 MOTHER/data/validate_dialogues.py   # 대사 씬: 13_03 스키마 검증 + events↔dialogues 참조 무결성 (미제작 챕터는 스킵)
 ```
 
 - `data/events/` 아래 전체 `*.json`을 `schemas/event.schema.json`으로 검증한다.

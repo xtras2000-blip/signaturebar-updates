@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_030",
+  "lines": [
+    {
+      "line_id": "ch1_sc_030_l01",
+      "speaker": "npc_mother_in_law",
+      "text_kr": "애 팔 아프겠다. 얼른 쥐여 줘라.",
+      "condition": { "memory": "mem_ch1_doljanchi_wait", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_030_l02",
+      "speaker": "player",
+      "text_kr": "조금만 더요, 어머니.",
+      "condition": { "memory": "mem_ch1_doljanchi_wait", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_030_l03",
+      "speaker": "system",
+      "text_kr": "박수 소리가 잦아든다. 아이가 무언가를 잡는다.",
+      "condition": { "memory": "mem_ch1_doljanchi_wait", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_030_l04",
+      "speaker": "player",
+      "text_kr": "…그래. 그거였구나.",
+      "condition": { "memory": "mem_ch1_doljanchi_wait", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_030_l05",
+      "speaker": "system",
+      "text_kr": "연필이 아이 손 닿는 곳으로 옮겨진다. 플래시가 터진다.",
+      "condition": { "memory": "mem_ch1_doljanchi_pencil", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_030_l06",
+      "speaker": "npc_mother_in_law",
+      "text_kr": "그래, 그래야지. 우리 강아지.",
+      "condition": { "memory": "mem_ch1_doljanchi_pencil", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_030_l07",
+      "speaker": "player",
+      "text_kr": "…",
+      "condition": { "memory": "mem_ch1_doljanchi_pencil", "exists": true },
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_030_l08",
+      "speaker": "system",
+      "text_kr": "답례품 명단, 축의금 봉투. 식은 삼십 분 만에 끝난다.",
+      "condition": { "memory": "mem_ch1_doljanchi_rush", "exists": true },
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_030_l09",
+      "speaker": "npc_cohort_sunny",
+      "text_kr": "{child_name} 엄마, 얼굴이 반쪽이야.",
+      "condition": { "memory": "mem_ch1_doljanchi_rush", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_030_l10",
+      "speaker": "player",
+      "text_kr": "끝나고 얘기해. 나 정산부터.",
+      "condition": { "memory": "mem_ch1_doljanchi_rush", "exists": true },
+      "emotion": "tired"
+    }
+  ]
+}

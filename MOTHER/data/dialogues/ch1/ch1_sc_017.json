@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_017",
+  "lines": [
+    {
+      "line_id": "ch1_sc_017_l01",
+      "speaker": "system",
+      "text_kr": "울음소리에 눈이 떠진다. 창밖은 아직 어둡다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_017_l02",
+      "speaker": "child",
+      "text_kr": "cry_hunger",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_017_l03",
+      "speaker": "player",
+      "text_kr": "그래, 그래. 엄마 일어났어.",
+      "emotion": "tired"
+    }
+  ]
+}

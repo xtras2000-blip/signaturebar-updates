@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_025",
+  "lines": [
+    {
+      "line_id": "ch1_sc_025_l01",
+      "speaker": "player",
+      "text_kr": "엄마. …그냥 걸었어.",
+      "condition": { "memory": "mem_ch1_dark_morning_call", "exists": true },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_025_l02",
+      "speaker": "npc_grandma",
+      "text_kr": "밥은 먹었나. 목소리가 와 그렇노.",
+      "condition": { "memory": "mem_ch1_dark_morning_call", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_025_l03",
+      "speaker": "player",
+      "text_kr": "먹었어. 김에 밥 싸서.",
+      "condition": { "memory": "mem_ch1_dark_morning_call", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_025_l04",
+      "speaker": "system",
+      "text_kr": "별일 아닌 얘기가 한 시간을 간다. 커튼이 걷혀 있다.",
+      "condition": { "memory": "mem_ch1_dark_morning_call", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_025_l05",
+      "speaker": "system",
+      "text_kr": "검색창. 산후 자가검진. 예약 버튼 위에서 손이 멈춘다.",
+      "condition": { "memory": "mem_ch1_dark_morning_screening", "exists": true },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_025_l06",
+      "speaker": "player",
+      "text_kr": "…가 보기나 하자. 아니면 말고.",
+      "condition": { "memory": "mem_ch1_dark_morning_screening", "exists": true },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_025_l07",
+      "speaker": "system",
+      "text_kr": "예약 확인 문자가 온다. 옆방에서 아이가 뒤척인다.",
+      "condition": { "memory": "mem_ch1_dark_morning_screening", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_025_l08",
+      "speaker": "system",
+      "text_kr": "맘카페 글쓰기 화면. 세 줄을 쓰고, 지운다.",
+      "condition": { "memory": "mem_ch1_dark_morning_alone", "exists": true },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_025_l09",
+      "speaker": "player",
+      "text_kr": "다들 이러고 사는 거겠지.",
+      "condition": { "memory": "mem_ch1_dark_morning_alone", "exists": true },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_025_l10",
+      "speaker": "child",
+      "text_kr": "cry_hunger",
+      "condition": { "memory": "mem_ch1_dark_morning_alone", "exists": true },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_025_l11",
+      "speaker": "player",
+      "text_kr": "가. 엄마 가.",
+      "condition": { "memory": "mem_ch1_dark_morning_alone", "exists": true },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_025_l12",
+      "speaker": "system",
+      "text_kr": "이불을 걷는다. 방문이 열린다.",
+      "condition": { "memory": "mem_ch1_dark_morning_alone", "exists": true },
+      "emotion": "neutral"
+    }
+  ]
+}

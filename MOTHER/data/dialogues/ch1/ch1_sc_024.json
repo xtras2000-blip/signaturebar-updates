@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_024",
+  "lines": [
+    {
+      "line_id": "ch1_sc_024_l01",
+      "speaker": "system",
+      "text_kr": "사진은 없다. 눈에 담는 시간이 길다.",
+      "condition": { "memory": "mem_ch1_first_smile", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_024_l02",
+      "speaker": "player",
+      "text_kr": "엄마 여기 있어. 봤어, 다 봤어.",
+      "condition": { "memory": "mem_ch1_first_smile", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_024_l03",
+      "speaker": "system",
+      "text_kr": "영상 속 웃음은 삼 초. 손 떨림이 그대로 담겼다.",
+      "condition": { "memory": "mem_ch1_first_smile_video", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_024_l04",
+      "speaker": "player",
+      "text_kr": "여보한테 보내야지. …아니, 저장부터.",
+      "condition": { "memory": "mem_ch1_first_smile_video", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_024_l05",
+      "speaker": "player",
+      "text_kr": "여보, 애가 웃었어. 방금, 나 보고.",
+      "condition": { "memory": "mem_ch1_first_smile_call", "exists": true },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_024_l06",
+      "speaker": "npc_husband",
+      "text_kr": "진짜? 영상 있어? 나 지금 나갈게.",
+      "condition": [
+        { "memory": "mem_ch1_first_smile_call", "exists": true },
+        { "stat": "husband_support", "op": "gte", "value": 60 }
+      ],
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_024_l07",
+      "speaker": "npc_husband",
+      "text_kr": "어. 나 회의 중이야. 이따 하자.",
+      "condition": [
+        { "memory": "mem_ch1_first_smile_call", "exists": true },
+        { "stat": "husband_support", "op": "lt", "value": 30 }
+      ],
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_024_l08",
+      "speaker": "npc_husband",
+      "text_kr": "웃었어? 미안, 좀 이따 전화할게.",
+      "condition": [
+        { "memory": "mem_ch1_first_smile_call", "exists": true },
+        { "stat": "husband_support", "op": "gte", "value": 30 },
+        { "stat": "husband_support", "op": "lt", "value": 60 }
+      ],
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_024_l09",
+      "speaker": "system",
+      "text_kr": "통화가 끊긴 뒤에도 아이는 웃고 있다.",
+      "condition": { "memory": "mem_ch1_first_smile_call", "exists": true },
+      "emotion": "bright"
+    }
+  ]
+}

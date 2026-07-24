@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_011",
+  "lines": [
+    {
+      "line_id": "ch1_sc_011_l01",
+      "speaker": "system",
+      "text_kr": "매트 위, 몸이 옆으로 기운다. 한 번, 두 번.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_011_l02",
+      "speaker": "system",
+      "text_kr": "팔이 빠지고, 세상이 뒤집힌다.",
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_011_l03",
+      "speaker": "child",
+      "text_kr": "babble_soft",
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_011_l04",
+      "speaker": "player",
+      "text_kr": "…방금. 방금 봤어?",
+      "emotion": "bright"
+    }
+  ]
+}

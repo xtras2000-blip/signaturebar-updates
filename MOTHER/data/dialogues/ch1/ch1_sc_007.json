@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_007",
+  "lines": [
+    {
+      "line_id": "ch1_sc_007_l01",
+      "speaker": "system",
+      "text_kr": "현관 앞. 반찬 가방이 사람보다 먼저 들어온다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_007_l02",
+      "speaker": "npc_grandma",
+      "text_kr": "아이고, 얼굴이 반쪽이 됐네.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_007_l03",
+      "speaker": "player",
+      "text_kr": "왔어? 애 방금 잠들었어.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_007_l04",
+      "speaker": "npc_grandma",
+      "text_kr": "니 밥부터 차리자. 애는 내가 본다.",
+      "emotion": "warm"
+    },
+    {
+      "line_id": "ch1_sc_007_l05",
+      "speaker": "player",
+      "text_kr": "…국 냄새다. 이거 그 국이지?",
+      "emotion": "hesitant"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_006",
+  "lines": [
+    {
+      "line_id": "ch1_sc_006_l01",
+      "speaker": "system",
+      "text_kr": "개키다 만 빨래 사이로 늦은 현관 소리.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_006_l02",
+      "speaker": "npc_husband",
+      "text_kr": "나도 회사에서 시달리다 왔어.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_006_l03",
+      "speaker": "player",
+      "text_kr": "나는 오늘 하루가 어디 갔는지도 몰라.",
+      "emotion": "firm"
+    },
+    {
+      "line_id": "ch1_sc_006_l04",
+      "speaker": "child",
+      "text_kr": "cry_unknown",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_006_l05",
+      "speaker": "system",
+      "text_kr": "울음이 두 사람 사이의 말을 끊는다.",
+      "emotion": "neutral"
+    }
+  ]
+}

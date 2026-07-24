@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_010",
+  "lines": [
+    {
+      "line_id": "ch1_sc_010_l01",
+      "speaker": "system",
+      "text_kr": "돌상 대여 박스, 답례품 스티커, 한복 소매의 풀기.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l02",
+      "speaker": "npc_mother_in_law",
+      "text_kr": "대추는 홀수로 올려라. 그게 법도야.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l03",
+      "speaker": "player",
+      "text_kr": "네, 어머니. …네.",
+      "condition": { "stat": "mind", "op": "lt", "value": 30 },
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_010_l04",
+      "speaker": "player",
+      "text_kr": "네, 어머니. 그렇게 할게요.",
+      "condition": { "stat": "mind", "op": "gte", "value": 30 },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l05",
+      "speaker": "npc_husband",
+      "text_kr": "상은 내가 나를게. 당신은 애 옷 입혀.",
+      "condition": { "stat": "husband_support", "op": "gte", "value": 60 },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l06",
+      "speaker": "npc_husband",
+      "text_kr": "나 뭐 하면 돼?",
+      "condition": { "stat": "husband_support", "op": "lt", "value": 30 },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l07",
+      "speaker": "npc_husband",
+      "text_kr": "몇 시까지 가면 되지?",
+      "condition": [
+        { "stat": "husband_support", "op": "gte", "value": 30 },
+        { "stat": "husband_support", "op": "lt", "value": 60 }
+      ],
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l08",
+      "speaker": "child",
+      "text_kr": "cry_discomfort",
+      "condition": { "ctx": "seed", "eq": "sensitive" },
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_010_l09",
+      "speaker": "child",
+      "text_kr": "babble_soft",
+      "condition": { "ctx": "seed", "eq": "easygoing" },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_010_l10",
+      "speaker": "child",
+      "text_kr": "babble_soft",
+      "condition": { "ctx": "seed", "eq": "active" },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_010_l11",
+      "speaker": "system",
+      "text_kr": "카메라 여섯 대. 아이 손이 실과 연필 사이 허공을 젓는다.",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_010_l12",
+      "speaker": "npc_cohort_yujin",
+      "text_kr": "요즘은 청진기도 놔요. 지호는 그거 잡았는데.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l13",
+      "speaker": "npc_mother_in_law",
+      "text_kr": "연필 잡아야지. 아가, 연필.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_010_l14",
+      "speaker": "child",
+      "text_kr": "cry_unknown",
+      "condition": { "ctx": "seed", "eq": "sensitive" },
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_010_l15",
+      "speaker": "child",
+      "text_kr": "babble_call",
+      "condition": { "ctx": "seed", "eq": "active" },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_010_l16",
+      "speaker": "child",
+      "text_kr": "babble_soft",
+      "condition": { "ctx": "seed", "eq": "easygoing" },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_010_l17",
+      "speaker": "player",
+      "text_kr": "{child_name}, 천천히 해도 돼.",
+      "emotion": "bright"
+    }
+  ]
+}

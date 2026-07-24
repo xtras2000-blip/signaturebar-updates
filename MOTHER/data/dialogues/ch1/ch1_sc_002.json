@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_002",
+  "lines": [
+    {
+      "line_id": "ch1_sc_002_l01",
+      "speaker": "system",
+      "text_kr": "소아과 대기실. 접종 수첩이 손안에서 구겨진다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_002_l02",
+      "speaker": "system",
+      "text_kr": "이름이 불린다. 주사바늘은 생각보다 짧다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_002_l03",
+      "speaker": "child",
+      "text_kr": "cry_pain",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_002_l04",
+      "speaker": "player",
+      "text_kr": "끝났어, 끝났어. 잘했어.",
+      "emotion": "soft"
+    }
+  ]
+}

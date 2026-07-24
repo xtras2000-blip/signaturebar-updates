@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_001",
+  "lines": [
+    {
+      "line_id": "ch1_sc_001_l01",
+      "speaker": "system",
+      "text_kr": "조리원 현관. 짐가방 지퍼가 끝까지 닫히지 않는다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_001_l02",
+      "speaker": "player",
+      "text_kr": "다 챙겼나. …뭘 챙겨야 되는지도 모르는데.",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_001_l03",
+      "speaker": "child",
+      "text_kr": "cry_unknown",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_001_l04",
+      "speaker": "npc_husband",
+      "text_kr": "카시트 이거, 이렇게 끼우는 거 맞지?",
+      "condition": { "stat": "husband_support", "op": "gte", "value": 30 },
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_001_l05",
+      "speaker": "player",
+      "text_kr": "가자. 이제 집에 가자.",
+      "emotion": "tired"
+    }
+  ]
+}

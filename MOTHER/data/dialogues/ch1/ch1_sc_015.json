@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_015",
+  "lines": [
+    {
+      "line_id": "ch1_sc_015_l01",
+      "speaker": "system",
+      "text_kr": "입소 대기 사이트. 대기 순번이 세 자리다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_015_l02",
+      "speaker": "player",
+      "text_kr": "지금 넣어도 내년이라고?",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_015_l03",
+      "speaker": "system",
+      "text_kr": "신청 버튼 위에서 커서가 오래 머문다.",
+      "emotion": "hesitant"
+    }
+  ]
+}

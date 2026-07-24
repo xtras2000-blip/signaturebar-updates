@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_016",
+  "lines": [
+    {
+      "line_id": "ch1_sc_016_l01",
+      "speaker": "system",
+      "text_kr": "저녁 여덟 시. 식탁에는 수저 한 벌.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_016_l02",
+      "speaker": "npc_husband",
+      "text_kr": "(메시지) 먼저 자. 오늘도 늦어.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_016_l03",
+      "speaker": "player",
+      "text_kr": "그래. …오늘도.",
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_016_l04",
+      "speaker": "child",
+      "text_kr": "cry_sleepy",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_016_l05",
+      "speaker": "system",
+      "text_kr": "빈 의자를 밀어 넣고 아이를 안는다.",
+      "emotion": "neutral"
+    }
+  ]
+}

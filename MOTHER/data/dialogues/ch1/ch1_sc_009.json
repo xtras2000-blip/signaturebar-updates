@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_009",
+  "lines": [
+    {
+      "line_id": "ch1_sc_009_l01",
+      "speaker": "system",
+      "text_kr": "낮잠 시간에 울리는 회사 번호.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_009_l02",
+      "speaker": "npc_boss",
+      "text_kr": "쉬는데 미안해요. 일정 얘기 좀 하려고.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_009_l03",
+      "speaker": "player",
+      "text_kr": "네, 부장님. …네, 괜찮아요.",
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_009_l04",
+      "speaker": "system",
+      "text_kr": "통화가 끝나도 달력에서 눈이 떠나지 않는다.",
+      "emotion": "hesitant"
+    }
+  ]
+}

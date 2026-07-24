@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_008",
+  "lines": [
+    {
+      "line_id": "ch1_sc_008_l01",
+      "speaker": "system",
+      "text_kr": "새벽 한 시. 휴대폰 불빛만 방에 떠 있다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_008_l02",
+      "speaker": "system",
+      "text_kr": "같은 개월 아기가 벌써 뒤집었다는 글.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_008_l03",
+      "speaker": "player",
+      "text_kr": "우리 애는 아직인데.",
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_008_l04",
+      "speaker": "player",
+      "text_kr": "…애마다 다른 거라잖아.",
+      "emotion": "hesitant"
+    }
+  ]
+}

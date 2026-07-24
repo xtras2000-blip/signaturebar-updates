@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_012",
+  "lines": [
+    {
+      "line_id": "ch1_sc_012_l01",
+      "speaker": "system",
+      "text_kr": "첫 쌀미음. 숟가락이 아이 입 앞에서 멈춘다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_012_l02",
+      "speaker": "player",
+      "text_kr": "자, 첫 숟갈. 천천히.",
+      "emotion": "soft"
+    },
+    {
+      "line_id": "ch1_sc_012_l03",
+      "speaker": "system",
+      "text_kr": "혀가 미음을 도로 밀어낸다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_012_l04",
+      "speaker": "player",
+      "text_kr": "그래, 처음엔 다 뱉는대. 내일 또 하자.",
+      "emotion": "soft"
+    }
+  ]
+}

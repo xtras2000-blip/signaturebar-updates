@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_013",
+  "lines": [
+    {
+      "line_id": "ch1_sc_013_l01",
+      "speaker": "system",
+      "text_kr": "밤 열 시. 이마에 댄 손이 한참 머문다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_013_l02",
+      "speaker": "child",
+      "text_kr": "cry_pain",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_013_l03",
+      "speaker": "player",
+      "text_kr": "뜨겁다. 옷부터. 옷부터 벗기자.",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_013_l04",
+      "speaker": "system",
+      "text_kr": "해열제 설명서를 세 번 다시 읽는다.",
+      "emotion": "hesitant"
+    }
+  ]
+}

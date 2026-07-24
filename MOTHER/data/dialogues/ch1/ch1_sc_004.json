@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_004",
+  "lines": [
+    {
+      "line_id": "ch1_sc_004_l01",
+      "speaker": "system",
+      "text_kr": "건조대의 빨래를 걷다가 돌아본다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_004_l02",
+      "speaker": "system",
+      "text_kr": "매트 위의 아이가 눈을 맞춘다. 입꼬리가 올라간다.",
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_004_l03",
+      "speaker": "child",
+      "text_kr": "babble_soft",
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_004_l04",
+      "speaker": "player",
+      "text_kr": "…방금, 웃은 거야?",
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_004_l05",
+      "speaker": "player",
+      "text_kr": "그래. 너는 웃는구나.",
+      "condition": { "stat": "mind", "op": "lt", "value": 30 },
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_004_l06",
+      "speaker": "player",
+      "text_kr": "다시. 한 번만 다시 웃어 봐.",
+      "condition": { "stat": "mind", "op": "gte", "value": 30 },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_004_l07",
+      "speaker": "system",
+      "text_kr": "빨래가 바닥에 떨어진다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_004_l08",
+      "speaker": "system",
+      "text_kr": "손이 저절로 휴대폰을 찾는다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_004_l09",
+      "speaker": "player",
+      "text_kr": "아빠도 봐야 되는데.",
+      "condition": { "stat": "husband_support", "op": "gte", "value": 60 },
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_004_l10",
+      "speaker": "player",
+      "text_kr": "…이걸 나 혼자 보네.",
+      "condition": { "stat": "husband_support", "op": "lt", "value": 30 },
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_004_l11",
+      "speaker": "player",
+      "text_kr": "잠깐만, 잠깐만 있어 봐.",
+      "condition": [
+        { "stat": "husband_support", "op": "gte", "value": 30 },
+        { "stat": "husband_support", "op": "lt", "value": 60 }
+      ],
+      "emotion": "bright"
+    },
+    {
+      "line_id": "ch1_sc_004_l12",
+      "speaker": "child",
+      "text_kr": "babble_soft",
+      "emotion": "bright"
+    }
+  ]
+}

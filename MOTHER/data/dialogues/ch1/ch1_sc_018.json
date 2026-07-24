@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_018",
+  "lines": [
+    {
+      "line_id": "ch1_sc_018_l01",
+      "speaker": "system",
+      "text_kr": "잔액 조회 화면. 숫자가 바닥을 보인다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_018_l02",
+      "speaker": "player",
+      "text_kr": "기저귀는 사야 되는데.",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_018_l03",
+      "speaker": "system",
+      "text_kr": "통장 앱과 연락처 사이에서 손가락이 오간다.",
+      "emotion": "hesitant"
+    }
+  ]
+}

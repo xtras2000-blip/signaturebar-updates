@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_003",
+  "lines": [
+    {
+      "line_id": "ch1_sc_003_l01",
+      "speaker": "system",
+      "text_kr": "사흘째 같은 새벽. 시계는 세 시를 조금 넘겼다.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_003_l02",
+      "speaker": "child",
+      "text_kr": "cry_hunger",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_003_l03",
+      "speaker": "player",
+      "text_kr": "일어나야지. 일어나야지. …일어났어.",
+      "emotion": "tired"
+    },
+    {
+      "line_id": "ch1_sc_003_l04",
+      "speaker": "system",
+      "text_kr": "젖병 데우는 물소리만 부엌에 남는다.",
+      "emotion": "neutral"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "ch1_sc_014",
+  "lines": [
+    {
+      "line_id": "ch1_sc_014_l01",
+      "speaker": "system",
+      "text_kr": "단체방 알림. 첫 모임 날짜와 카페 위치.",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_014_l02",
+      "speaker": "npc_cohort_sunny",
+      "text_kr": "{child_name} 엄마도 올 수 있죠?",
+      "emotion": "neutral"
+    },
+    {
+      "line_id": "ch1_sc_014_l03",
+      "speaker": "player",
+      "text_kr": "…갈 수 있나, 내가.",
+      "emotion": "hesitant"
+    },
+    {
+      "line_id": "ch1_sc_014_l04",
+      "speaker": "system",
+      "text_kr": "답장 창에 썼다 지운 말이 쌓인다.",
+      "emotion": "hesitant"
+    }
+  ]
+}
