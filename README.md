@@ -8,12 +8,13 @@ SignatureBar 데스크톱 앱 자동업데이트(electron-updater) 배포용 저
 # MOTHER — Game Documentation Project
 
 이 저장소는 게임 프로젝트 **MOTHER**의 문서화 작업 공간을 겸합니다.
-전체 규칙은 `CLAUDE.md`, `PROJECT_RULES.md`, `STYLE_GUIDE.md`를 참고하세요.
+모든 프로젝트 파일은 `MOTHER/` 폴더 아래에 있으며,
+전체 규칙은 `MOTHER/CLAUDE.md`, `MOTHER/PROJECT_RULES.md`, `MOTHER/STYLE_GUIDE.md`를 참고하세요.
 
 ## Repository structure
 
 ```
-docs/
+MOTHER/docs/
   00_PROJECT      프로젝트 개요·범위·파이프라인
   01_VISION       비전·디자인 필러·타깃
   02_GAME_DESIGN  핵심 게임 디자인
@@ -33,4 +34,4 @@ docs/
   99_ARCHIVE      폐기·보류 문서
 ```
 
-진행 순서는 `TASK_QUEUE.md`, 주요 결정은 `DECISION_LOG.md`에 기록합니다.
+진행 순서는 `MOTHER/TASK_QUEUE.md`, 주요 결정은 `MOTHER/DECISION_LOG.md`에 기록합니다.
