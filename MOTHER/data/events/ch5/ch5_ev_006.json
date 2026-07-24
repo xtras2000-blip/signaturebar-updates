@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_006",
+  "chapter": 5,
+  "title_kr": "혼자 자기 선언",
+  "event_class": "major",
+  "emotion_tags": [
+    "letting_go",
+    "loss"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "stat": "independence",
+        "op": "gte",
+        "value": 55
+      },
+      {
+        "ctx": "time_block",
+        "eq": "night"
+      }
+    ]
+  },
+  "priority": 88,
+  "scenes": [
+    "ch5_sc_007",
+    "ch5_sc_008"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_006_c1",
+      "text_kr": "그래, 해 보자. 방문을 조금 열어 둔다",
+      "effects": {
+        "independence": 2,
+        "attachment": -1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_sleep_alone"
+    },
+    {
+      "choice_id": "ch5_ev_006_c2",
+      "text_kr": "잠들 때까지만 곁에 있다가 나온다",
+      "effects": {
+        "attachment": 2,
+        "independence": -1,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch5_sleep_alone_stay"
+    },
+    {
+      "choice_id": "ch5_ev_006_c3",
+      "text_kr": "\"조금 더 크면\" — 오늘은 같이 잔다",
+      "effects": {
+        "attachment": 2,
+        "independence": -2,
+        "mind": 1
+      },
+      "memory_tag": "mem_ch5_sleep_alone_notyet"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

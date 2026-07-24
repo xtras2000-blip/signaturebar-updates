@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_003",
+  "chapter": 5,
+  "title_kr": "입학 준비물 구매",
+  "event_class": "minor",
+  "emotion_tags": [
+    "fulfillment"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2415
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2425
+      }
+    ]
+  },
+  "priority": 60,
+  "scenes": [
+    "ch5_sc_004"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_003_c1",
+      "text_kr": "아이가 고른 가방을 그대로 산다",
+      "effects": {
+        "attachment": 2,
+        "independence": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch5_school_shopping"
+    },
+    {
+      "choice_id": "ch5_ev_003_c2",
+      "text_kr": "튼튼한 걸로, 엄마가 고른 것을 권한다",
+      "effects": {
+        "confidence": 1,
+        "independence": -1,
+        "mind": 1
+      },
+      "memory_tag": "mem_ch5_school_shopping_pick"
+    },
+    {
+      "choice_id": "ch5_ev_003_c3",
+      "text_kr": "적어 온 목록대로만 빠르게 산다",
+      "effects": {
+        "mind": 1,
+        "stamina": -1,
+        "expressiveness": -1
+      },
+      "memory_tag": "mem_ch5_school_shopping_list"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

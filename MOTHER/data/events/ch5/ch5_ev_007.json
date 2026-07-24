@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_007",
+  "chapter": 5,
+  "title_kr": "어린이집 졸업식",
+  "event_class": "major",
+  "emotion_tags": [
+    "fulfillment",
+    "loss"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2460
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2468
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch5_sc_009",
+    "ch5_sc_010"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_007_c1",
+      "text_kr": "카메라를 내리고 단상의 아이만 본다",
+      "effects": {
+        "attachment": 3,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_graduation"
+    },
+    {
+      "choice_id": "ch5_ev_007_c2",
+      "text_kr": "끝까지 렌즈 너머로 담아 둔다",
+      "effects": {
+        "mind": 1,
+        "attachment": -1,
+        "expressiveness": 1
+      },
+      "memory_tag": "mem_ch5_graduation_record"
+    },
+    {
+      "choice_id": "ch5_ev_007_c3",
+      "text_kr": "식이 끝난 빈 강당에 잠시 남는다",
+      "effects": {
+        "attachment": 2,
+        "mind": -3,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch5_graduation_hall"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

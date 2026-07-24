@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_009",
+  "chapter": 5,
+  "title_kr": "엄마 손 놓고 걷기",
+  "event_class": "minor",
+  "emotion_tags": [
+    "letting_go"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch2_first_steps",
+        "exists": true
+      },
+      {
+        "stat": "independence",
+        "op": "gte",
+        "value": 50
+      }
+    ]
+  },
+  "priority": 65,
+  "scenes": [
+    "ch5_sc_013"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_009_c1",
+      "text_kr": "잡은 손에서 힘을 먼저 뺀다",
+      "effects": {
+        "independence": 2,
+        "attachment": -1,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_letting_hand"
+    },
+    {
+      "choice_id": "ch5_ev_009_c2",
+      "text_kr": "반 발짝 뒤에서 그림자처럼 따른다",
+      "effects": {
+        "attachment": 2,
+        "independence": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch5_letting_hand_shadow"
+    },
+    {
+      "choice_id": "ch5_ev_009_c3",
+      "text_kr": "횡단보도 앞에서만 다시 잡는다",
+      "effects": {
+        "attachment": 1,
+        "independence": -1,
+        "mind": 1
+      },
+      "memory_tag": "mem_ch5_letting_hand_crosswalk"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

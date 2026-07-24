@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_012",
+  "chapter": 5,
+  "title_kr": "같은 가방",
+  "event_class": "minor",
+  "emotion_tags": [
+    "letting_go"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_leaving_center",
+        "exists": true
+      }
+    ]
+  },
+  "priority": 65,
+  "scenes": [
+    "ch5_sc_017"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_012_c1",
+      "text_kr": "두 가방을 현관에 나란히 세워 둔다",
+      "effects": {
+        "attachment": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_same_bag"
+    },
+    {
+      "choice_id": "ch5_ev_012_c2",
+      "text_kr": "그 가방을 들고 온 날의 이야기를 들려준다",
+      "effects": {
+        "attachment": 2,
+        "expressiveness": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch5_same_bag_story"
+    },
+    {
+      "choice_id": "ch5_ev_012_c3",
+      "text_kr": "사진 한 장만 찍고 도로 넣어 둔다",
+      "effects": {
+        "mind": 1,
+        "expressiveness": -1
+      },
+      "memory_tag": "mem_ch5_same_bag_photo"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

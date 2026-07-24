@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_008",
+  "chapter": 5,
+  "title_kr": "마지막 등원",
+  "event_class": "major",
+  "emotion_tags": [
+    "loss"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2469
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2475
+      }
+    ]
+  },
+  "priority": 90,
+  "scenes": [
+    "ch5_sc_011",
+    "ch5_sc_012"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_008_c1",
+      "text_kr": "신발장 이름표를 아이가 직접 떼게 한다",
+      "effects": {
+        "independence": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_last_dropoff"
+    },
+    {
+      "choice_id": "ch5_ev_008_c2",
+      "text_kr": "뗀 이름표를 말없이 가방에 챙긴다",
+      "effects": {
+        "attachment": 2,
+        "mind": -1,
+        "independence": -1
+      },
+      "memory_tag": "mem_ch5_last_dropoff_keep"
+    },
+    {
+      "choice_id": "ch5_ev_008_c3",
+      "text_kr": "여느 날처럼 짧게 인사하고 돌아선다",
+      "effects": {
+        "confidence": 1,
+        "attachment": -1,
+        "mind": 1
+      },
+      "memory_tag": "mem_ch5_last_dropoff_usual"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

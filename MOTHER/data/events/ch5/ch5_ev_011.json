@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_011",
+  "chapter": 5,
+  "title_kr": "역전된 돌봄",
+  "event_class": "major",
+  "emotion_tags": [
+    "loss"
+  ],
+  "trigger": {
+    "type": "conditional",
+    "conditions": [
+      {
+        "memory": "mem_ch1_grandma_visit",
+        "exists": true
+      }
+    ]
+  },
+  "priority": 88,
+  "scenes": [
+    "ch5_sc_015",
+    "ch5_sc_016"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_011_c1",
+      "text_kr": "그때 엄마가 끓여 준 미역국을 끓여 간다",
+      "effects": {
+        "rel": {
+          "npc_grandma": 5
+        },
+        "stamina": -4,
+        "mind": -1
+      },
+      "memory_tag": "mem_ch5_caring_reversed"
+    },
+    {
+      "choice_id": "ch5_ev_011_c2",
+      "text_kr": "아이를 데려가 병실에 웃음을 들인다",
+      "effects": {
+        "rel": {
+          "npc_grandma": 3
+        },
+        "empathy": 1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch5_caring_reversed_child"
+    },
+    {
+      "choice_id": "ch5_ev_011_c3",
+      "text_kr": "보호자 침대에서 하룻밤을 지킨다",
+      "effects": {
+        "rel": {
+          "npc_grandma": 4
+        },
+        "stamina": -6,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_caring_reversed_night"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

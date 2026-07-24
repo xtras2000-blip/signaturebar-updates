@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_004",
+  "chapter": 5,
+  "title_kr": "책상 조립",
+  "event_class": "minor",
+  "emotion_tags": [
+    "fulfillment"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2425
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2435
+      }
+    ]
+  },
+  "priority": 60,
+  "scenes": [
+    "ch5_sc_005"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_004_c1",
+      "text_kr": "아이와 나사 하나씩 나눠 조인다",
+      "effects": {
+        "attachment": 3,
+        "independence": 1,
+        "stamina": -3
+      },
+      "memory_tag": "mem_ch5_desk_build"
+    },
+    {
+      "choice_id": "ch5_ev_004_c2",
+      "text_kr": "남편에게 맡기고 두 사람을 지켜본다",
+      "effects": {
+        "rel": {
+          "npc_husband": 3
+        },
+        "mind": 1,
+        "attachment": -1
+      },
+      "memory_tag": "mem_ch5_desk_build_watch"
+    },
+    {
+      "choice_id": "ch5_ev_004_c3",
+      "text_kr": "밤에 혼자 완성해 아침에 보여준다",
+      "effects": {
+        "attachment": 2,
+        "stamina": -4,
+        "independence": -1
+      },
+      "memory_tag": "mem_ch5_desk_build_night"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

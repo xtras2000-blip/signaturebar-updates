@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_002",
+  "chapter": 5,
+  "title_kr": "예비소집일",
+  "event_class": "major",
+  "emotion_tags": [
+    "letting_go"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2400
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2410
+      }
+    ]
+  },
+  "priority": 85,
+  "scenes": [
+    "ch5_sc_002",
+    "ch5_sc_003"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_002_c1",
+      "text_kr": "처음 불린 '학생' 소리를 속으로 따라 한다",
+      "effects": {
+        "attachment": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_preliminary_call"
+    },
+    {
+      "choice_id": "ch5_ev_002_c2",
+      "text_kr": "아이 손을 쥐고 맨 앞줄에 같이 앉는다",
+      "effects": {
+        "attachment": 3,
+        "independence": -1,
+        "stamina": -2
+      },
+      "memory_tag": "mem_ch5_preliminary_call_front"
+    },
+    {
+      "choice_id": "ch5_ev_002_c3",
+      "text_kr": "혼자 줄 서게 하고 뒤에서 지켜본다",
+      "effects": {
+        "independence": 2,
+        "attachment": -1,
+        "mind": -2,
+        "rel": {
+          "npc_school_teacher": 2
+        }
+      },
+      "memory_tag": "mem_ch5_preliminary_call_watch"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

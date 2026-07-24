@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_last",
+  "chapter": 5,
+  "title_kr": "입학 전날 밤",
+  "event_class": "major",
+  "emotion_tags": [
+    "letting_go",
+    "fulfillment"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2500
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2500
+      },
+      {
+        "ctx": "time_block",
+        "eq": "night"
+      }
+    ]
+  },
+  "priority": 98,
+  "scenes": [
+    "ch5_sc_018",
+    "ch5_sc_019"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_last_c1",
+      "text_kr": "오늘만. 이불을 들춰 자리를 내준다",
+      "effects": {
+        "attachment": 5,
+        "stamina": -3,
+        "independence": -1
+      },
+      "memory_tag": "mem_ch5_last_night_together"
+    },
+    {
+      "choice_id": "ch5_ev_last_c2",
+      "text_kr": "손을 잡고 아이 방으로 가서, 잠들 때까지 곁에 앉아 있는다",
+      "effects": {
+        "attachment": 3,
+        "independence": 1,
+        "stamina": -4
+      },
+      "memory_tag": "mem_ch5_last_night_beside"
+    },
+    {
+      "choice_id": "ch5_ev_last_c3",
+      "text_kr": "\"내일부터 학생이잖아\" — 이불만 덮어 주고 방을 나온다",
+      "effects": {
+        "independence": 2,
+        "attachment": -1,
+        "mind": -3
+      },
+      "memory_tag": "mem_ch5_last_night_door"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}

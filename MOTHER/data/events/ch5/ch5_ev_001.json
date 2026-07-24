@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.1",
+  "event_id": "ch5_ev_001",
+  "chapter": 5,
+  "title_kr": "취학통지서 도착",
+  "event_class": "minor",
+  "emotion_tags": [
+    "letting_go"
+  ],
+  "trigger": {
+    "type": "scheduled",
+    "conditions": [
+      {
+        "stat": "day_counter",
+        "op": "gte",
+        "value": 2380
+      },
+      {
+        "stat": "day_counter",
+        "op": "lte",
+        "value": 2390
+      }
+    ]
+  },
+  "priority": 60,
+  "scenes": [
+    "ch5_sc_001"
+  ],
+  "choices": [
+    {
+      "choice_id": "ch5_ev_001_c1",
+      "text_kr": "식탁에 앉아 이름 석 자를 오래 본다",
+      "effects": {
+        "attachment": 2,
+        "mind": -2
+      },
+      "memory_tag": "mem_ch5_school_notice"
+    },
+    {
+      "choice_id": "ch5_ev_001_c2",
+      "text_kr": "냉장고에 붙이고 아이에게 읽어 준다",
+      "effects": {
+        "attachment": 1,
+        "expressiveness": 1,
+        "stamina": -1
+      },
+      "memory_tag": "mem_ch5_school_notice_fridge"
+    },
+    {
+      "choice_id": "ch5_ev_001_c3",
+      "text_kr": "서랍에 넣는다. 아직은 모른 척하고 싶다",
+      "effects": {
+        "mind": 2,
+        "attachment": -1,
+        "independence": -1
+      },
+      "memory_tag": "mem_ch5_school_notice_drawer"
+    }
+  ],
+  "once": true,
+  "cooldown_days": 0
+}
