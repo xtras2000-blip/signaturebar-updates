@@ -137,6 +137,12 @@
   }
   @keyframes shine{from{background-position:120% 0}to{background-position:-130% 0}}
 
+  /* 실사 테스트 카드: 프레임이 인쇄된 풀아트 이미지는 자체 UI를 숨긴다 */
+  .card.full-art .art{background-size:contain; background-repeat:no-repeat; background-position:center; background-color:#0a0812}
+  .card.full-art .meta{display:none}
+  .card.full-art .rtag{top:auto; bottom:7px; left:7px}
+  .zoom .card.full-art{aspect-ratio:1/2; width:min(250px, 66vw)}
+
   /* ── 개봉 오버레이 ──────────────────── */
   .overlay{
     position:fixed; inset:0; z-index:40; display:none; flex-direction:column;
@@ -303,7 +309,12 @@
 // 캐릭터별 AI 실사 이미지가 준비되면 CARD_IMAGES에 카드 ID → 이미지 경로를
 // 넣으세요. 예: { 'sera-UR': 'images/sera-ur.jpg' }
 // 이미지가 없는 카드는 자동으로 자리표시 아트가 나옵니다.
-const CARD_IMAGES = {};
+const CARD_IMAGES = {
+  'chaea-N':  'images/chaea-N-day.jpg',
+  'chaea-R':  'images/chaea-R-night.jpg',
+  'chaea-SR': 'images/chaea-SR-night.jpg',
+  'chaea-UR': 'images/chaea-UR-night.jpg',
+};
 
 const CHARACTERS = [
   { id:'sera',  name:'세라', concept:'도시의 밤',     hue:340 },
@@ -357,7 +368,7 @@ function cardHTML(card, opts = {}) {
   const art = img
     ? `<div class="art" style="--h:${card.char.hue}; background-image:url('${img}')"></div>`
     : `<div class="art" style="--h:${card.char.hue}"><span class="mono">${card.char.name[0]}</span></div>`;
-  return `<div class="card q-${card.rarity}" data-id="${card.id}">
+  return `<div class="card q-${card.rarity}${img ? ' full-art' : ''}" data-id="${card.id}">
     <span class="rtag">${card.rarity}</span>${opts.badge || ''}${opts.count || ''}
     ${art}
     <div class="meta"><h4>${card.char.name}</h4><p>${card.title}</p></div>
