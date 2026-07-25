@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURA — 카드 컬렉션 프로토타입</title>
+</head>
+<body>
+<style>
+  :root{
+    --bg:#0d0b14; --bg2:#141021; --panel:#1b1730; --panel2:#221c3a; --line:#2c2649;
+    --text:#f2eefb; --muted:#9a92b8; --dim:#6f6890;
+    --gold:#e8c168; --gold-soft:#f3daa4;
+    --n:#8b93a7; --r:#5aa7e8; --sr:#b06ef0; --ur:#e8c168;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:
+      radial-gradient(1200px 600px at 50% -200px, #241b3f 0%, transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+    min-height:100vh;
+  }
+  .app{max-width:560px; margin:0 auto; padding:16px 16px 96px}
+
+  /* ── 헤더 ─────────────────────────── */
+  header{display:flex; align-items:center; justify-content:space-between; padding:6px 2px 18px}
+  .logo{font-size:22px; font-weight:800; letter-spacing:.14em}
+  .logo em{font-style:normal; color:var(--gold)}
+  .logo small{display:block; font-size:10px; font-weight:500; letter-spacing:.28em; color:var(--dim); margin-top:3px}
+  .wallet{display:flex; align-items:center; gap:8px}
+  .coins{
+    display:flex; align-items:center; gap:6px; background:var(--panel);
+    border:1px solid var(--line); border-radius:999px; padding:7px 14px 7px 10px;
+    font-weight:700; font-variant-numeric:tabular-nums;
+  }
+  .coin-dot{width:14px; height:14px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--gold-soft), var(--gold) 60%, #a8842f);
+    box-shadow:0 0 6px rgba(232,193,104,.5)}
+  .free-btn{
+    border:1px solid var(--line); background:var(--panel); color:var(--gold);
+    border-radius:999px; padding:7px 12px; font-size:12px; font-weight:700; cursor:pointer;
+    font-variant-numeric:tabular-nums;
+  }
+  .free-btn:disabled{color:var(--dim); cursor:default}
+
+  /* ── 탭 ──────────────────────────── */
+  nav{
+    position:fixed; left:0; right:0; bottom:0; z-index:20;
+    background:rgba(13,11,20,.92); backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+  }
+  .nav-inner{max-width:560px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr}
+  nav button{
+    background:none; border:none; color:var(--dim); font:inherit; font-size:13px; font-weight:700;
+    padding:14px 0 max(14px, env(safe-area-inset-bottom)); cursor:pointer; letter-spacing:.05em;
+  }
+  nav button.on{color:var(--text)}
+  nav button.on span{border-bottom:2px solid var(--gold); padding-bottom:4px}
+
+  /* ── 상점 ─────────────────────────── */
+  .shop-hero{
+    background:linear-gradient(165deg, var(--panel2), var(--panel) 70%);
+    border:1px solid var(--line); border-radius:20px; padding:28px 22px 24px;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .shop-hero::before{content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(400px 200px at 50% 0%, rgba(176,110,240,.14), transparent 70%)}
+  .pack{
+    width:150px; aspect-ratio:5/7; margin:0 auto 18px; border-radius:12px; position:relative;
+    background:
+      linear-gradient(150deg, rgba(255,255,255,.14), transparent 40%),
+      linear-gradient(160deg, #3a2d63 0%, #241b45 55%, #171130 100%);
+    border:1px solid #4a3d7a;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.8);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  }
+  .pack .pk-logo{font-size:19px; font-weight:800; letter-spacing:.18em}
+  .pack .pk-logo b{color:var(--gold)}
+  .pack .pk-sub{font-size:10px; letter-spacing:.24em; color:var(--muted)}
+  .pack::after{content:""; position:absolute; left:0; right:0; top:26px; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(232,193,104,.55), transparent)}
+  .shop-hero h2{font-size:19px; font-weight:800; margin-bottom:6px; text-wrap:balance}
+  .shop-hero p{font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:18px}
+  .open-btn{
+    width:100%; border:none; border-radius:var(--radius); padding:15px; cursor:pointer;
+    background:linear-gradient(160deg, var(--gold-soft), var(--gold) 55%, #c79a3e);
+    color:#241a05; font-size:15px; font-weight:800; letter-spacing:.02em;
+  }
+  .open-btn:disabled{background:var(--panel2); color:var(--dim)}
+  .odds{
+    margin-top:14px; display:flex; justify-content:center; gap:14px;
+    font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums;
+  }
+  .odds b{font-weight:800; letter-spacing:.06em}
+  .stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px}
+  .stat{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px}
+  .stat .k{font-size:11px; color:var(--dim); letter-spacing:.08em; margin-bottom:5px}
+  .stat .v{font-size:19px; font-weight:800; font-variant-numeric:tabular-nums}
+
+  /* ── 카드 공통 ─────────────────────── */
+  .card{
+    aspect-ratio:5/7; border-radius:12px; overflow:hidden; position:relative;
+    background:var(--panel); border:1.5px solid var(--rc, var(--line));
+    display:flex; flex-direction:column;
+  }
+  .card .art{
+    flex:1; position:relative; display:flex; align-items:center; justify-content:center;
+    background:
+      radial-gradient(90% 70% at 50% 20%, hsl(var(--h) 60% 34% / .9), transparent 75%),
+      linear-gradient(165deg, hsl(var(--h) 45% 24%), hsl(calc(var(--h) + 45) 50% 11%) 80%);
+    background-size:cover; background-position:center;
+  }
+  .card .art .mono{
+    font-size:clamp(28px, 9cqw, 46px); font-weight:800; color:hsl(var(--h) 80% 88% / .92);
+    text-shadow:0 2px 18px hsl(var(--h) 70% 50% / .55);
+  }
+  .card .meta{padding:7px 9px 8px; background:rgba(10,8,18,.72)}
+  .card .meta h4{font-size:13px; font-weight:800}
+  .card .meta p{font-size:10px; color:var(--muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .rtag{
+    position:absolute; top:7px; left:7px; z-index:2;
+    font-size:10px; font-weight:800; letter-spacing:.1em;
+    background:rgba(8,6,15,.78); color:var(--rc, var(--muted));
+    border:1px solid var(--rc, var(--line)); border-radius:6px; padding:2px 7px;
+  }
+  .card.q-N{--rc:var(--n)} .card.q-R{--rc:var(--r)} .card.q-SR{--rc:var(--sr)} .card.q-UR{--rc:var(--ur)}
+  .card.q-SR{box-shadow:0 0 18px -4px rgba(176,110,240,.45)}
+  .card.q-UR{box-shadow:0 0 22px -4px rgba(232,193,104,.55)}
+  .card.q-UR::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,244,214,.22) 45%, transparent 60%);
+    background-size:250% 100%; animation:shine 3.2s linear infinite;
+  }
+  @keyframes shine{from{background-position:120% 0}to{background-position:-130% 0}}
+
+  /* ── 개봉 오버레이 ──────────────────── */
+  .overlay{
+    position:fixed; inset:0; z-index:40; display:none; flex-direction:column;
+    background:rgba(9,7,15,.96); padding:20px 16px calc(20px + env(safe-area-inset-bottom));
+    overflow-y:auto;
+  }
+  .overlay.show{display:flex}
+  .ov-inner{max-width:560px; width:100%; margin:auto; text-align:center}
+  .ov-inner h3{font-size:17px; font-weight:800; margin-bottom:4px}
+  .ov-inner .hint{font-size:12px; color:var(--muted); margin-bottom:18px}
+  .pulls{display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:16px}
+  .pulls .slot:nth-child(4){grid-column:1 / 2; margin-left:52%}
+  .pulls .slot:nth-child(5){grid-column:3 / 4; margin-right:52%}
+  @media (max-width:400px){
+    .pulls{grid-template-columns:repeat(2,1fr)}
+    .pulls .slot:nth-child(4){grid-column:auto; margin-left:0}
+    .pulls .slot:nth-child(5){grid-column:auto; margin-right:0; }
+  }
+  .slot{perspective:900px; cursor:pointer}
+  .flip{position:relative; width:100%; aspect-ratio:5/7; transform-style:preserve-3d; transition:transform .55s cubic-bezier(.2,.7,.25,1)}
+  .slot.flipped .flip{transform:rotateY(180deg)}
+  .face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:12px}
+  .face.back{
+    background:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 9px),
+      linear-gradient(160deg, #322659 0%, #1d1638 60%, #140f28 100%);
+    border:1px solid #453a75; display:flex; align-items:center; justify-content:center;
+    font-weight:800; letter-spacing:.2em; font-size:13px; color:#7d71b3;
+  }
+  .face.front{transform:rotateY(180deg)}
+  .face.front .card{height:100%}
+  .badge{
+    position:absolute; top:7px; right:7px; z-index:3; font-size:9px; font-weight:800;
+    border-radius:6px; padding:2px 6px; letter-spacing:.06em;
+  }
+  .badge.new{background:var(--gold); color:#241a05}
+  .badge.dupe{background:rgba(8,6,15,.8); color:var(--muted); border:1px solid var(--line)}
+  .ov-actions{display:flex; gap:10px; justify-content:center}
+  .ov-actions button{
+    border-radius:var(--radius); padding:13px 22px; font-size:14px; font-weight:800; cursor:pointer;
+    border:1px solid var(--line); background:var(--panel); color:var(--text);
+  }
+  .ov-actions .primary{background:linear-gradient(160deg, var(--gold-soft), var(--gold) 55%, #c79a3e); color:#241a05; border:none}
+  .ov-summary{font-size:13px; color:var(--muted); margin-bottom:14px; min-height:20px}
+  .ov-summary b{color:var(--gold)}
+
+  /* ── 도감 ─────────────────────────── */
+  .col-head{margin-bottom:16px}
+  .col-head h2{font-size:19px; font-weight:800; margin-bottom:10px}
+  .progress{height:8px; border-radius:99px; background:var(--panel); border:1px solid var(--line); overflow:hidden}
+  .progress i{display:block; height:100%; background:linear-gradient(90deg, var(--sr), var(--gold)); border-radius:99px; transition:width .4s}
+  .col-head .pct{font-size:12px; color:var(--muted); margin-top:7px; font-variant-numeric:tabular-nums}
+  .char-group{margin-bottom:22px}
+  .char-group header{padding:0 2px 10px; display:flex; align-items:baseline; gap:8px}
+  .char-group h3{font-size:15px; font-weight:800}
+  .char-group .concept{font-size:11px; color:var(--dim)}
+  .char-cards{display:grid; grid-template-columns:repeat(4, 1fr); gap:8px}
+  .locked{
+    aspect-ratio:5/7; border-radius:12px; border:1.5px dashed var(--line);
+    background:var(--bg2); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  }
+  .locked b{font-size:13px; font-weight:800; letter-spacing:.1em; color:var(--dim)}
+  .locked span{font-size:9px; color:#4c466b}
+  .cnt{
+    position:absolute; bottom:34px; right:6px; z-index:2; font-size:9px; font-weight:700;
+    background:rgba(8,6,15,.8); border:1px solid var(--line); color:var(--muted);
+    border-radius:6px; padding:1px 5px; font-variant-numeric:tabular-nums;
+  }
+
+  /* ── 카드 확대 ─────────────────────── */
+  .zoom{position:fixed; inset:0; z-index:50; display:none; align-items:center; justify-content:center;
+    background:rgba(9,7,15,.9); padding:28px}
+  .zoom.show{display:flex}
+  .zoom .card{width:min(300px, 78vw); font-size:16px}
+  .zoom .card .meta h4{font-size:17px}
+  .zoom .card .meta p{font-size:12px}
+  .zoom .card .rtag{font-size:12px; padding:3px 9px}
+
+  .view{display:none}
+  .view.on{display:block}
+  .toast{
+    position:fixed; left:50%; bottom:86px; transform:translateX(-50%); z-index:60;
+    background:var(--panel2); border:1px solid var(--line); color:var(--text);
+    border-radius:999px; padding:10px 18px; font-size:13px; font-weight:700;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .toast.show{opacity:1}
+
+  @media (prefers-reduced-motion: reduce){
+    .flip{transition:none}
+    .card.q-UR::after{animation:none}
+    .progress i{transition:none}
+  }
+</style>
+
+<div class="app">
+  <header>
+    <div class="logo">AU<em>RA</em><small>CARD COLLECTION</small></div>
+    <div class="wallet">
+      <button class="free-btn" id="freeBtn">무료 코인</button>
+      <div class="coins"><span class="coin-dot"></span><span id="coinAmt">0</span></div>
+    </div>
+  </header>
+
+  <!-- 팩 상점 -->
+  <section class="view on" id="view-shop">
+    <div class="shop-hero">
+      <div class="pack">
+        <div class="pk-logo">AU<b>RA</b></div>
+        <div class="pk-sub">SEASON 1</div>
+      </div>
+      <h2>시즌 1 · 스탠다드 팩</h2>
+      <p>카드 5장이 들어 있어요. R 등급 이상 1장이 보장됩니다.</p>
+      <button class="open-btn" id="openBtn">팩 열기 · 150 코인</button>
+      <div class="odds">
+        <span><b style="color:var(--n)">N</b> 60%</span>
+        <span><b style="color:var(--r)">R</b> 28%</span>
+        <span><b style="color:var(--sr)">SR</b> 10%</span>
+        <span><b style="color:var(--ur)">UR</b> 2%</span>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">개봉한 팩</div><div class="v" id="statPacks">0</div></div>
+      <div class="stat"><div class="k">도감 수집률</div><div class="v" id="statPct">0%</div></div>
+    </div>
+  </section>
+
+  <!-- 도감 -->
+  <section class="view" id="view-collection">
+    <div class="col-head">
+      <h2>카드 도감</h2>
+      <div class="progress"><i id="progBar" style="width:0%"></i></div>
+      <div class="pct" id="progTxt"></div>
+    </div>
+    <div id="groups"></div>
+  </section>
+</div>
+
+<nav><div class="nav-inner">
+  <button class="on" data-view="shop"><span>팩 상점</span></button>
+  <button data-view="collection"><span>도감</span></button>
+</div></nav>
+
+<!-- 팩 개봉 -->
+<div class="overlay" id="packOverlay">
+  <div class="ov-inner">
+    <h3>팩 개봉</h3>
+    <p class="hint">카드를 눌러서 뒤집어 보세요</p>
+    <div class="pulls" id="pulls"></div>
+    <p class="ov-summary" id="ovSummary"></p>
+    <div class="ov-actions">
+      <button id="revealAll">모두 공개</button>
+      <button class="primary" id="closePack" hidden>확인</button>
+    </div>
+  </div>
+</div>
+
+<!-- 카드 확대 -->
+<div class="zoom" id="zoom"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── 데이터 ─────────────────────────────────────────────
+// 캐릭터별 AI 실사 이미지가 준비되면 CARD_IMAGES에 카드 ID → 이미지 경로를
+// 넣으세요. 예: { 'sera-UR': 'images/sera-ur.jpg' }
+// 이미지가 없는 카드는 자동으로 자리표시 아트가 나옵니다.
+const CARD_IMAGES = {};
+
+const CHARACTERS = [
+  { id:'sera',  name:'세라', concept:'도시의 밤',     hue:340 },
+  { id:'yuna',  name:'유나', concept:'캠퍼스',        hue:210 },
+  { id:'harin', name:'하린', concept:'재즈 바',       hue:270 },
+  { id:'miso',  name:'미소', concept:'여름 해변',     hue:178 },
+  { id:'dain',  name:'다인', concept:'빗속 산책',     hue:232 },
+  { id:'sol',   name:'솔',   concept:'한복 정원',     hue:22  },
+  { id:'riyu',  name:'리유', concept:'네온 스트리트', hue:300 },
+  { id:'chaea', name:'채아', concept:'설원 여행',     hue:196 },
+];
+const RARITIES = {
+  N:  { name:'노멀',       weight:60, dupe:10,  shot:'프로필' },
+  R:  { name:'레어',       weight:28, dupe:30,  shot:'컨셉 의상' },
+  SR: { name:'슈퍼레어',   weight:10, dupe:100, shot:'시네마틱' },
+  UR: { name:'울트라레어', weight:2,  dupe:300, shot:'시그니처' },
+};
+const RKEYS = Object.keys(RARITIES);
+const CARDS = [];
+for (const ch of CHARACTERS) for (const r of RKEYS)
+  CARDS.push({ id:`${ch.id}-${r}`, char:ch, rarity:r, title:`${ch.concept} · ${RARITIES[r].shot}` });
+
+const PACK_COST = 150, PACK_SIZE = 5;
+const FREE_AMOUNT = 80, FREE_COOLDOWN = 60_000;
+
+// ─── 상태 ─────────────────────────────────────────────
+const SAVE_KEY = 'aura-tcg-v1';
+let state = { coins:450, owned:{}, packs:0, lastFree:0 };
+try {
+  const raw = localStorage.getItem(SAVE_KEY);
+  if (raw) state = Object.assign(state, JSON.parse(raw));
+} catch (e) {}
+const save = () => { try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch (e) {} };
+
+// ─── 유틸 ─────────────────────────────────────────────
+const $ = s => document.querySelector(s);
+function rollRarity(keys = RKEYS) {
+  const total = keys.reduce((s, k) => s + RARITIES[k].weight, 0);
+  let x = Math.random() * total;
+  for (const k of keys) { x -= RARITIES[k].weight; if (x < 0) return k; }
+  return keys[keys.length - 1];
+}
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function cardHTML(card, opts = {}) {
+  const img = CARD_IMAGES[card.id];
+  const art = img
+    ? `<div class="art" style="--h:${card.char.hue}; background-image:url('${img}')"></div>`
+    : `<div class="art" style="--h:${card.char.hue}"><span class="mono">${card.char.name[0]}</span></div>`;
+  return `<div class="card q-${card.rarity}" data-id="${card.id}">
+    <span class="rtag">${card.rarity}</span>${opts.badge || ''}${opts.count || ''}
+    ${art}
+    <div class="meta"><h4>${card.char.name}</h4><p>${card.title}</p></div>
+  </div>`;
+}
+
+// ─── 렌더 ─────────────────────────────────────────────
+function ownedUnique() { return Object.keys(state.owned).filter(id => state.owned[id] > 0).length; }
+
+function renderHUD() {
+  $('#coinAmt').textContent = state.coins.toLocaleString();
+  $('#statPacks').textContent = state.packs.toLocaleString();
+  const pct = Math.round(ownedUnique() / CARDS.length * 100);
+  $('#statPct').textContent = pct + '%';
+  $('#openBtn').disabled = state.coins < PACK_COST;
+  $('#openBtn').textContent = state.coins < PACK_COST ? '코인이 부족해요' : `팩 열기 · ${PACK_COST} 코인`;
+}
+
+function renderCollection() {
+  const uniq = ownedUnique();
+  $('#progBar').style.width = (uniq / CARDS.length * 100) + '%';
+  $('#progTxt').textContent = `${uniq} / ${CARDS.length}장 수집`;
+  $('#groups').innerHTML = CHARACTERS.map(ch => {
+    const cells = RKEYS.map(r => {
+      const card = CARDS.find(c => c.char === ch && c.rarity === r);
+      const cnt = state.owned[card.id] || 0;
+      if (!cnt) return `<div class="locked"><b>${r}</b><span>미보유</span></div>`;
+      return `<div class="slot-owned">${cardHTML(card, { count: cnt > 1 ? `<span class="cnt">×${cnt}</span>` : '' })}</div>`;
+    }).join('');
+    return `<div class="char-group">
+      <header><h3>${ch.name}</h3><span class="concept">${ch.concept}</span></header>
+      <div class="char-cards">${cells}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── 팩 개봉 ───────────────────────────────────────────
+let pending = null; // { pulls:[{card,isNew,dupeCoins}], flipped:n }
+
+function openPack() {
+  if (state.coins < PACK_COST) return;
+  state.coins -= PACK_COST;
+  state.packs += 1;
+
+  const rarities = Array.from({ length: PACK_SIZE }, () => rollRarity());
+  if (!rarities.some(r => r !== 'N')) rarities[PACK_SIZE - 1] = rollRarity(['R', 'SR', 'UR']);
+
+  const pulls = rarities.map(r => {
+    const card = pick(CARDS.filter(c => c.rarity === r));
+    const isNew = !(state.owned[card.id] > 0);
+    state.owned[card.id] = (state.owned[card.id] || 0) + 1;
+    const dupeCoins = isNew ? 0 : RARITIES[r].dupe;
+    state.coins += dupeCoins;
+    return { card, isNew, dupeCoins };
+  });
+  save(); renderHUD();
+
+  pending = { pulls, flipped: 0 };
+  $('#pulls').innerHTML = pulls.map((p, i) => `
+    <div class="slot" data-i="${i}">
+      <div class="flip">
+        <div class="face back">AURA</div>
+        <div class="face front">${cardHTML(p.card, {
+          badge: p.isNew ? '<span class="badge new">NEW</span>'
+                         : `<span class="badge dupe">+${p.dupeCoins}</span>`
+        })}</div>
+      </div>
+    </div>`).join('');
+  $('#ovSummary').textContent = '';
+  $('#revealAll').hidden = false;
+  $('#closePack').hidden = true;
+  $('#packOverlay').classList.add('show');
+}
+
+function flipSlot(el) {
+  if (!pending || el.classList.contains('flipped')) return;
+  el.classList.add('flipped');
+  pending.flipped += 1;
+  if (pending.flipped >= PACK_SIZE) finishPack();
+}
+
+function finishPack() {
+  const news = pending.pulls.filter(p => p.isNew).length;
+  const coins = pending.pulls.reduce((s, p) => s + p.dupeCoins, 0);
+  const best = pending.pulls.map(p => p.card.rarity)
+    .sort((a, b) => RKEYS.indexOf(b) - RKEYS.indexOf(a))[0];
+  $('#ovSummary').innerHTML =
+    `최고 등급 <b>${best}</b> · 신규 ${news}장` +
+    (coins ? ` · 중복 보상 <b>+${coins} 코인</b>` : '');
+  $('#revealAll').hidden = true;
+  $('#closePack').hidden = false;
+}
+
+$('#pulls').addEventListener('click', e => {
+  const slot = e.target.closest('.slot');
+  if (slot) flipSlot(slot);
+});
+$('#revealAll').addEventListener('click', () => {
+  document.querySelectorAll('#pulls .slot').forEach(s => flipSlot(s));
+});
+$('#closePack').addEventListener('click', () => {
+  $('#packOverlay').classList.remove('show');
+  pending = null;
+  renderHUD(); renderCollection();
+});
+$('#openBtn').addEventListener('click', openPack);
+
+// ─── 무료 코인 ─────────────────────────────────────────
+function tickFree() {
+  const left = state.lastFree + FREE_COOLDOWN - Date.now();
+  const btn = $('#freeBtn');
+  if (left <= 0) { btn.disabled = false; btn.textContent = `무료 코인 +${FREE_AMOUNT}`; }
+  else { btn.disabled = true; btn.textContent = `${Math.ceil(left / 1000)}초 후`; }
+}
+$('#freeBtn').addEventListener('click', () => {
+  if (state.lastFree + FREE_COOLDOWN - Date.now() > 0) return;
+  state.coins += FREE_AMOUNT;
+  state.lastFree = Date.now();
+  save(); renderHUD(); tickFree();
+  toast(`+${FREE_AMOUNT} 코인을 받았어요`);
+});
+setInterval(tickFree, 1000);
+
+// ─── 탭 / 확대 ─────────────────────────────────────────
+document.querySelectorAll('nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b === btn));
+    document.querySelectorAll('.view').forEach(v =>
+      v.classList.toggle('on', v.id === 'view-' + btn.dataset.view));
+    if (btn.dataset.view === 'collection') renderCollection();
+  });
+});
+$('#groups').addEventListener('click', e => {
+  const el = e.target.closest('.card');
+  if (!el) return;
+  const card = CARDS.find(c => c.id === el.dataset.id);
+  $('#zoom').innerHTML = cardHTML(card);
+  $('#zoom').classList.add('show');
+});
+$('#zoom').addEventListener('click', () => $('#zoom').classList.remove('show'));
+
+// ─── 시작 ─────────────────────────────────────────────
+renderHUD(); renderCollection(); tickFree();
+</script>
+</body>
+</html>
